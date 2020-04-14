@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Feature extends Model
 {
     protected $fillable = [
         'description'
     ];
 
-    public function users() {
-        return $this->hasMany('App\User');
+    public function apartments()
+    {
+        return $this->belongsToMany('App\Apartment');
     }
 }
