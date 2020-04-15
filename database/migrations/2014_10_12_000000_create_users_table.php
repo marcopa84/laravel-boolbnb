@@ -17,10 +17,10 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_role');
             $table->foreign('id_role')->references('id')->on('roles');
-            $table->string('name')->required();
-            $table->string('lastname')->required();
+            $table->string('name');
+            $table->string('lastname');
             $table->string('avatar');
-            $table->date('date_of_birth')->required();
+            $table->date('date_of_birth');
             $table->string('email')->unique()->required();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->required();

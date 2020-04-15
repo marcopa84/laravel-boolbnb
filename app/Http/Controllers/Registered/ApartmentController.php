@@ -9,6 +9,27 @@ use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
+    private $validateRules;
+
+    public function __construct()
+    {
+        $this->validateRules = [
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'rooms_number' => 'required|integer',
+            'beds_number' => 'required|integer',
+            'bathrooms_number' => 'required|integer',
+            'size' => 'required|integer',
+            'address' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
+            'featured_image' => 'image',
+            'price' => 'integer',
+            'visible' => 'boolean'
+        ];
+    }
+
+
     // //////////////////////////////////////////////////
     // I N D E X
     // //////////////////////////////////////////////////
@@ -21,7 +42,7 @@ class ApartmentController extends Controller
     public function index()
     {
         $apartments = Apartment::where('id_user', Auth::id())->get();
-        return view('registered.index', compact('apartments'));
+        return view('registered.apartments.index', compact('apartments'));
     }
 
     // //////////////////////////////////////////////////
@@ -35,7 +56,7 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('registered.apartments.create');
     }
 
     // //////////////////////////////////////////////////
@@ -50,7 +71,7 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate
     }
 
     // //////////////////////////////////////////////////
@@ -65,7 +86,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //
+        return view('registered.apartments.show', compact('apartment'));
     }
 
     // //////////////////////////////////////////////////

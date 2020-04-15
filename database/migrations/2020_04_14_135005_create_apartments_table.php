@@ -21,12 +21,12 @@ class CreateApartmentsTable extends Migration
             $table->text('description')->required();
             $table->unsignedTinyInteger('rooms_number')->required();
             $table->unsignedTinyInteger('beds_number')->required();
-            $table->unsignedTinyInteger('bathrooms_number');
-            $table->integer('size');
+            $table->unsignedTinyInteger('bathrooms_number')->required();
+            $table->integer('size')->required();
             $table->string('address')->required();
             $table->double('latitude')->required();
             $table->double('longitude')->required();
-            $table->string('featured_image');
+            $table->string('featured_image')->required();
             $table->float('price', 6, 2)->required();
             $table->boolean('visible')->required();
             $table->timestamps();
