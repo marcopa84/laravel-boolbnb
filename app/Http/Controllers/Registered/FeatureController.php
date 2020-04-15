@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Registered;
 
-use App\View;
+use App\Feature;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ViewController extends Controller
+class FeatureController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class ViewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\View  $view
+     * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function show(View $view)
+    public function show(Feature $feature)
     {
         //
     }
@@ -52,10 +53,10 @@ class ViewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\View  $view
+     * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function edit(View $view)
+    public function edit(Feature $feature)
     {
         //
     }
@@ -64,10 +65,10 @@ class ViewController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\View  $view
+     * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, View $view)
+    public function update(Request $request, Feature $feature)
     {
         //
     }
@@ -75,10 +76,10 @@ class ViewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\View  $view
+     * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function destroy(View $view)
+    public function destroy(Feature $feature)
     {
         //
     }

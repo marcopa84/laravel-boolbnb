@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Registered;
 
-use App\Bought_ad;
+use App\Ad;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class BoughtAdController extends Controller
+class AdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class BoughtAdController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bought_ad  $bought_ad
+     * @param  \App\Ad  $ad
      * @return \Illuminate\Http\Response
      */
-    public function show(Bought_ad $bought_ad)
+    public function show(Ad $ad)
     {
         //
     }
@@ -52,10 +53,10 @@ class BoughtAdController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bought_ad  $bought_ad
+     * @param  \App\Ad  $ad
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bought_ad $bought_ad)
+    public function edit(Ad $ad)
     {
         //
     }
@@ -64,10 +65,10 @@ class BoughtAdController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bought_ad  $bought_ad
+     * @param  \App\Ad  $ad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bought_ad $bought_ad)
+    public function update(Request $request, Ad $ad)
     {
         //
     }
@@ -75,10 +76,10 @@ class BoughtAdController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bought_ad  $bought_ad
+     * @param  \App\Ad  $ad
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bought_ad $bought_ad)
+    public function destroy(Ad $ad)
     {
         //
     }

@@ -17,6 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Auth routes
 Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Registered routes
+Route::name('registered.')
+    ->prefix('registered')
+    ->namespace('Registered')
+    ->middleware('auth')
+    ->group(function () {
+        Route::resource('apartments', 'ApartmentController');
+        Route::resource('ads', 'AdController');
+        Route::resource('boughtAds', 'BoughtAdController');
+        Route::resource('features', 'FeatureController');
+        Route::resource('images', 'ImageController');
+        Route::resource('roles', 'RoleController');
+        Route::resource('views', 'ViewController');
+    });

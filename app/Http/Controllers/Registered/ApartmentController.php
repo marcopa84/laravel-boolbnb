@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Registered;
 
-use App\Message;
+use App\Apartment;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class MessageController extends Controller
+class ApartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class MessageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Message  $message
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function show(Message $message)
+    public function show(Apartment $apartment)
     {
         //
     }
@@ -52,10 +53,10 @@ class MessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Message  $message
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Message $message)
+    public function edit(Apartment $apartment)
     {
         //
     }
@@ -64,10 +65,10 @@ class MessageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Message  $message
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Message $message)
+    public function update(Request $request, Apartment $apartment)
     {
         //
     }
@@ -75,10 +76,10 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Message  $message
+     * @param  \App\Apartment  $apartment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Message $message)
+    public function destroy(Apartment $apartment)
     {
         //
     }
