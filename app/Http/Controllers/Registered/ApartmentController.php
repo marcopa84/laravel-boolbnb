@@ -5,9 +5,14 @@ namespace App\Http\Controllers\Registered;
 use App\Apartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ApartmentController extends Controller
 {
+    // //////////////////////////////////////////////////
+    // I N D E X
+    // //////////////////////////////////////////////////
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +20,13 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        $apartments = Apartment::where('id_user', Auth::id())->get();
+        return view('registered.index', compact('apartments'));
     }
+
+    // //////////////////////////////////////////////////
+    // C R E A T E
+    // //////////////////////////////////////////////////
 
     /**
      * Show the form for creating a new resource.
@@ -27,6 +37,10 @@ class ApartmentController extends Controller
     {
         //
     }
+
+    // //////////////////////////////////////////////////
+    // S T O R E
+    // //////////////////////////////////////////////////
 
     /**
      * Store a newly created resource in storage.
@@ -39,6 +53,10 @@ class ApartmentController extends Controller
         //
     }
 
+    // //////////////////////////////////////////////////
+    // S H O W
+    // //////////////////////////////////////////////////
+
     /**
      * Display the specified resource.
      *
@@ -49,6 +67,10 @@ class ApartmentController extends Controller
     {
         //
     }
+
+    // //////////////////////////////////////////////////
+    // E D I T
+    // //////////////////////////////////////////////////
 
     /**
      * Show the form for editing the specified resource.
@@ -61,6 +83,10 @@ class ApartmentController extends Controller
         //
     }
 
+    // //////////////////////////////////////////////////
+    // U P D A T E
+    // //////////////////////////////////////////////////
+
     /**
      * Update the specified resource in storage.
      *
@@ -72,6 +98,10 @@ class ApartmentController extends Controller
     {
         //
     }
+
+    // //////////////////////////////////////////////////
+    // D E S T R O Y
+    // //////////////////////////////////////////////////
 
     /**
      * Remove the specified resource from storage.

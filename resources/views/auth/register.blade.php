@@ -40,10 +40,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="date-of-birth" class="col-md-4 col-form-label text-md-right">{{ __('Anno di nascita') }}</label>
+                            <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Anno di nascita') }}</label>
                             
                             <div class="col-md-6">
-                                <input id="date-of-birth" type="date" class="form-control @error('date-of-birth') is-invalid @enderror" name="date-of-birth" value="{{ old('date-of-birth') }}" required autocomplete="date-of-birth" autofocus>
+                                <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus>
 
                                 @error('Anno di nascita')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Immagine profilo') }}</label>
                             
                             <div class="col-md-6">
-                                <input id="avatar" type="file" accept="image/*" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="avatar" autofocus>
+                                <input id="avatar" type="file" accept="image/*" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" autocomplete="avatar" autofocus>
 
                                 @error('Immagine profilo')
                                     <span class="invalid-feedback" role="alert">

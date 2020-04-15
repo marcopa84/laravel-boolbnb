@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 // Auth routes
 Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 // Registered routes
 Route::name('registered.')
