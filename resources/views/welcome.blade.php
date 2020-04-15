@@ -80,6 +80,10 @@
             @endif
 
             <div class="content">
+                {{-- debug mappa --}}
+                <div id='map' class='map'></div>
+                <script src="{{asset('js/app.js')}}"></script>
+                {{-- debug mappa --}}
                 <div class="title m-b-md">
                     Laravel
                 </div>
