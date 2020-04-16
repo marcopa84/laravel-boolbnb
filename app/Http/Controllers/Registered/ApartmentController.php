@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Registered;
 
 use App\Apartment;
+use App\Feature;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +58,10 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('registered.apartments.create');
+        $data = [
+            'features'=>Feature::all(),
+        ];
+        return view('registered.apartments.create', $data);
     }
 
     // //////////////////////////////////////////////////
@@ -92,9 +96,9 @@ class ApartmentController extends Controller
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');;
         }
-        // if (!empty($data['tags'])){
-        //     $newPost->tags()->attach($data['tags']);
-        // }
+        if (!empty($data['features'])){
+            $newApartment->features()->attach($data['features']);
+        }
         // return redirect()->route('registred.apartments.show', Apartment::last()->get())->with('message', 'Appartamento inserito correttamente');
         return redirect()->route('registered.apartments.show', $newApartment)->with('message', 'Appartamento inserito correttamente');
 

@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('main')
-
 <div class="container my-5">
 
 <form action="{{route('registered.apartments.store')}}" method="POST" enctype="multipart/form-data">
@@ -46,12 +45,22 @@
       <ol class="list-group" id="address-suggestions">
 
       </ol>
-      
    </div>
    <div class="form-group">
       <input class="form-control" type="text" name="address" id="address" value="{{ old('address') }}" readonly placeholder="Nessun indirizzo">
       <input type="hidden" name="latitude" id="latitude" value="{{ old('latitude') }}">
       <input type="hidden" name="longitude" id="longitude" value="{{ old('longitude') }}">
+   </div>
+   <div class="form-group">
+      <label for="size">Features</label>
+      <ul class="list-inline">
+         @foreach ($features as $feature)
+         <li class="list-inline-item">
+            <input type="checkbox" name="features[]" value="{{$feature->id}}">
+            <span>{{$feature->description}}</span>
+         </li>
+         @endforeach
+      </ul>
    </div>
    <div class="form-group">
       <label for="price">Prezzo </label>
