@@ -10,9 +10,8 @@ const $ = require('jquery');
 //richiamiamo HandleBars
 const Handlebars = require("handlebars");
 
-
 $(document).ready(function(){
-
+    
     //creiamo maps se esistono
     if ($('#map').length > 0) {
         
@@ -24,8 +23,7 @@ $(document).ready(function(){
         });
         map.addControl(new tt.FullscreenControl());
         map.addControl(new tt.NavigationControl());
-    };
-    //creiamo maps se esistono
+    }; // creiamo maps se esistono
 
 
     $('#search-address').on('click', function () {
@@ -40,9 +38,9 @@ $(document).ready(function(){
             function (e) {
                 if (event.which == 13 || event.keyCode == 13) {
                     event.preventDefault();
-                     var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
+                    var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
                     
-                     getGeocode(address_value);
+                    getGeocode(address_value);
                 }
             }
         )
@@ -54,46 +52,49 @@ $(document).ready(function(){
         $('#latitude').val($(this).attr('data-latitude'));
         $('#longitude').val($(this).attr('data-longitude'));
         $('#address-suggestions').text('');
-        // gestitre l|'address che appaia solo da popolato'
-       
+        $('#address').removeClass('d-none');
         console.log($(this).find('#address-suggestions-item-content').text());
-
     });
-
     
-
-});
-
-// Funzioni
-
-function getGeocode(address_value) {
-    var source = document.getElementById("address-template").innerHTML;
-    var template = Handlebars.compile(source);
-    $('#address-suggestions').text('');
-    $.ajax({
-        url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
-        data: {
-            'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-            'limit': '5',
-        },
-        method: 'GET',
-        success: function (data) {
-            var results = data.results;
-            console.log(results);
-            for (let index = 0; index < results.length; index++) {
-                var context = {
-                    address: results[index].address.freeformAddress,
-                    latitude: results[index].position.lat,
-                    longitude: results[index].position.lon,
-                };
-                var html = template(context);
-                $('#address-suggestions').append(html);               
+    
+    
+    //////////////////////////////////////////////////
+    // F U N C T I O N S
+    //////////////////////////////////////////////////
+    
+    // FX GEOCODE
+    function getGeocode(address_value) {
+        var source = document.getElementById("address-template").innerHTML;
+        var template = Handlebars.compile(source);
+        $('#address-suggestions').text('');
+        $.ajax({
+            url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
+            data: {
+                'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
+                'limit': '5',
+            },
+            method: 'GET',
+            success: function (data) {
+                var results = data.results;
+                console.log(results);
+                for (let index = 0; index < results.length; index++) {
+                    var context = {
+                        address: results[index].address.freeformAddress,
+                        latitude: results[index].position.lat,
+                        longitude: results[index].position.lon,
+                    };
+                    var html = template(context);
+                    $('#address-suggestions').append(html);               
+                }
+    
+            },
+            error: function (richiesta, stato, error) {
+                alert('è avvenuto un errore di collegamento')
             }
-
-        },
-        error: function (richiesta, stato, error) {
-            alert('è avvenuto un errore di collegamento')
-        }
-    });
-
-};
+        });
+    
+    };
+    
+    
+//////////
+});

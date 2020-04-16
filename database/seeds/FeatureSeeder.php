@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Feature;
 
 class FeatureSeeder extends Seeder
 {
@@ -11,6 +12,10 @@ class FeatureSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $features = [ 'WiFi', 'Posto Macchina', 'Piscina', 'Portineria', 'Sauna', 'Vista Mare' ];
+        
+        for ($i=0; $i < count($features); $i++) { 
+            Feature::create(['description'=>$features[$i]]);
+        }
     }
 }

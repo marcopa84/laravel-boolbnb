@@ -1,23 +1,8 @@
-{{-- QUESTI ANDRANNO PER TUTTE LA PAGINE --}}
-@if (session('message'))
-<div class="alert alert-success">{{ session('message') }}</div>
-@endif
-@if (session('error'))
-<div class="alert alert-danger">{{ session('error') }}</div>
-@endif
+@extends('layouts.layout')
 
+@section('main')
 
-@if ($errors->any())
-<div class="alert alert-danger">
-   <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-   </ul>
-</div>
-@endif
-{{-- QUESTI ANDRANNO PER TUTTE LA PAGINE --}}
-
+<div class="container my-5">
 
 <form action="{{route('registered.apartments.store')}}" method="POST" enctype="multipart/form-data">
    @csrf
@@ -56,12 +41,15 @@
       <input class="form-control" type="text" id="city" placeholder="Inserisci la Città">
       <label for="province">Provincia </label>
       <input class="form-control" type="text" id="province" placeholder="Inserisci la Provincia">
-      <input type="button" id="search-address" value="Cerca indirizzo">
+      <input type="button" class="btn btn-dark mt-3" id="search-address" value="Cerca indirizzo">
       
       <ol class="list-group" id="address-suggestions">
 
       </ol>
-      <input type="text" name="address" id="address" value="{{ old('address') }}" readonly>
+      
+   </div>
+   <div class="form-group">
+      <input class="form-control" type="text" name="address" id="address" value="{{ old('address') }}" readonly placeholder="Nessun indirizzo">
       <input type="hidden" name="latitude" id="latitude" value="{{ old('latitude') }}">
       <input type="hidden" name="longitude" id="longitude" value="{{ old('longitude') }}">
    </div>
@@ -79,7 +67,7 @@
       <label for="published">Pubblicato</label>
       <input type="radio" name="visible" value="1" id="published" {{-- if({{ old('value') }} == 1) ? checked : '' --}}>
    </div>
-   <input type="submit" value="Inserisci">
+   <button class="btn btn-dark" type="submit">Inserisci appartamento</button>
 </form>
 
 <script id="address-template" type="text/x-handlebars-template">
@@ -88,4 +76,6 @@
    </li>
 </script>
 
-<script src="{{asset('js/app.js')}}"></script>
+</div> <!-- / container -->
+
+@endsection

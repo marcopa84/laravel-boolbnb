@@ -42445,7 +42445,7 @@ $(document).ready(function () {
     map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl());
   }
 
-  ; //creiamo maps se esistono
+  ; // creiamo maps se esistono
 
   $('#search-address').on('click', function () {
     var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val(); // $('#address-suggestions').text('');
@@ -42465,44 +42465,47 @@ $(document).ready(function () {
     $('#address').val($(this).find('#address-suggestions-item-content').text());
     $('#latitude').val($(this).attr('data-latitude'));
     $('#longitude').val($(this).attr('data-longitude'));
-    $('#address-suggestions').text(''); // gestitre l|'address che appaia solo da popolato'
-
+    $('#address-suggestions').text('');
+    $('#address').removeClass('d-none');
     console.log($(this).find('#address-suggestions-item-content').text());
-  });
-}); // Funzioni
+  }); //////////////////////////////////////////////////
+  // F U N C T I O N S
+  //////////////////////////////////////////////////
+  // FX GEOCODE
 
-function getGeocode(address_value) {
-  var source = document.getElementById("address-template").innerHTML;
-  var template = Handlebars.compile(source);
-  $('#address-suggestions').text('');
-  $.ajax({
-    url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
-    data: {
-      'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-      'limit': '5'
-    },
-    method: 'GET',
-    success: function success(data) {
-      var results = data.results;
-      console.log(results);
+  function getGeocode(address_value) {
+    var source = document.getElementById("address-template").innerHTML;
+    var template = Handlebars.compile(source);
+    $('#address-suggestions').text('');
+    $.ajax({
+      url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
+      data: {
+        'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
+        'limit': '5'
+      },
+      method: 'GET',
+      success: function success(data) {
+        var results = data.results;
+        console.log(results);
 
-      for (var index = 0; index < results.length; index++) {
-        var context = {
-          address: results[index].address.freeformAddress,
-          latitude: results[index].position.lat,
-          longitude: results[index].position.lon
-        };
-        var html = template(context);
-        $('#address-suggestions').append(html);
+        for (var index = 0; index < results.length; index++) {
+          var context = {
+            address: results[index].address.freeformAddress,
+            latitude: results[index].position.lat,
+            longitude: results[index].position.lon
+          };
+          var html = template(context);
+          $('#address-suggestions').append(html);
+        }
+      },
+      error: function error(richiesta, stato, _error) {
+        alert('è avvenuto un errore di collegamento');
       }
-    },
-    error: function error(richiesta, stato, _error) {
-      alert('è avvenuto un errore di collegamento');
-    }
-  });
-}
+    });
+  }
 
-;
+  ; //////////
+});
 
 /***/ }),
 
@@ -42569,8 +42572,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/lorenzofranzone/mamp_public/laravel-boolbnb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/lorenzofranzone/mamp_public/laravel-boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

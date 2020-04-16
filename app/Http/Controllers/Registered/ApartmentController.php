@@ -6,6 +6,7 @@ use App\Apartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
@@ -74,10 +75,28 @@ class ApartmentController extends Controller
         
         $data = $request->all();
         $request->validate($this->validateRules);
+        // $data['user_id'] = Auth::id();
+        // $saved = Apartment::create([$data]);
+        $newApartment = new Apartment;
+        $newApartment->fill($data);
+        $newApartment->id_user = Auth::id();
+        
+        if (!empty($data['featured_image'])) {
+            $path = Storage::disk('public')->put('images', $data['featured_image']);
+            $newApartment->featured_image = $path;
+        }
+        
+        $saved = $newApartment->save();
 
-
-
-      
+        
+        if (!$saved) {
+            return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');;
+        }
+        // if (!empty($data['tags'])){
+        //     $newPost->tags()->attach($data['tags']);
+        // }
+        // return redirect()->route('registred.apartments.show', Apartment::last()->get())->with('message', 'Appartamento inserito correttamente');
+        return redirect()->route('registered.apartments.show', $newApartment)->with('message', 'Appartamento inserito correttamente');
 
     }
 
