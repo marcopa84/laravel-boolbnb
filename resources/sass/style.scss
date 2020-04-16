@@ -1,0 +1,154 @@
+/*
+* //////////////////////////////////////////////////
+* ==================================================
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* C U S T O M   S T Y L E
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* ==================================================
+* //////////////////////////////////////////////////
+*/
+
+@import 'sections/dashboard';
+
+/*
+* ==================================================
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* M A I N
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* ==================================================
+*/
+
+.main-search {
+   padding: calc(16px * 10) 80px;
+   text-align: center;
+   background: linear-gradient($light, darken($light,3));;
+   
+   h1 {
+      font-size: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: dark;
+   }
+   
+   form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      
+      .row:first-child {
+         border: 1px solid $dark;
+         border-radius: 30px;
+         padding: 24px 0;
+      }
+      
+      .row {
+         width: 100%;
+         
+         [class^=col-]:nth-child(2) {
+            border-right: 1px solid $dark;
+            border-left: 1px solid $dark;
+         }
+         
+         .form-control {
+            text-align: center;
+            background: none;
+            border: none;
+         }
+      }
+      button {
+         margin-top: 24px;
+         
+         i {
+            font-size: 14px;
+            margin-right: 4px;
+         }
+      }
+   }
+}
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* MEDIA QUERY MAIN SEARCH
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+@media screen and (max-width: 768px) {
+
+   .main-search {
+   
+      padding: calc(16px * 2) 80px;
+      
+      form {
+         
+         .row {
+
+            .form-control {
+               padding: 32px 0;
+            }
+            
+            [class^=col-]:nth-child(2) {
+               
+               border-right: none;
+               border-left: none;
+               
+               .form-control {
+                  border-top: 1px solid lighten($dark,50);
+                  border-bottom: 1px solid lighten($dark,50);
+                  border-radius: 0;
+               }
+
+            }
+            
+         }
+         
+      }
+   }
+
+}
+
+/*
+* END MEDIA QUERY MAIN SEARCH
+*/
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* DATEPICKER
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+.daterangepicker td.in-range {
+   background-color: lightgray!important;
+}
+.daterangepicker td.active {
+   background-color: $dark!important;
+}
+.daterangepicker td.active:hover {
+   background-color: darkest($dark,10)!important;
+}
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* ADS
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+.ads {
+   padding: calc(16px * 4) 0;
+   .card {
+      margin-bottom: 32px;
+      .card-footer {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         .text-muted {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 24px;
+            width: 100px;
+         }
+      }
+   }
+}

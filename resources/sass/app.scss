@@ -7,5 +7,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-//forms rules
+// Forms rules
 @import 'partials/_forms';
+
+// Custom style
+@import 'style.scss';
