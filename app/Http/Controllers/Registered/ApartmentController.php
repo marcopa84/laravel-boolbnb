@@ -71,7 +71,14 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate
+        
+        $data = $request->all();
+        $request->validate($this->validateRules);
+
+
+
+      
+
     }
 
     // //////////////////////////////////////////////////
