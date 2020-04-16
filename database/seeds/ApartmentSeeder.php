@@ -13,7 +13,7 @@ class ApartmentSeeder extends Seeder
     public function run()
     {
         $newApartment = new Apartment;
-        $newApartment->id_user = 1;
+        $newApartment->user_id = 1;
         $newApartment->title = 'Trilocale fantastico';
         $newApartment->description = 'Lorem ipsum dolor sit amet';
         $newApartment->rooms_number = 3;

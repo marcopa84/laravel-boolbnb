@@ -14,10 +14,10 @@ class CreateApartmentFeatureTable extends Migration
     public function up()
     {
         Schema::create('apartment_feature', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_apartment')->required();
-            $table->foreign('id_apartment')->references('id')->on('apartments');
-            $table->unsignedBigInteger('id_feature')->required();
-            $table->foreign('id_feature')->references('id')->on('features');
+            $table->unsignedBigInteger('apartment_id')->required();
+            $table->foreign('apartment_id')->references('id')->on('apartments');
+            $table->unsignedBigInteger('feature_id')->required();
+            $table->foreign('feature_id')->references('id')->on('features');
         });
     }
 

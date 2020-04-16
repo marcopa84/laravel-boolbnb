@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Message extends Model
 {
     protected $fillable = [
-        'id_apartment',
+        'apartment_id',
         'email',
         'content'
     ];

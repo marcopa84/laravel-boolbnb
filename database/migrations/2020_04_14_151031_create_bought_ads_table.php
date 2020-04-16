@@ -15,10 +15,10 @@ class CreateBoughtAdsTable extends Migration
     {
         Schema::create('bought_ads', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_ad')->required();
-            $table->foreign('id_ad')->references('id')->on('ads');
-            $table->unsignedBigInteger('id_apartment')->required();
-            $table->foreign('id_apartment')->references('id')->on('apartments');
+            $table->unsignedBigInteger('ad_id')->required();
+            $table->foreign('ad_id')->references('id')->on('ads');
+            $table->unsignedBigInteger('apartment_id')->required();
+            $table->foreign('apartment_id')->references('id')->on('apartments');
             $table->date('start_date')->required();
             $table->date('end_date')->required();
             $table->timestamps();

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = [
-        'id_apartment',
+        'apartment_id',
         'url_image'
     ];
 

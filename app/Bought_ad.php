@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Bought_ad extends Model
 {
     protected $fillable = [
-        'id_ad',
-        'id_apartment',
+        'ad_id',
+        'apartment_id',
         'start_date',
         'end_date'
     ];

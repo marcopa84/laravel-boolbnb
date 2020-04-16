@@ -43,7 +43,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::where('id_user', Auth::id())->get();
+        $apartments = Apartment::where('user_id', Auth::id())->get();
         return view('registered.apartments.index', compact('apartments'));
     }
 
@@ -83,7 +83,7 @@ class ApartmentController extends Controller
         // $saved = Apartment::create([$data]);
         $newApartment = new Apartment;
         $newApartment->fill($data);
-        $newApartment->id_user = Auth::id();
+        $newApartment->user_id = Auth::id();
         
         if (!empty($data['featured_image'])) {
             $path = Storage::disk('public')->put('images', $data['featured_image']);
