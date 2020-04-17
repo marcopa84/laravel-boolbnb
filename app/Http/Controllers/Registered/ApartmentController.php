@@ -26,8 +26,9 @@ class ApartmentController extends Controller
             'latitude' => 'required|string',
             'longitude' => 'required|string',
             'featured_image' => 'image',
+            'features' => 'required',
             'price' => 'integer',
-            'visible' => 'boolean'
+            'visible' => 'required|boolean'
         ];
     }
 
