@@ -13,6 +13,7 @@
          <li>{{$apartment->longitude}}</li>
          <li>{{$apartment->featured_image}}</li>
          <li><a href="{{route('registered.apartments.show', $apartment)}}">Show</a></li>
+         <li><a href="{{route('registered.apartments.edit', $apartment)}}">EDIT</a></li>
       </ul>
    </li>
    @endforeach

@@ -75,7 +75,7 @@
    <div class="form-group">
       <label for="size">Features</label>
       <ul class="list-inline">
-         @foreach ($features as $key=>$feature)
+         @foreach ($features as $feature)
          <li class="list-inline-item">
             <input type="checkbox" name="features[]" value="{{$feature->id}}"
             @if(!empty(old('features')))
@@ -100,7 +100,7 @@
       @endif
    </div>
    <div class="form-group">
-      <label for="featured_image"></label>
+      <label for="featured_image">Immagine di anteprima</label>
       <input class="form-control" type="file" name="featured_image" id="featured_image" accept="image/*">
       @if($errors->has('featured_image'))
          <div class="error alert alert-danger">{{ $errors->first('featured_image') }}</div>

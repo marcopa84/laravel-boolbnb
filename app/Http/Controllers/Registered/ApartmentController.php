@@ -80,8 +80,7 @@ class ApartmentController extends Controller
         
         $data = $request->all();
         $request->validate($this->validateRules);
-        // $data['user_id'] = Auth::id();
-        // $saved = Apartment::create([$data]);
+        
         $newApartment = new Apartment;
         $newApartment->fill($data);
         $newApartment->user_id = Auth::id();
@@ -90,9 +89,11 @@ class ApartmentController extends Controller
             $path = Storage::disk('public')->put('images', $data['featured_image']);
             $newApartment->featured_image = $path;
         }
+
         
         $saved = $newApartment->save();
-
+        
+        $newApartment->features()->attach($data['features']);
         
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');;
@@ -100,7 +101,6 @@ class ApartmentController extends Controller
         if (!empty($data['features'])){
             $newApartment->features()->attach($data['features']);
         }
-        // return redirect()->route('registred.apartments.show', Apartment::last()->get())->with('message', 'Appartamento inserito correttamente');
         return redirect()->route('registered.apartments.show', $newApartment)->with('message', 'Appartamento inserito correttamente');
 
     }
@@ -132,7 +132,11 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        //
+        $data = [
+            'features' => Feature::all(),
+            'apartment' => $apartment,
+        ];
+        return view('registered.apartments.edit', $data);
     }
 
     // //////////////////////////////////////////////////
@@ -148,7 +152,31 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
-        //
+        
+        $data = $request->all();
+        $request->validate($this->validateRules);
+
+        $apartment->fill($data);
+        $apartment->user_id = Auth::id();
+
+        if (!empty($data['featured_image'])) {
+            $path = Storage::disk('public')->put('images', $data['featured_image']);
+            $apartment->featured_image = $path;
+        }
+
+        
+        $saved = $apartment->update();
+        
+        $apartment->features()->sync($data['features']);
+
+        if (!$saved) {
+            return redirect()->back()->with('error', 'Errore durante l\'aggiornamento dell\'appartamento');;
+        }
+        if (!empty($data['features'])) {
+            $apartment->features()->attach($data['features']);
+        }
+    
+        return redirect()->route('registered.apartments.show', $apartment)->with('message', 'Appartamento aggiornato correttamente');
     }
 
     // //////////////////////////////////////////////////
@@ -163,6 +191,12 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
-        //
+        if (empty($apartment)) {
+            abort(404);
+        }
+        $apartment->features()->detach();
+        $apartment->delete();
+        //no error only for color
+        return redirect()->route('registred.apartments.index')->with('error', 'Appartamento cancellato correttamente');
     }
 }
