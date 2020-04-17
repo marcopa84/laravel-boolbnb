@@ -59,7 +59,7 @@
       <label for="province">Provincia </label>
       <input class="form-control" type="text" name="province" id="province" placeholder="Inserisci la Provincia" value="{{ old('province') }}">
       <input type="button" class="btn btn-dark mt-3" id="search-address" value="Cerca indirizzo">
-      
+
       <ol class="list-group" id="address-suggestions">
 
       </ol>
@@ -75,9 +75,13 @@
    <div class="form-group">
       <label for="size">Features</label>
       <ul class="list-inline">
-         @foreach ($features as $feature)
+         @foreach ($features as $key=>$feature)
          <li class="list-inline-item">
-            <input type="checkbox" name="features[]" value="{{$feature->id}}" {{ (old($feature->id)) ? 'checked' : '' }}>
+            <input type="checkbox" name="features[]" value="{{$feature->id}}" @if(!empty(old('features')))
+               @for($i = 0; $i < count(old('features')); $i++ )
+                 @if(old('features')[$i] == $feature->id) {{'checked'}} @endif
+               @endfor
+             @endif >
             <span>{{$feature->description}}</span>
          </li>
          @endforeach
@@ -87,7 +91,7 @@
       @endif
    </div>
    <div class="form-group">
-      <label for="price">Prezzo </label>
+      <label for="price">Prezzo</label>
       <input class="form-control" type="number" name="price" id="price" placeholder="Inserisci il prezzo per notte" value="{{ old('price') }}">
       @if($errors->has('price'))
          <div class="error alert alert-danger">{{ $errors->first('price') }}</div>
