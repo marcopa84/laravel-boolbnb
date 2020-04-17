@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('main')
-
+<div class="container my-5">
 <ul>
    <li>{{$apartment->title}}
       <ul>

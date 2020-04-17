@@ -8,20 +8,9 @@
    @if (session('error'))
    <div class="alert alert-danger">{{ session('error') }}</div>
    @endif
-
-
-   <!-- @if ($errors->any())
-   <div class="alert alert-danger">
-      <ul>
-         @foreach ($errors->all() as $error)
-         <li>{{ $error }}</li>
-         @endforeach
-      </ul>
-   </div>
-   @endif
-   {{-- QUESTI ANDRANNO PER TUTTE LA PAGINE --}} -->
+   {{-- QUESTI ANDRANNO PER TUTTE LA PAGINE --}}
    
-   <main>
+   <main class="my-4">
       @yield('main')
    </main>
    

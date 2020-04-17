@@ -1,3 +1,7 @@
+@extends('layouts.layout')
+
+@section('main')
+<div class="container my-5">
 <ul>
    @foreach ($apartments as $apartment)
    <li>{{$apartment->title}}
@@ -14,7 +18,18 @@
          <li>{{$apartment->featured_image}}</li>
          <li><a href="{{route('registered.apartments.show', $apartment)}}">Show</a></li>
          <li><a href="{{route('registered.apartments.edit', $apartment)}}">EDIT</a></li>
+         <li>
+            <form action="{{route('registered.apartments.destroy', $apartment)}}" method="post">
+              @csrf
+              @method('DELETE')
+              <button class="btn btn-danger" type="submit">Delete</button>  
+            </form>
+         
+         </li>
       </ul>
    </li>
    @endforeach
 </ul>
+
+
+@endsection

@@ -15,8 +15,11 @@
    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
    
    <!-- Custom CSS -->
-   <script src="{{asset('js/app.js')}}"></script>
    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+   <!-- Scripts -->
+   <script src="{{ asset('js/app.js') }}" async></script>
+   
+
 </head>
 
 <body>

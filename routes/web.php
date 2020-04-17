@@ -17,15 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+// Guests Routes
+Route::get('/', 'ApartmentController@index')->name('home');
 
 // Auth routes
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 // Registered routes
+Route::get('/registered', 'RegisteredController@index');
 Route::name('registered.')
     ->prefix('registered')
     ->namespace('Registered')

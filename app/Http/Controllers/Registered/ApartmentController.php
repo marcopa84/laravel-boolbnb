@@ -25,7 +25,7 @@ class ApartmentController extends Controller
             'address' => 'required|string',
             'latitude' => 'required|string',
             'longitude' => 'required|string',
-            'featured_image' => 'image',
+            'featured_image' => 'required|image',
             'features' => 'required',
             'price' => 'integer',
             'visible' => 'required|boolean'
@@ -96,7 +96,7 @@ class ApartmentController extends Controller
         $newApartment->features()->attach($data['features']);
         
         if (!$saved) {
-            return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');;
+            return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');
         }
         if (!empty($data['features'])){
             $newApartment->features()->attach($data['features']);
@@ -197,6 +197,6 @@ class ApartmentController extends Controller
         $apartment->features()->detach();
         $apartment->delete();
         //no error only for color
-        return redirect()->route('registred.apartments.index')->with('error', 'Appartamento cancellato correttamente');
+        return redirect()->route('registered.apartments.index')->with('error', 'Appartamento cancellato correttamente');
     }
 }

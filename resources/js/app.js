@@ -1,4 +1,3 @@
-// richiediamo Bootstrap
 require('./bootstrap');
 
 // importiamo TomTom
@@ -6,6 +5,7 @@ import tt from '@tomtom-international/web-sdk-maps';
 
 // richiediamo Jquery
 const $ = require('jquery');
+
 
 //richiamiamo HandleBars
 const Handlebars = require("handlebars");
