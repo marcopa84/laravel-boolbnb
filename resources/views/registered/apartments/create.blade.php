@@ -77,9 +77,11 @@
       <ul class="list-inline">
          @foreach ($features as $key=>$feature)
          <li class="list-inline-item">
-            <input type="checkbox" name="features[]" value="{{$feature->id}}" @if(!empty(old('features')))
+            <input type="checkbox" name="features[]" value="{{$feature->id}}"
+            @if(!empty(old('features')))
                @for($i = 0; $i < count(old('features')); $i++ )
-                 @if(old('features')[$i] == $feature->id) {{'checked'}} @endif
+                 @if(old('features')[$i] == $feature->id) {{'checked'}}
+                 @endif
                @endfor
              @endif >
             <span>{{$feature->description}}</span>
