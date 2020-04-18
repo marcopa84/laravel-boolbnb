@@ -71,7 +71,7 @@ class RegisterController extends Controller
     {
         if (!empty($data['avatar'])) {
             $path = Storage::disk('public')->put('avatars', $data['avatar']);
-            $data['avatar'] = $path;
+            $data['avatar'] = 'storage/' . $path;
         } else {
             $data['avatar'] = 'default_images/default_avatar.png';
         }
