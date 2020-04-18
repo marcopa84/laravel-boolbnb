@@ -81,27 +81,26 @@ class ApartmentController extends Controller
         $data = $request->all();
         $request->validate($validateRules);
         
-        $newApartment = new Apartment;
-        $newApartment->fill($data);
-        $newApartment->user_id = Auth::id();
+        $apartment = new Apartment;
+        $apartment->fill($data);
+        $apartment->user_id = Auth::id();
         
         if (!empty($data['featured_image'])) {
             $path = Storage::disk('public')->put('images', $data['featured_image']);
-            $newApartment->featured_image = $path;
+            $apartment->featured_image = 'storage/' . $path;
         }
-
         
-        $saved = $newApartment->save();
+        $saved = $apartment->save();
         
-        $newApartment->features()->attach($data['features']);
+        $apartment->features()->attach($data['features']);
         
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');
         }
         if (!empty($data['features'])){
-            $newApartment->features()->attach($data['features']);
+            $apartment->features()->attach($data['features']);
         }
-        return redirect()->route('registered.apartments.show', $newApartment)->with('message', 'Appartamento inserito correttamente');
+        return redirect()->route('registered.apartments.show', $apartment)->with('message', 'Appartamento inserito correttamente');
 
     }
 
@@ -176,7 +175,7 @@ class ApartmentController extends Controller
 
         if (!empty($data['featured_image'])) {
             $path = Storage::disk('public')->put('images', $data['featured_image']);
-            $apartment->featured_image = $path;
+            $apartment->featured_image = 'storage/' . $path;
         }
 
         

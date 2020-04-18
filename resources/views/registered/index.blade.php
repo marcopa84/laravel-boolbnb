@@ -1,7 +1,3 @@
-@php
-    use Illuminate\Support\Str;
-@endphp
-
 @extends('layouts.layout')
 
 @section('main')

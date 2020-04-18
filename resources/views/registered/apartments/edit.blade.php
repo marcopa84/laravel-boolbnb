@@ -99,7 +99,7 @@
    </div>
    <div class="form-group">
       <label for="featured_image">Immagine di anteprima</label>
-      <img src="{{asset('storage/'.$apartment->featured_image)}}" alt="{{$apartment->title}}" class="img-thumbnail">
+      <img src="{{asset($apartment->featured_image)}}" alt="{{$apartment->title}}" class="img-thumbnail">
       <input class="form-control" type="file" name="featured_image" id="featured_image" accept="image/*" value="PROVA">
       @if($errors->has('featured_image'))
          <div class="error alert alert-danger">{{ $errors->first('featured_image') }}</div>

@@ -14,7 +14,7 @@
          <li>{{$apartment->address}}</li>
          <li>{{$apartment->latitude}}</li>
          <li>{{$apartment->longitude}}</li>
-         <li><img src="{{asset('storage/'.$apartment->featured_image)}}" alt="{{$apartment->title}}" class="img-thumbnail"></li>
+         <li><img src="{{asset($apartment->featured_image)}}" alt="{{$apartment->title}}" class="img-thumbnail"></li>
          <li>{{$apartment->visible}}</li>
       </ul>
    </li>
