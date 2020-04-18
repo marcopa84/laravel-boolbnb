@@ -64,8 +64,12 @@
         </div>
     </div>
 
-    {{-- <img src="{{asset(Auth::user()->avatar)}}" alt="prova" > --}}
-    @if (Str::is(Auth::user()->avatar , 'default_images/default_avatar.png')) 
+    {{-- @if (Str::is(Auth::user()->avatar , 'default_images/default_avatar.png')) 
+        <img src="{{asset(Auth::user()->avatar)}}" alt="immagine del profilo di default" >
+    @else
+        <img src="{{asset('storage/' . Auth::user()->avatar)}}" alt="immagine del profilo" >
+    @endif --}}
+    @if (Str::contains(Auth::user()->avatar , 'default')) 
         <img src="{{asset(Auth::user()->avatar)}}" alt="immagine del profilo di default" >
     @else
         <img src="{{asset('storage/' . Auth::user()->avatar)}}" alt="immagine del profilo" >
