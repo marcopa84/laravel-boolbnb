@@ -18,12 +18,12 @@
 * ==================================================
 */
 
-.main-search {
+.main-search{
    padding: calc(16px * 10) 80px;
    text-align: center;
    background: linear-gradient($light, darken($light,3));;
    
-   h1 {
+   h1{
       font-size: 24px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -31,36 +31,36 @@
       color: dark;
    }
    
-   form {
+   form{
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       
-      .row:first-child {
+      .row:first-child{
          border: 1px solid $dark;
          border-radius: 30px;
          padding: 24px 0;
       }
       
-      .row {
+      .row{
          width: 100%;
          
-         [class^=col-]:nth-child(2) {
+         [class^=col-]:nth-child(2){
             border-right: 1px solid $dark;
             border-left: 1px solid $dark;
          }
          
-         .form-control {
+         .form-control{
             text-align: center;
             background: none;
             border: none;
          }
       }
-      button {
+      button{
          margin-top: 24px;
          
-         i {
+         i{
             font-size: 14px;
             margin-right: 4px;
          }
@@ -74,26 +74,26 @@
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
 
-   .main-search {
+   .main-search{
    
       padding: calc(16px * 2) 80px;
       
-      form {
+      form{
          
-         .row {
+         .row{
 
-            .form-control {
+            .form-control{
                padding: 32px 0;
             }
             
-            [class^=col-]:nth-child(2) {
+            [class^=col-]:nth-child(2){
                
                border-right: none;
                border-left: none;
                
-               .form-control {
+               .form-control{
                   border-top: 1px solid lighten($dark,50);
                   border-bottom: 1px solid lighten($dark,50);
                   border-radius: 0;
@@ -118,13 +118,13 @@
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-.daterangepicker td.in-range {
+.daterangepicker td.in-range{
    background-color: lightgray!important;
 }
-.daterangepicker td.active {
+.daterangepicker td.active{
    background-color: $dark!important;
 }
-.daterangepicker td.active:hover {
+.daterangepicker td.active:hover{
    background-color: darkest($dark,10)!important;
 }
 
@@ -134,15 +134,15 @@
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
-.ads {
+.ads{
    padding: calc(16px * 4) 0;
-   .card {
+   .card{
       margin-bottom: 32px;
-      .card-footer {
+      .card-footer{
          display: flex;
          justify-content: space-between;
          align-items: center;
-         .text-muted {
+         .text-muted{
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -176,7 +176,7 @@
    &:not(:last-child){
       margin-bottom: 16px;
    }
-   &.card {
+   &.card{
       display: flex;
       flex-flow: row wrap;
       .card-image{
@@ -196,14 +196,58 @@
             text-overflow: ellipsis;
          }
       }
-      .card-dash-buttons {
+      .card-dash-buttons{
          display: flex;
          align-items: flex-end;
          a, form{
             margin-right: 8px;
          }
-        
+      
       }
    }
 }
-   
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* REGISTERED APARTMENTS SHOW
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+.layout-apartment{
+   display: flex;
+   .main-content{
+      padding-right: 32px;
+      margin-right: 32px;
+      border-right: 1px solid lighten($dark,50);
+
+      [class*="title"]{
+         padding: 8px;
+         background: lighten($dark,60);
+         margin: 16px 0;
+      }
+      .apartment-desc-text{
+         padding-bottom: 24px;
+         margin-bottom: 32px;
+      }
+   }
+
+   .apartment-features{
+      .apartment-features-list{
+         span{
+            margin-right: 32px;
+            i{
+               margin-right: 4px;
+               &.fas.fa-parking{
+                  font-size: 16px;
+               }
+               &.fas.fa-wifi{
+                  position: relative;
+                  bottom: 1px;
+                  font-size: 14px;
+               }
+            }
+         }
+      }
+   }
+}
+

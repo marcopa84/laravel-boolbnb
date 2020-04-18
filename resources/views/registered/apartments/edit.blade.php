@@ -78,9 +78,9 @@
          @foreach ($features as $feature)
          <li class="list-inline-item">
             <input type="checkbox" name="features[]" value="{{$feature->id}}"
-                @if ($apartment->features->contains($feature->id))
-                    {{'checked'}}
-                @endif
+               @if ($apartment->features->contains($feature->id))
+                  {{'checked'}}
+               @endif
             >
             <span>{{$feature->description}}</span>
          </li>

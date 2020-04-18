@@ -178,16 +178,13 @@ class ApartmentController extends Controller
             $apartment->featured_image = 'storage/' . $path;
         }
 
-        
         $saved = $apartment->update();
-        
-        $apartment->features()->sync($data['features']);
 
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'aggiornamento dell\'appartamento');;
         }
         if (!empty($data['features'])) {
-            $apartment->features()->attach($data['features']);
+            $apartment->features()->sync($data['features']);
         }
     
         return redirect()->route('registered.apartments.show', $apartment)->with('message', 'Appartamento aggiornato correttamente');
