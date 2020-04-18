@@ -11,25 +11,10 @@ use Illuminate\Support\Facades\Storage;
 
 class ApartmentController extends Controller
 {
-    private $validateRules;
 
     public function __construct()
     {
-        $this->validateRules = [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'rooms_number' => 'required|integer',
-            'beds_number' => 'required|integer',
-            'bathrooms_number' => 'required|integer',
-            'size' => 'required|integer',
-            'address' => 'required|string',
-            'latitude' => 'required|string',
-            'longitude' => 'required|string',
-            'featured_image' => 'required|image',
-            'features' => 'required',
-            'price' => 'integer',
-            'visible' => 'required|boolean'
-        ];
+        
     }
 
 
@@ -77,9 +62,24 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
+        $validateRules = [
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'rooms_number' => 'required|integer|min:1',
+            'beds_number' => 'required|integer|min:1',
+            'bathrooms_number' => 'required|integer|min:1',
+            'size' => 'required|integer|min:1',
+            'address' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
+            'featured_image' => 'required|image',
+            'features' => 'required',
+            'price' => 'numeric|min:1',
+            'visible' => 'required|boolean'
+        ];
         
         $data = $request->all();
-        $request->validate($this->validateRules);
+        $request->validate($validateRules);
         
         $newApartment = new Apartment;
         $newApartment->fill($data);
@@ -152,9 +152,24 @@ class ApartmentController extends Controller
      */
     public function update(Request $request, Apartment $apartment)
     {
+        $validateRules = [
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'rooms_number' => 'required|integer|min:1',
+            'beds_number' => 'required|integer|min:1',
+            'bathrooms_number' => 'required|integer|min:1',
+            'size' => 'required|integer|min:1',
+            'address' => 'required|string',
+            'latitude' => 'required|string',
+            'longitude' => 'required|string',
+            'featured_image' => 'image',
+            'features' => 'required',
+            'price' => 'numeric|min:1',
+            'visible' => 'required|boolean'
+        ];
         
         $data = $request->all();
-        $request->validate($this->validateRules);
+        $request->validate($validateRules);
 
         $apartment->fill($data);
         $apartment->user_id = Auth::id();

@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'lastname' => 'Boolean',
             'email' => 'boolean.team7@gmail.com',
             'password' => Hash::make('Lorenzo89!'),
-            'avatar' => 'https://img.favpng.com/7/5/8/computer-icons-font-awesome-user-font-png-favpng-YMnbqNubA7zBmfa13MK8WdWs8.jpg',
+            'avatar' => 'default_images/default_avatar.png',
             'date_of_birth' => '1984-04-15',
             'role_id' => 1
         ]);

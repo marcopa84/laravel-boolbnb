@@ -69,7 +69,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // dd($data);
+        if (!empty($data['avatar'])) {
+            $path = Storage::disk('public')->put('avatars', $data['avatar']);
+            $data['avatar'] = $path;
+        } else {
+            $data['avatar'] = 'default_images/default_avatar.png';
+        }
         return User::create([
             'name' => $data['name'],
             'lastname' => $data['lastname'],
@@ -79,5 +84,6 @@ class RegisterController extends Controller
             'date_of_birth' => $data['date_of_birth'],
             'role_id' => 1
         ]);
+
     }
 }

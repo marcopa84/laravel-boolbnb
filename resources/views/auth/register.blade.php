@@ -57,7 +57,7 @@
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Immagine profilo') }}</label>
                             
                             <div class="col-md-6">
-                                <input id="avatar" type="file" accept="image/*" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" autocomplete="avatar" autofocus>
+                                <input id="avatar" type="file" accept="image/*" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}"  autofocus>
 
                                 @error('Immagine profilo')
                                     <span class="invalid-feedback" role="alert">

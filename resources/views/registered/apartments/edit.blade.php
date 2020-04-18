@@ -23,28 +23,28 @@
    </div>
    <div class="form-group">
       <label for="rooms_number">Numero di stanze</label>
-      <input class="form-control" type="number" name="rooms_number" id="rooms_number" placeholder="Inserisci il numero stanze disponibili" value="{{$apartment->rooms_number}}">
+      <input class="form-control" type="number" min="1" name="rooms_number" id="rooms_number" placeholder="Inserisci il numero stanze disponibili" value="{{$apartment->rooms_number}}">
       @if($errors->has('rooms_number'))
          <div class="error alert alert-danger">{{ $errors->first('rooms_number') }}</div>
       @endif
    </div>
    <div class="form-group">
       <label for="beds_number">Numero di letti</label>
-      <input class="form-control" type="number" name="beds_number" id="beds_number" placeholder="Inserisci il numero letti disponibili" value="{{$apartment->beds_number}}">
+      <input class="form-control" type="number" min="1" name="beds_number" id="beds_number" placeholder="Inserisci il numero letti disponibili" value="{{$apartment->beds_number}}">
       @if($errors->has('beds_number'))
          <div class="error alert alert-danger">{{ $errors->first('beds_number') }}</div>
       @endif
    </div>
    <div class="form-group">
       <label for="bathrooms_number">Numero di bagni</label>
-      <input class="form-control" type="number" name="bathrooms_number" id="bathrooms_number" placeholder="Inserisci il numero bagni disponibili"  value="{{$apartment->bathrooms_number}}">
+      <input class="form-control" type="number" min="1" name="bathrooms_number" id="bathrooms_number" placeholder="Inserisci il numero bagni disponibili"  value="{{$apartment->bathrooms_number}}">
       @if($errors->has('bathrooms_number'))
          <div class="error alert alert-danger">{{ $errors->first('bathrooms_number') }}</div>
       @endif
    </div>
    <div class="form-group">
       <label for="size">Metri quadri</label>
-      <input class="form-control" type="number" name="size" id="size" placeholder="Inserisci la grandezza dell'appartamento" value="{{$apartment->size}}">
+      <input class="form-control" type="number" min="1" name="size" id="size" placeholder="Inserisci la grandezza dell'appartamento" value="{{$apartment->size}}">
       @if($errors->has('size'))
          <div class="error alert alert-danger">{{ $errors->first('size') }}</div>
       @endif
@@ -53,7 +53,7 @@
       <label for="street">Via </label>
       <input class="form-control" type="text" name="street" id="street" placeholder="Inserisci la Via" value="{{ old('street') }}">
       <label for="number">Numero </label>
-      <input class="form-control" type="number" name="number" id="number" placeholder="Inserisci il Civico" value="{{ old('number') }}">
+      <input class="form-control" type="number" min="1" name="number" id="number" placeholder="Inserisci il Civico" value="{{ old('number') }}">
       <label for="city">Città </label>
       <input class="form-control" type="text" name="city" id="city" placeholder="Inserisci la Città" value="{{ old('city') }}">
       <label for="province">Provincia </label>
@@ -92,7 +92,7 @@
    </div>
    <div class="form-group">
       <label for="price">Prezzo</label>
-      <input class="form-control" type="number" name="price" id="price" placeholder="Inserisci il prezzo per notte" value="{{$apartment->price}}">
+      <input class="form-control" type="number" min="1" step="0.1" name="price" id="price" placeholder="Inserisci il prezzo per notte" value="{{$apartment->price}}">
       @if($errors->has('price'))
          <div class="error alert alert-danger">{{ $errors->first('price') }}</div>
       @endif
