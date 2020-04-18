@@ -152,3 +152,58 @@
       }
    }
 }
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* REGISTERED APARTMENTS INDEX
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+.add-apartment{
+   a, a:link, a:visited, a:active, a:focus{
+      text-decoration: none;
+      font-variant: small-caps;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: initial;
+      font-size: 1.5rem;
+      span{
+         border-bottom: 1px solid lighten($dark, 50);
+         padding-bottom: 2.5px;
+      }
+   }
+}
+.dash{
+   &:not(:last-child){
+      margin-bottom: 16px;
+   }
+   &.card {
+      display: flex;
+      flex-flow: row wrap;
+      .card-image{
+         flex: 1;
+         img{
+            border-radius: 0;
+         }
+      }
+      .card-body{
+         flex: 1;
+         padding: 3.25rem;
+         display: flex;
+         flex-flow: column wrap;
+         justify-content: space-between;
+         word-wrap: break-word;
+         .card-title, .card-text{
+            text-overflow: ellipsis;
+         }
+      }
+      .card-dash-buttons {
+         display: flex;
+         align-items: flex-end;
+         a, form{
+            margin-right: 8px;
+         }
+        
+      }
+   }
+}
+   

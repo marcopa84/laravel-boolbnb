@@ -11092,3 +11092,72 @@ a.text-dark:focus {
   width: 100px;
 }
 
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* REGISTERED APARTMENTS INDEX
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+.add-apartment a,
+.add-apartment a:link,
+.add-apartment a:visited,
+.add-apartment a:active,
+.add-apartment a:focus {
+  text-decoration: none;
+  font-variant: small-caps;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: initial;
+  font-size: 1.5rem;
+}
+
+.add-apartment a span,
+.add-apartment a:link span,
+.add-apartment a:visited span,
+.add-apartment a:active span,
+.add-apartment a:focus span {
+  border-bottom: 1px solid #b2bac1;
+  padding-bottom: 2.5px;
+}
+
+.dash:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.dash.card {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.dash.card .card-image {
+  flex: 1;
+}
+
+.dash.card .card-image img {
+  border-radius: 0;
+}
+
+.dash.card .card-body {
+  flex: 1;
+  padding: 3.25rem;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  word-wrap: break-word;
+}
+
+.dash.card .card-body .card-title,
+.dash.card .card-body .card-text {
+  text-overflow: ellipsis;
+}
+
+.dash.card .card-dash-buttons {
+  display: flex;
+  align-items: flex-end;
+}
+
+.dash.card .card-dash-buttons a,
+.dash.card .card-dash-buttons form {
+  margin-right: 8px;
+}
+
