@@ -7,19 +7,19 @@
    <form class="dark">
       <div class="row">
          <div class="col-md-4">
-            <input type="text" class="form-control" placeholder="Città">
+            <input type="text" class="form-control" title="Dicci dove vuoi andare" placeholder="Dove?">
          </div>
          <div class="col-md-4">
-            <input type="text" class="form-control" name="datefilter" placeholder="Date" value="">
+            <input type="text" class="form-control" title="Inserisci la data di tuo interesse" name="datefilter" placeholder="Data" value="">
          </div>
          <div class="col-md-4">
-            <input type="text" class="form-control" placeholder="Ospiti">
+            <input type="text" class="form-control" title="Quanti siete?" placeholder="Ospiti">
          </div>
       </div>
       <div class="row">
          <div class="col">
-            <button type="submit" class="btn btn-dark">
-               <i class="fas fa-search"></i>Cerca
+            <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+               <i class="fas fa-search"></i><span>Cerca</span>
             </button>
          </div>
       </div>
@@ -50,9 +50,9 @@
                      <form action="{{route('registered.apartments.destroy', $apartment)}}" method="post">
                      @csrf
                      @method('DELETE')
-                     <button class="btn btn-danger" type="submit">Delete</button>  
+                     <button class="btn btn-danger" type="submit">Delete</button>
                      </form>
-                  
+
                   </li>
                </ul>
             </li>
@@ -62,24 +62,24 @@
       <div class="row">
          <div class="col-md-6 col-lg-4">
             <div class="card">
-               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap">
+               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
                <div class="card-body">
-                  <h5 class="card-title">Lorem ipsum dolor sit amet</h5>
-                  <p class="card-text">Testo</p>
+                  <h5 class="card-title">Titolo Appartamento</h5>
+                  <p class="card-text">Indirizzo appartamento</p>
                </div>
                <div class="card-footer">
                   <small class="text-muted">
-                     <div class="n-users">
+                     <div class="n-users" title="Numero massimo ospiti">
                         <i class="fas fa-users"></i> 3
                      </div>
-                     <div class="n-rooms">
+                     <div class="n-rooms" title="Numero di bagni">
                         <i class="fas fa-expand"></i> 2
                      </div>
-                     <div class="n-beds">
+                     <div class="n-beds" title="Numero di letti">
                         <i class="fas fa-bed"></i> 2
                      </div>
                   </small>
-                  <div class="price">
+                  <div class="price" title="Prezzo a notte">
                      €300.00
                   </div>
                </div>
@@ -88,24 +88,24 @@
 
          <div class="col-md-6 col-lg-4">
             <div class="card">
-               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap">
+               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
                <div class="card-body">
-                  <h5 class="card-title">Lorem ipsum dolor sit amet</h5>
-                  <p class="card-text">Testo</p>
+                  <h5 class="card-title">Titolo Appartamento</h5>
+                  <p class="card-text">Indirizzo appartamento</p>
                </div>
                <div class="card-footer">
                   <small class="text-muted">
-                     <div class="n-users">
+                     <div class="n-users" title="Numero massimo ospiti">
                         <i class="fas fa-users"></i> 3
                      </div>
-                     <div class="n-rooms">
+                     <div class="n-rooms" title="Numero di bagni">
                         <i class="fas fa-expand"></i> 2
                      </div>
-                     <div class="n-beds">
+                     <div class="n-beds" title="Numero di letti">
                         <i class="fas fa-bed"></i> 2
                      </div>
                   </small>
-                  <div class="price">
+                  <div class="price" title="Prezzo a notte">
                      €300.00
                   </div>
                </div>
@@ -114,24 +114,24 @@
 
          <div class="col-md-6 col-lg-4">
             <div class="card">
-               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap">
+               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
                <div class="card-body">
-                  <h5 class="card-title">Lorem ipsum dolor sit amet</h5>
-                  <p class="card-text">Testo</p>
+                  <h5 class="card-title">Titolo Appartamento</h5>
+                  <p class="card-text">Indirizzo appartamento</p>
                </div>
                <div class="card-footer">
                   <small class="text-muted">
-                     <div class="n-users">
+                     <div class="n-users" title="Numero massimo ospiti">
                         <i class="fas fa-users"></i> 3
                      </div>
-                     <div class="n-rooms">
+                     <div class="n-rooms" title="Numero di bagni">
                         <i class="fas fa-expand"></i> 2
                      </div>
-                     <div class="n-beds">
+                     <div class="n-beds" title="Numero di letti">
                         <i class="fas fa-bed"></i> 2
                      </div>
                   </small>
-                  <div class="price">
+                  <div class="price" title="Prezzo a notte">
                      €300.00
                   </div>
                </div>
@@ -159,15 +159,15 @@
                cancelLabel: 'Clear'
             }
       });
-      
+
       $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
       });
-      
+
       $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
             $(this).val('');
       });
-   
+
    });
 </script>
 

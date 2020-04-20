@@ -1,7 +1,7 @@
    <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" title="BoolBnb">
                     BOOLBNB
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -40,6 +40,15 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('registered.index') }}">
+                                        {{ __('Dashboard') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('registered.apartments.index') }}">
+                                        {{ __('I tuoi appartamenti') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('registered.apartments.create') }}">
+                                        {{ __('Aggiungi nuovo appartamento') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -58,4 +67,4 @@
         </nav>
 
       @yield('header')
-   </header>      
+   </header>

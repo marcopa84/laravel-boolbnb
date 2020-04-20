@@ -42432,7 +42432,7 @@ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
 
 $(document).ready(function () {
-  //creiamo maps se esistono
+  // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
   if ($('#map').length > 0) {
     var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
       key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
@@ -42444,33 +42444,31 @@ $(document).ready(function () {
     map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl());
   }
 
-  ; // creiamo maps se esistono
+  ; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
 
   $('#search-address').on('click', function () {
-    var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val(); // $('#address-suggestions').text('');
-
+    var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
     getGeocode(address_value);
   });
   $('#address-form-group').find('input').on('focusin', function () {
     $(this).keydown(function (e) {
-      if (event.which == 13 || event.keyCode == 13) {
+      if (event.which == 13) {
         event.preventDefault();
         var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
         getGeocode(address_value);
       }
-    }); // $('#address-form-group').blur();
+    });
   });
   $(document).on('click', '#address-suggestions-item', function () {
     $('#address').val($(this).find('#address-suggestions-item-content').text());
     $('#latitude').val($(this).attr('data-latitude'));
     $('#longitude').val($(this).attr('data-longitude'));
     $('#address-suggestions').text('');
-    $('#address').removeClass('d-none');
     console.log($(this).find('#address-suggestions-item-content').text());
   }); //////////////////////////////////////////////////
   // F U N C T I O N S
   //////////////////////////////////////////////////
-  // FX GEOCODE
+  // FX getGeocode: geolocalizzazione di un address che forniamo all'api TomTom tramite chiamata ajax
 
   function getGeocode(address_value) {
     var source = document.getElementById("address-template").innerHTML;
@@ -42571,8 +42569,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/lorenzofranzone/mamp_public/laravel-boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/lorenzofranzone/mamp_public/laravel-boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

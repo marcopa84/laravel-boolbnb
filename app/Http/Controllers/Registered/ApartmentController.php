@@ -14,7 +14,7 @@ class ApartmentController extends Controller
 
     public function __construct()
     {
-        
+
     }
 
 
@@ -74,26 +74,27 @@ class ApartmentController extends Controller
             'longitude' => 'required|string',
             'featured_image' => 'required|image',
             'features' => 'required',
+            'features.*' => 'integer|min:1',
             'price' => 'numeric|min:1',
             'visible' => 'required|boolean'
         ];
-        
+
         $data = $request->all();
         $request->validate($validateRules);
-        
+
         $apartment = new Apartment;
         $apartment->fill($data);
         $apartment->user_id = Auth::id();
-        
+
         if (!empty($data['featured_image'])) {
             $path = Storage::disk('public')->put('images', $data['featured_image']);
             $apartment->featured_image = 'storage/' . $path;
         }
-        
+
         $saved = $apartment->save();
-        
+
         $apartment->features()->attach($data['features']);
-        
+
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');
         }
@@ -166,7 +167,7 @@ class ApartmentController extends Controller
             'price' => 'numeric|min:1',
             'visible' => 'required|boolean'
         ];
-        
+
         $data = $request->all();
         $request->validate($validateRules);
 
@@ -186,7 +187,7 @@ class ApartmentController extends Controller
         if (!empty($data['features'])) {
             $apartment->features()->sync($data['features']);
         }
-    
+
         return redirect()->route('registered.apartments.show', $apartment)->with('message', 'Appartamento aggiornato correttamente');
     }
 

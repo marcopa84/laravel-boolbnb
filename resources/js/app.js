@@ -11,10 +11,10 @@ const $ = require('jquery');
 const Handlebars = require("handlebars");
 
 $(document).ready(function(){
-    
-    //creiamo maps se esistono
+
+    // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
     if ($('#map').length > 0) {
-        
+
         var map = tt.map({
             key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
             container: 'map',
@@ -23,28 +23,25 @@ $(document).ready(function(){
         });
         map.addControl(new tt.FullscreenControl());
         map.addControl(new tt.NavigationControl());
-    }; // creiamo maps se esistono
+    }; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
 
 
     $('#search-address').on('click', function () {
         var address_value = $('#street').val()+' '+$('#number').val()+' '+$('#city').val()+' '+$('#province').val();
-        // $('#address-suggestions').text('');
         getGeocode(address_value);
     });
 
-    
+
     $('#address-form-group').find('input').on('focusin', function () {
         $(this).keydown (
-            function (e) {
-                if (event.which == 13 || event.keyCode == 13) {
+            function(e) {
+                if (event.which == 13) {
                     event.preventDefault();
                     var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
-                    
                     getGeocode(address_value);
                 }
             }
         )
-        // $('#address-form-group').blur();
     });
 
     $(document).on('click','#address-suggestions-item', function () {
@@ -52,17 +49,16 @@ $(document).ready(function(){
         $('#latitude').val($(this).attr('data-latitude'));
         $('#longitude').val($(this).attr('data-longitude'));
         $('#address-suggestions').text('');
-        $('#address').removeClass('d-none');
         console.log($(this).find('#address-suggestions-item-content').text());
     });
-    
-    
-    
+
+
+
     //////////////////////////////////////////////////
     // F U N C T I O N S
     //////////////////////////////////////////////////
-    
-    // FX GEOCODE
+
+    // FX getGeocode: geolocalizzazione di un address che forniamo all'api TomTom tramite chiamata ajax
     function getGeocode(address_value) {
         var source = document.getElementById("address-template").innerHTML;
         var template = Handlebars.compile(source);
@@ -84,17 +80,17 @@ $(document).ready(function(){
                         longitude: results[index].position.lon,
                     };
                     var html = template(context);
-                    $('#address-suggestions').append(html);               
+                    $('#address-suggestions').append(html);
                 }
-    
+
             },
             error: function (richiesta, stato, error) {
                 alert('è avvenuto un errore di collegamento')
             }
         });
-    
+
     };
-    
-    
+
+
 //////////
 });

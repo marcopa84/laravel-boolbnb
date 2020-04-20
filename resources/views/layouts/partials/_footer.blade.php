@@ -1,8 +1,7 @@
    <footer>
-
-      @yield('footer')
-      @yield('scripts')
+     @yield('footer')
    </footer>
+   @yield('scripts')
 
 </body>
 </html>

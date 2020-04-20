@@ -13,12 +13,12 @@
    <link rel="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
    <!-- Datepicker -->
    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-   
+
    <!-- Custom CSS -->
    <link rel="stylesheet" href="{{asset('css/app.css')}}">
    <!-- Scripts -->
-   <script src="{{ asset('js/app.js') }}" async></script>
-   
+   <script src="{{ asset('js/app.js') }}"></script>
+
 
 </head>
 
