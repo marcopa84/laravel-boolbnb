@@ -57,6 +57,8 @@
           <input id="street" class="form-control" type="text" name="street" value="{{ old('street') }}" placeholder="Via">
           <label for="number">N° Civico</label>
           <input id="number" class="form-control" type="number" name="number" value="{{ old('number') }}" min="1"  placeholder="N° Civico">
+          <label for="zip">CAP </label>
+          <input id="zip" class="form-control" type="number" name="zip" value="{{ old('zip') }}" placeholder="CAP">
           <label for="city">Citt&agrave; </label>
           <input id="city" class="form-control" type="text" name="city" value="{{ old('city') }}" placeholder="Citt&agrave;">
           <label for="province">Provincia</label>

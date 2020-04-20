@@ -133,6 +133,31 @@ html {
 
 /*
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
+* HEADER
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+header{
+   .navbar{
+      .container{
+         .navbar-collapse{
+            .nav-right{
+               .nav-item{
+                  .nav-avatar-img{
+                     width: 24px;
+                     height: 24px;
+                     border-radius: 50%;
+                     object-fit: cover;
+                     vertical-align: middle;
+                  }
+               }
+            }
+         }
+      }
+   }
+}
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
 * ADS
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
@@ -262,6 +287,10 @@ html {
                   }
               }
           }
+      }
+      #map{
+         width: 100%;
+         height: 500px;
       }
    }
    .sidebar{

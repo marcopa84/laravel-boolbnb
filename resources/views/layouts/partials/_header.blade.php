@@ -10,7 +10,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="nav-left navbar-nav ml-auto">
                        <li class="nav-item active">
                            <a class="nav-link" href="{{asset('/')}}">Home <span class="sr-only">(current)</span></a>
                         </li>
@@ -22,7 +22,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-4">
+                    <ul class="nav-right navbar-nav ml-4">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -36,6 +36,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img class="nav-avatar-img" src="{{ asset(Auth::user()->avatar) }}" alt="Immagine del profilo">
                                     @if (!empty(Auth::user()->name))
                                         {{ Auth::user()->name }}
                                     @else

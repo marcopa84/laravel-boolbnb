@@ -37,38 +37,17 @@
             @endforelse
             
          </div>
+         <h4 class="apartment-features-title my-4">Mappa</h4>
+         <div id="map" data-long="{{$apartment->longitude}}" data-lat="{{$apartment->latitude}}">
+            
+
+         </div>
       </div>
    </div> <!-- / main-content -->
-   <div class="sidebar">
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-      Sidebar
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia neque, sint dicta exercitationem accusamus est, quisquam ab, autem sit nobis assumenda aliquid consectetur et doloremque molestias nostrum tempora tempore amet.lorem
-   </div> <!-- / sidebar -->
+   <aside class="sidebar">
+      
+   </aside> <!-- / sidebar -->
 </div>
+
 
 @endsection

@@ -59,6 +59,5 @@
             </div>
         </div>
     </div>
-    <img src="{{asset(Auth::user()->avatar)}}" alt="immagine del profilo" >
 </div>
 @endsection

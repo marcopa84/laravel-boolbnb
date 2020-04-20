@@ -14,20 +14,39 @@ $(document).ready(function(){
 
     // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
     if ($('#map').length > 0) {
-
+        // var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')]; 
+        var coordinates = [7.77773, 43.81667]; 
+        // var map = tt.map({
+        //     key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
+        //     container: 'map',
+        //     basePath: 'sdk/',
+        //     theme: {
+        //         'style': 'main',
+        //         'layer': 'basic',
+        //         'source': 'vector',
+        //     }, 
+        //     zoom: 15,
+        //     center: [
+        //         coordinates,
+        //     ] 
+        //     // 'tomtom://vector/1/basic-main',
+        //     // dragPan: !isMobileOrTablet()
+        // });
         var map = tt.map({
-            key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
             container: 'map',
+            key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
             style: 'tomtom://vector/1/basic-main',
-            // dragPan: !isMobileOrTablet()
+            center: coordinates,
+            zoom: 15
         });
-        map.addControl(new tt.FullscreenControl());
+        var marker = new tt.Marker().setLngLat(coordinates).addTo(map);
+        // map.addControl(new tt.FullscreenControl());
         map.addControl(new tt.NavigationControl());
     }; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
 
 
     $('#search-address').on('click', function () {
-        var address_value = $('#street').val()+' '+$('#number').val()+' '+$('#city').val()+' '+$('#province').val();
+        var address_value = $('#street').val()+' '+$('#number').val()+' '+$('#zip').val()+' '+$('#city').val()+' '+$('#province').val();
         getGeocode(address_value);
     });
 
@@ -92,5 +111,5 @@ $(document).ready(function(){
     };
 
 
-//////////
+
 });
