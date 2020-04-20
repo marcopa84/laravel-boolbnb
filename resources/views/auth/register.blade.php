@@ -48,7 +48,7 @@
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
-                            
+
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
 
@@ -62,7 +62,7 @@
 
                         <div class="form-group row">
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Cognome') }}</label>
-                            
+
                             <div class="col-md-6">
                                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" autocomplete="lastname" autofocus>
 
@@ -76,7 +76,7 @@
 
                         <div class="form-group row">
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Anno di nascita') }}</label>
-                            
+
                             <div class="col-md-6">
                                 <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" autocomplete="date_of_birth" autofocus>
 
@@ -90,9 +90,9 @@
 
                         <div class="form-group row">
                             <label for="avatar" class="col-md-4 col-form-label text-md-right">{{ __('Immagine profilo') }}</label>
-                            
+
                             <div class="col-md-6">
-                                <input id="avatar" type="file" accept="image/*" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}"  autofocus>
+                                <input id="avatar" type="file" accept="image/*" class="@error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}"  autofocus>
 
                                 @error('Immagine profilo')
                                     <span class="invalid-feedback" role="alert">

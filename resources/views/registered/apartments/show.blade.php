@@ -11,7 +11,7 @@
       </p>
 
       <div class="apartment-features">
-         <h4 class="apartment-features-title">Servizi</h4>
+         <h4 class="apartment-features-title">Servizi aggiuntivi</h4>
          <div class="apartment-features-list">
             @forelse ($apartment->features as $feature)
             @if ($feature->id == 1)
@@ -35,17 +35,17 @@
             @empty
                 Nessun servizio aggiuntivo offerto.
             @endforelse
-            
+
          </div>
          <h4 class="apartment-features-title my-4">Mappa</h4>
          <div id="map" data-long="{{$apartment->longitude}}" data-lat="{{$apartment->latitude}}">
-            
+
 
          </div>
       </div>
    </div> <!-- / main-content -->
    <aside class="sidebar">
-      
+
    </aside> <!-- / sidebar -->
 </div>
 

@@ -10882,6 +10882,12 @@ a.text-dark:focus {
   }
 }
 
+#featured_image_preview {
+  width: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /*
 * //////////////////////////////////////////////////
 * ==================================================
