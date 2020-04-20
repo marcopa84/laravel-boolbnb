@@ -14,34 +14,24 @@ $(document).ready(function(){
 
     // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
     if ($('#map').length > 0) {
-        // var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')]; 
-        var coordinates = [7.77773, 43.81667]; 
-        // var map = tt.map({
-        //     key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-        //     container: 'map',
-        //     basePath: 'sdk/',
-        //     theme: {
-        //         'style': 'main',
-        //         'layer': 'basic',
-        //         'source': 'vector',
-        //     }, 
-        //     zoom: 15,
-        //     center: [
-        //         coordinates,
-        //     ] 
-        //     // 'tomtom://vector/1/basic-main',
-        //     // dragPan: !isMobileOrTablet()
-        // });
+        var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')]; 
         var map = tt.map({
             container: 'map',
             key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
             style: 'tomtom://vector/1/basic-main',
             center: coordinates,
-            zoom: 15
+            zoom: 15,
+            pitch: 45
         });
-        var marker = new tt.Marker().setLngLat(coordinates).addTo(map);
-        // map.addControl(new tt.FullscreenControl());
         map.addControl(new tt.NavigationControl());
+
+        // Puntature
+        var element = document.createElement('div');
+        element.id = 'marker';
+        var marker = new tt.Marker({
+            element: element,
+        });
+        marker.setLngLat(coordinates).addTo(map);
     }; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
 
 

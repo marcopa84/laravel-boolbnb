@@ -42434,24 +42434,6 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
   if ($('#map').length > 0) {
-    // var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')]; 
-    var coordinates = [7.77773, 43.81667]; // var map = tt.map({
-    //     key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-    //     container: 'map',
-    //     basePath: 'sdk/',
-    //     theme: {
-    //         'style': 'main',
-    //         'layer': 'basic',
-    //         'source': 'vector',
-    //     }, 
-    //     zoom: 15,
-    //     center: [
-    //         coordinates,
-    //     ] 
-    //     // 'tomtom://vector/1/basic-main',
-    //     // dragPan: !isMobileOrTablet()
-    // });
-
     var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
       container: 'map',
       key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
@@ -42459,6 +42441,7 @@ $(document).ready(function () {
       center: coordinates,
       zoom: 15
     });
+    var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')];
     var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.Marker().setLngLat(coordinates).addTo(map); // map.addControl(new tt.FullscreenControl());
 
     map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl());
@@ -42578,7 +42561,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/img-loader/index.js):\nError: ENOENT: no such file or directory, open 'C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\public\\default_images\\apartment_marker.png'\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\loader-runner\\lib\\LoaderRunner.js:203:19\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:79:11)");
 
 /***/ }),
 
@@ -42589,8 +42572,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
