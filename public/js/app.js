@@ -42434,17 +42434,23 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
   if ($('#map').length > 0) {
+    var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')];
     var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
       container: 'map',
       key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
       style: 'tomtom://vector/1/basic-main',
       center: coordinates,
-      zoom: 15
+      zoom: 15,
+      pitch: 45
     });
-    var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')];
-    var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.Marker().setLngLat(coordinates).addTo(map); // map.addControl(new tt.FullscreenControl());
+    map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl()); // Puntature
 
-    map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl());
+    var element = document.createElement('div');
+    element.id = 'marker';
+    var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.Marker({
+      element: element
+    });
+    marker.setLngLat(coordinates).addTo(map);
   }
 
   ; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
@@ -42561,7 +42567,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/img-loader/index.js):\nError: ENOENT: no such file or directory, open 'C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\public\\default_images\\apartment_marker.png'\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\webpack\\lib\\NormalModule.js:316:20\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\loader-runner\\lib\\LoaderRunner.js:367:11\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\loader-runner\\lib\\LoaderRunner.js:203:19\n    at C:\\Users\\marco\\desktop\\boolean\\php\\laravel-boolbnb\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:79:11)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 

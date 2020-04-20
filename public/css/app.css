@@ -11247,6 +11247,13 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   height: 500px;
 }
 
+.layout-apartment .main-content #marker {
+  background-image: url(/images/apartment_marker.png?849599aa0e22b88dfe9f49608e9dfed1);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+}
+
 .layout-apartment .sidebar {
   flex: 1;
 }
