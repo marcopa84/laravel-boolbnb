@@ -10964,6 +10964,10 @@ a.text-dark:focus {
 * ==================================================
 */
 
+html {
+  scroll-behavior: smooth;
+}
+
 .main-search {
   padding: calc(16px * 10) 80px;
   text-align: center;
@@ -11131,10 +11135,14 @@ a.text-dark:focus {
 
 .dash.card .card-image {
   flex: 1;
+  max-height: 330px;
 }
 
 .dash.card .card-image img {
+  height: 100%;
   border-radius: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .dash.card .card-body {
@@ -11172,9 +11180,17 @@ a.text-dark:focus {
 }
 
 .layout-apartment .main-content {
+  flex: 2;
   padding-right: 32px;
   margin-right: 32px;
   border-right: 1px solid #b2bac1;
+}
+
+.layout-apartment .main-content img {
+  width: 100%;
+  max-height: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .layout-apartment .main-content [class*=title] {
@@ -11188,21 +11204,25 @@ a.text-dark:focus {
   margin-bottom: 32px;
 }
 
-.layout-apartment .apartment-features .apartment-features-list span {
+.layout-apartment .main-content .apartment-features .apartment-features-list span {
   margin-right: 32px;
 }
 
-.layout-apartment .apartment-features .apartment-features-list span i {
+.layout-apartment .main-content .apartment-features .apartment-features-list span i {
   margin-right: 4px;
 }
 
-.layout-apartment .apartment-features .apartment-features-list span i.fas.fa-parking {
+.layout-apartment .main-content .apartment-features .apartment-features-list span i.fas.fa-parking {
   font-size: 16px;
 }
 
-.layout-apartment .apartment-features .apartment-features-list span i.fas.fa-wifi {
+.layout-apartment .main-content .apartment-features .apartment-features-list span i.fas.fa-wifi {
   position: relative;
   bottom: 1px;
   font-size: 14px;
+}
+
+.layout-apartment .sidebar {
+  flex: 1;
 }
 

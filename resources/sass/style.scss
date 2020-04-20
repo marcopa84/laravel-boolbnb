@@ -182,10 +182,14 @@ html {
    &.card{
       display: flex;
       flex-flow: row wrap;
+      
       .card-image{
          flex: 1;
+         max-height: 330px;
          img{
+            height: 100%;
             border-radius: 0;
+            object-fit: cover;
          }
       }
       .card-body{
@@ -219,9 +223,15 @@ html {
 .layout-apartment{
    display: flex;
    .main-content{
+      flex: 2;
       padding-right: 32px;
       margin-right: 32px;
       border-right: 1px solid lighten($dark,50);
+      img{
+         width: 100%;
+         max-height: 400px;
+         object-fit: cover;
+      }
 
       [class*="title"]{
          padding: 8px;
@@ -232,24 +242,33 @@ html {
          padding-bottom: 24px;
          margin-bottom: 32px;
       }
-   }
+      .apartment-features{
+          .apartment-features-list{
+              span{
+                  margin-right: 32px;
 
-   .apartment-features{
-      .apartment-features-list{
-         span{
-            margin-right: 32px;
-            i{
-               margin-right: 4px;
-               &.fas.fa-parking{
-                  font-size: 16px;
-               }
-               &.fas.fa-wifi{
-                  position: relative;
-                  bottom: 1px;
-                  font-size: 14px;
-               }
-            }
-         }
+                  i{
+                      margin-right: 4px;
+
+                      &.fas.fa-parking{
+                          font-size: 16px;
+                      }
+
+                      &.fas.fa-wifi{
+                          position: relative;
+                          bottom: 1px;
+                          font-size: 14px;
+                      }
+                  }
+              }
+          }
       }
    }
+   .sidebar{
+      flex: 1;
+
+   }
+
+   
+   
 }
