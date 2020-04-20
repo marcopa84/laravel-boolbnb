@@ -11052,7 +11052,7 @@ html {
 
 /*
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
-* DATEPICKER
+* DATEPICKER (CALENDARIO)
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
@@ -11149,7 +11149,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 }
 
 .dash.card .card-image {
-  flex: 1;
+  width: 45%;
   max-height: 330px;
 }
 
@@ -11161,17 +11161,22 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 }
 
 .dash.card .card-body {
-  flex: 1;
+  width: 55%;
   padding: 3.25rem;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-between;
-  word-wrap: break-word;
+}
+
+.dash.card .card-body-text {
+  width: 100%;
 }
 
 .dash.card .card-body .card-title,
 .dash.card .card-body .card-text {
   text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .dash.card .card-dash-buttons {
