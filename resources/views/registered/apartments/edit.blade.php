@@ -22,28 +22,28 @@
           @endif
        </div>
        <div class="form-group">
-          <label for="rooms_number">Numero di stanze: @{{rooms_number}}</label>
+          <label for="rooms_number">Numero di stanze</label>
           <input id="rooms_number" class="form-control" type="number" name="rooms_number" min="1" v-model="rooms_number" value="{{$apartment->rooms_number}}" placeholder="N° di stanze">
           @if($errors->has('rooms_number'))
              <div class="error alert alert-danger">{{ $errors->first('rooms_number') }}</div>
           @endif
        </div>
        <div class="form-group">
-          <label for="beds_number">Numero di letti: @{{beds_number}}</label>
+          <label for="beds_number">Numero di letti</label>
           <input id="beds_number" class="form-control" type="number" name="beds_number" v-model="beds_number" value="{{$apartment->beds_number}}" min="1" placeholder="N° di letti">
           @if($errors->has('beds_number'))
              <div class="error alert alert-danger">{{ $errors->first('beds_number') }}</div>
           @endif
        </div>
        <div class="form-group">
-          <label for="bathrooms_number">Numero di bagni: @{{bathrooms_number}}</label>
+          <label for="bathrooms_number">Numero di bagni</label>
           <input id="bathrooms_number" class="form-control" type="number" name="bathrooms_number" v-model="bathrooms_number" value="{{$apartment->bathrooms_number}}" min="1" placeholder="N° di bagni">
           @if($errors->has('bathrooms_number'))
              <div class="error alert alert-danger">{{ $errors->first('bathrooms_number') }}</div>
           @endif
        </div>
        <div class="form-group">
-          <label for="size">Grandezza appartamento: @{{size}}m&sup2;</label>
+          <label for="size">Grandezza appartamento</label>
           <input id="size" class="form-control" type="number" name="size" v-model="size" value="{{$apartment->size}}" min="1" placeholder="Grandezza in m&sup2; appartamento">
           @if($errors->has('size'))
              <div class="error alert alert-danger">{{ $errors->first('size') }}</div>
@@ -93,7 +93,7 @@
           @endif
        </div>
        <div class="form-group">
-          <label for="price">Prezzo: @{{price}}&euro;</label>
+          <label for="price">Prezzo</label>
           <input id="price" class="form-control" type="number" name="price" v-model="price" value="{{$apartment->price}}" min="1" step="0.1" placeholder="Prezzo per notte">
           @if($errors->has('price'))
              <div class="error alert alert-danger">{{ $errors->first('price') }}</div>
@@ -135,19 +135,19 @@
   </script>
 
   {{-- ↓ script per valorizzare dinamicamente le labels utilizzando Vue.js --}}
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script type="text/javascript">
     var app = new Vue({
     el: '#app',
     data: {
-      rooms_number: '',
-      bathrooms_number:'',
-      beds_number:'',
+      rooms_number: 5,
+      bathrooms_number:3,
+      beds_number:2,
       size:'',
       price:'',
     }
   });
-  </script>
+  </script> --}}
 
   {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
   <script type="text/jscript" charset="utf-8">
@@ -163,21 +163,31 @@
   </script>
 
   {{-- ↓ script per checkare elementi anche cliccando sul nome --}}
-  <script type="text/javascript" charser="utf-8">
-    $('form li.list-inline-item').on('click', function() {
-      // ho inserito due condizioni perché per alcuni browser, attr è undefined, per altri è false, così facendo la condizione funzionerà sempre
-      if( $(this).find('input[type="checkbox"]').attr('checked') == undefined || $(this).find('input[type="checkbox"]').attr('checked') == false) {
-        $(this).find('input[name="features[]"]').attr('checked','checked');
-        $(this).removeClass('btn-outline-dark');
-        $(this).addClass('btn-info');
-      }
-      else {
-        $(this).find('input[name="features[]"]').removeAttr('checked');
-        $(this).removeClass('btn-info');
-        $(this).addClass('btn-outline-dark');
-      }
-    });
-  </script>
+   <script type="text/javascript" charser="utf-8">
+      $('form li.list-inline-item').on('click', function() {
+         // ho inserito due condizioni perché per alcuni browser, attr è undefined, per altri è false, così facendo la condizione funzionerà sempre
+         if( $(this).find('input[type="checkbox"]').attr('checked') == undefined || $(this).find('input[type="checkbox"]').attr('checked') == false) {
+         $(this).find('input[name="features[]"]').attr('checked','checked');
+         $(this).removeClass('btn-outline-dark');
+         $(this).addClass('btn-info');
+         }
+         else {
+         $(this).find('input[name="features[]"]').removeAttr('checked');
+         $(this).removeClass('btn-info');
+         $(this).addClass('btn-outline-dark');
+         }
+      });
+   </script>
+
+   {{-- ↓ script toggle class on checked feature input --}}
+   <script type="text/javascript" charser="utf-8">
+   $(document).ready(function(){
+      $('li.list-inline-item').find('input[type="checkbox"]').filter("[checked]").each(function(){
+         $(this).parent().removeClass('btn-outline-dark');
+         $(this).parent().addClass('btn-info');
+      })
+   });
+   </script>
 
   {{-- ↓ script per prevenire l'immissione di input non numerici negli input type="number" --}}
   <script type="text/javascript" charset="utf-8">

@@ -33,7 +33,7 @@
                <span><i class="fas fa-water"></i> Vista mare</span>
             @endif
             @empty
-                Nessun servizio aggiuntivo offerto.
+               <p>Nessun servizio aggiuntivo offerto.</p>
             @endforelse
 
          </div>

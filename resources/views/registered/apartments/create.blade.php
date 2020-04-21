@@ -11,14 +11,14 @@
             <input id="title" class="form-control" type="text" name="title" value="{{ old('title') }}" placeholder="Titolo dell'appartamento">
             @if($errors->has('title'))
                <div class="error alert alert-danger">
-                 {{ $errors->first('title') }}
+                  {{ $errors->first('title') }}
                </div>
             @endif
          </div>
          <div class="form-group">
             <label for="description">Descrizione</label>
             <textarea id="description" class="form-control" name="description" rows="10">
-              {{ old('description') }}
+               {{ old('description') }}
             </textarea>
             @if($errors->has('description'))
                <div class="error alert alert-danger">{{ $errors->first('description') }}</div>
