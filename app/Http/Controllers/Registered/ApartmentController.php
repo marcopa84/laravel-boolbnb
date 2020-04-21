@@ -207,8 +207,7 @@ class ApartmentController extends Controller
         if (empty($apartment)) {
             abort(404);
         }
-        Storage::disk('public')->delete($apartment->featured_image);
-
+        \File::delete($apartment->featured_image);
         $apartment->features()->detach();
         $apartment->delete();
         //no error only for color
