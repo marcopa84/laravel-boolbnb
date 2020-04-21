@@ -3,12 +3,26 @@
 @section('main')
 <div class="container layout-apartment my-5">
    <div class="main-content">
-      <h1>{{$apartment->title}}</h1>
+      <div class="apartment-title">
+         <h1>{{$apartment->title}}</h1>
+         <a href="{{route('registered.apartments.edit', $apartment->id)}}"><i class="fas fa-edit fa-2x" title="Modifica appartamento"></i></a>
+      </div>
       <img src="{{asset($apartment->featured_image)}}" title="Immagine in evidenza">
       <h4 class="apartment-desc-title">Descrizione</h4>
       <p class="apartment-desc-text lead">{{$apartment->description}}
          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum?
       </p>
+
+      <div class="apartment-details">
+         <h4 class="apartment-details-title my-4">Caratteristiche</h4>
+         <div class="apartment-details-list" role="list">
+            <span>Numero stanze:<i class="fas fa-expand"></i> {{$apartment->rooms_number}}</span>
+            <span>Numero minimo posti letto:<i class="fas fa-bed"></i> {{$apartment->beds_number}}</span>
+            <span>Numero bagni:<i class="fas fa-bath"></i> {{$apartment->bathrooms_number}}</span>
+            <span>Prezzo:<i class="fas fa-money-bill-alt"></i> {{$apartment->price}}</span>
+         </div>
+         
+      </div>
 
       <div class="apartment-features">
          <h4 class="apartment-features-title">Servizi aggiuntivi</h4>

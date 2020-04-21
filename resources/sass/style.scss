@@ -262,7 +262,13 @@ header{
          object-fit: cover;
       }
 
-      [class*="title"]{
+      .apartment-title{
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+      }
+
+      [class*="title"]:not(.apartment-title){
          padding: 8px;
          background: lighten($dark,60);
          margin: 16px 0;
@@ -271,26 +277,38 @@ header{
          padding-bottom: 24px;
          margin-bottom: 32px;
       }
+
+      .apartment-details-list{
+         span{
+            margin-right: 16px;
+            display: inline-block;
+            i{
+               margin-right: 4px;
+               margin-left: 8px;
+            }
+         }
+      }
+
       .apartment-features{
-          .apartment-features-list{
-              span{
+         .apartment-features-list{
+            span{
                   margin-right: 32px;
 
                   i{
-                      margin-right: 4px;
+                     margin-right: 4px;
 
-                      &.fas.fa-parking{
-                          font-size: 16px;
-                      }
+                     &.fas.fa-parking{
+                        font-size: 16px;
+                     }
 
-                      &.fas.fa-wifi{
-                          position: relative;
-                          bottom: 1px;
-                          font-size: 14px;
-                      }
+                     &.fas.fa-wifi{
+                        position: relative;
+                        bottom: 1px;
+                        font-size: 14px;
+                     }
                   }
-              }
-          }
+            }
+         }
       }
       #map{
          width: 100%;

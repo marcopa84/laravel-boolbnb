@@ -93,8 +93,6 @@ class ApartmentController extends Controller
 
         $saved = $apartment->save();
 
-        $apartment->features()->attach($data['features']);
-
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'inserimento dell\'appartamento');
         }
