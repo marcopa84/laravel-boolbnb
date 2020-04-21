@@ -30,7 +30,7 @@
 <div class="ads mt-5">
    <div class="container">
    {{-- PROVA APPARTAMENTI --}}
-            <ul>
+            {{-- <ul>
             @foreach ($apartments as $apartment)
             <li>{{$apartment->title}}
                <ul>
@@ -57,8 +57,9 @@
                </ul>
             </li>
             @endforeach
-            </ul>
+            </ul> --}}
    {{-- PROVA APPARTAMENTI --}}
+      <h3 class="small-caps text-center mb-5">Appartamenti in evidenza</h3>
       <div class="row">
          <div class="col-md-6 col-lg-4">
             <div class="card">

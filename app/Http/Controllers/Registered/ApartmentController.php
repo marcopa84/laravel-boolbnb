@@ -162,6 +162,7 @@ class ApartmentController extends Controller
             'longitude' => 'required|string',
             'featured_image' => 'image',
             'features' => 'required',
+            'features.*' => 'integer|min:1',
             'price' => 'numeric|min:1',
             'visible' => 'required|boolean'
         ];
@@ -193,6 +194,8 @@ class ApartmentController extends Controller
     // D E S T R O Y
     // //////////////////////////////////////////////////
 
+    // DELETE STORE IMG ???
+
     /**
      * Remove the specified resource from storage.
      *
@@ -204,6 +207,8 @@ class ApartmentController extends Controller
         if (empty($apartment)) {
             abort(404);
         }
+        Storage::disk('public')->delete($apartment->featured_image);
+
         $apartment->features()->detach();
         $apartment->delete();
         //no error only for color

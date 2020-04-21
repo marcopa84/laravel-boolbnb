@@ -10962,6 +10962,11 @@ a.text-dark:focus {
   margin: 12px 0;
 }
 
+.small-caps {
+  font-variant: small-caps;
+  letter-spacing: 4px;
+}
+
 /*
 * ==================================================
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
