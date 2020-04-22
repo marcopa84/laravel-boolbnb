@@ -128,6 +128,7 @@
 @endsection
 
 @section('scripts')
+   
   {{-- ↓ template per riempire l'input #address che è readonly   --}}
   <script id="address-template" type="text/x-handlebars-template">
      <li id="address-suggestions-item" data-latitude="@{{latitude}}" data-longitude="@{{longitude}}" class="list-group-item">

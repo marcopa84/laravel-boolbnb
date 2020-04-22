@@ -42454,6 +42454,20 @@ $(document).ready(function () {
   }
 
   ; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
+  //RICERCA COORDINATE IN HOME
+
+  $('#search-address-home').on('click', function () {
+    var address_value = $('#address').val();
+    getGeocode(address_value);
+  });
+  $(document).on('click', '#address-suggestions-item', function () {
+    $('#address').val($(this).find('#address-suggestions-item-content').text());
+    $('#latitude').val($(this).attr('data-latitude'));
+    $('#longitude').val($(this).attr('data-longitude'));
+    $('#address-suggestions').text('');
+    console.log($(this).find('#address-suggestions-item-content').text());
+  }); //RICERCA COORDINATE IN HOME
+  // RICERCA COORDINATE CREATE
 
   $('#search-address').on('click', function () {
     var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#zip').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
@@ -42474,7 +42488,8 @@ $(document).ready(function () {
     $('#longitude').val($(this).attr('data-longitude'));
     $('#address-suggestions').text('');
     console.log($(this).find('#address-suggestions-item-content').text());
-  }); //////////////////////////////////////////////////
+  }); // RICERCA COORDINATE CREATE
+  //////////////////////////////////////////////////
   // F U N C T I O N S
   //////////////////////////////////////////////////
   // FX getGeocode: geolocalizzazione di un address che forniamo all'api TomTom tramite chiamata ajax
@@ -42586,8 +42601,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

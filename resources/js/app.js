@@ -31,14 +31,31 @@ $(document).ready(function(){
             element: element,
         });
         marker.setLngLat(coordinates).addTo(map);
-    }; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
+    }; 
+    // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
 
+    //RICERCA COORDINATE IN HOME
+    $('#search-address-home').on('click', function () {
+        var address_value = $('#address').val();
+        getGeocode(address_value);
+    });
+    $(document).on('click', '#address-suggestions-item', function () {
+        $('#address').val($(this).find('#address-suggestions-item-content').text());
+        $('#latitude').val($(this).attr('data-latitude'));
+        $('#longitude').val($(this).attr('data-longitude'));
+        $('#address-suggestions').text('');
+        console.log($(this).find('#address-suggestions-item-content').text());
+    });
 
+    //RICERCA COORDINATE IN HOME
+
+    // RICERCA COORDINATE CREATE
     $('#search-address').on('click', function () {
         var address_value = $('#street').val()+' '+$('#number').val()+' '+$('#zip').val()+' '+$('#city').val()+' '+$('#province').val();
         getGeocode(address_value);
     });
-
+    
+    
 
     $('#address-form-group').find('input').on('focusin', function () {
         $(this).keydown (
@@ -59,6 +76,7 @@ $(document).ready(function(){
         $('#address-suggestions').text('');
         console.log($(this).find('#address-suggestions-item-content').text());
     });
+    // RICERCA COORDINATE CREATE
 
 
 

@@ -10,7 +10,14 @@
    <form class="dark">
       <div class="row">
          <div class="col-md-4">
-            <input type="text" class="form-control" title="Dicci dove vuoi andare" placeholder="Dove?">
+            <input type="text" id="address" name="address" class="form-control" placeholder="Dove?">
+            <input type="hidden" name="latitude" id="latitude" value="">
+            <input type="hidden" name="longitude" id="longitude" value="">
+            <input type="hidden" name="radius" id="radius" value="20">
+            <input id="search-address-home" class="btn btn-dark mt-3" type="button" value="Cerca indirizzo">
+            <ol id="address-suggestions" class="list-group">
+
+            </ol>
          </div>
          <div class="col-md-4">
             <input type="text" class="form-control" title="Inserisci la data di tuo interesse" name="datefilter" placeholder="Data" value="">
@@ -21,59 +28,21 @@
       </div>
       <div class="row">
          <div class="col">
-            <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+         <a href="{{}}">
+               <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
                <i class="fas fa-search"></i><span>Cerca</span>
-            </button>
+               </button>
+            </a>
+            
          </div>
       </div>
    </form>
    </div>
 </div>
-<script type="text/javascript">
-  // var arrayPonte = [];
-  // var array=[1,2,3,4,5,6,7,8,9,8,7,6,5,4,3,2,1];
-  // for(var i=0; i<9; i++) {
-  //   $('.stocazzo').prepend('<p>'+array.join(' ')+'</p>');
-  //   for(var k=0; k<array.length; k++) {
-  //     array[k]--;
-  //     if(array[k] < 1) {
-  //       array[k] = ' ';
-  //     }
-  //   }
-  // }
-</script>
+
 <div class="ads mt-5">
    <div class="container">
-   {{-- PROVA APPARTAMENTI --}}
-            {{-- <ul>
-            @foreach ($apartments as $apartment)
-            <li>{{$apartment->title}}
-               <ul>
-                  <li>{{$apartment->description}}</li>
-                  <li>{{$apartment->beds_number}}</li>
-                  <li>{{$apartment->rooms_number}}</li>
-                  <li>{{$apartment->bathrooms_number}}</li>
-                  <li>{{$apartment->price}}</li>
-                  <li>{{$apartment->size}}</li>
-                  <li>{{$apartment->address}}</li>
-                  <li>{{$apartment->latitude}}</li>
-                  <li>{{$apartment->longitude}}</li>
-                  <li>{{$apartment->featured_image}}</li>
-                  <li><a href="{{route('registered.apartments.show', $apartment)}}">Show</a></li>
-                  <li><a href="{{route('registered.apartments.edit', $apartment)}}">EDIT</a></li>
-                  <li>
-                     <form action="{{route('registered.apartments.destroy', $apartment)}}" method="post">
-                     @csrf
-                     @method('DELETE')
-                     <button class="btn btn-danger" type="submit">Delete</button>
-                     </form>
 
-                  </li>
-               </ul>
-            </li>
-            @endforeach
-            </ul> --}}
-   {{-- PROVA APPARTAMENTI --}}
       <h3 class="small-caps text-center mb-5">Appartamenti in evidenza</h3>
       <div class="row">
          <div class="col-md-6 col-lg-4">
@@ -160,6 +129,13 @@
 @endsection
 
 @section('scripts')
+
+  {{-- ↓ template per riempire l'input #address che è readonly   --}}
+  <script id="address-template" type="text/x-handlebars-template">
+     <li id="address-suggestions-item" data-latitude="@{{latitude}}" data-longitude="@{{longitude}}" class="list-group-item">
+        <p id="address-suggestions-item-content">@{{address}}</p>
+     </li>
+  </script>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js" async></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" async></script>
