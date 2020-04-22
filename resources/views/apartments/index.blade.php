@@ -3,32 +3,15 @@
 @section('main')
 <div class="container my-5">
    <div class="row">
-               <div class="{{-- search-container row --}}">
-            <form action="{{route('api.apartments.index')}}" method="get">
-               @method('GET')
-               @csrf
-               <input type="hidden" name="latitude" value="{{$latitude}}">
-               <input type="hidden" name="longitude" value="{{$longitude}}">
+      <div class="col-12">
+            <div id="apartments_filter">
                <div class="form-group">
-                  <label for="rooms_number">N° di stanze</label>
-                  <input id="rooms_number" class="form-control" type="number" min="1" name="rooms_number" value="{{ old('rooms_number') }}" placeholder="N° stanze disponibili">
-                  {{-- @if($errors->has('rooms_number'))
-                     <div class="error alert alert-danger">{{ $errors->first('rooms_number') }}</div>
-                  @endif --}}
+                  <label for="rooms_number">Stanze minime</label>
+                  <input id="rooms_number" class="form-control" type="number" min="1" name="rooms_number" value="{{ old('rooms_number') }}" placeholder="N° stanze minime">
                </div>
                <div class="form-group">
-                  <label for="beds_number">N° di letti</label>
-                  <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ old('beds_number') }}" min="1" placeholder="N° letti disponibili">
-                  {{-- @if($errors->has('beds_number'))
-                     <div class="error alert alert-danger">{{ $errors->first('beds_number') }}</div>
-                  @endif --}}
-               </div>
-               <div class="form-group">
-                  <select name="radius" id="">
-                     <option value="20" selected>20 Km</option>
-                     <option value="40">40 Km</option>
-                     <option value="60">60 Km</option>
-                  </select>
+                  <label for="beds_number">Letti minimi</label>
+                  <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ old('beds_number') }}" min="1" placeholder="N° letti minimi">
                </div>
                <div class="form-group">
                   <label for="size">Servizi aggiuntivi</label>
@@ -46,9 +29,21 @@
                         </li>
                         @endforeach
                      </ul>
-                  {{-- @if($errors->has('features'))
-                     <div class="error alert alert-danger">{{ $errors->first('features') }}</div>
-                  @endif --}}
+               </div>
+            </div>
+
+               
+            <form action="{{route('api.apartments.index')}}" method="get">
+               @method('GET')
+               @csrf
+               <input type="hidden" name="latitude" value="{{$latitude}}">
+               <input type="hidden" name="longitude" value="{{$longitude}}">
+               <div class="form-group">
+                  <select name="radius" id="">
+                     <option value="20" selected>20 Km</option>
+                     <option value="40">40 Km</option>
+                     <option value="60">60 Km</option>
+                  </select>
                </div>
                <div class="row">
                   <div class="col">
@@ -58,7 +53,8 @@
                   </div>
                </div>
             </form>
-         </div>  
+      </div>
+ 
       <div class="col-12">
          @if (empty($filteredApartments))
             <div class="alert alert-info" role="alert">
@@ -66,7 +62,7 @@
             </div>
          @else 
             @foreach ($filteredApartments as $apartment)
-            <div class="card dash">
+            <div class="card dash" data-beds="{{$apartment->beds_number}}" data-rooms="{{$apartment->rooms_number}}" data-features="{{$apartment->features}}">
                <div class="card-image">
                   <img class="card-img-top" src="{{asset($apartment->featured_image)}}" alt="Immagine di anteprima dell'appartamento">
                </div>

@@ -9,6 +9,8 @@ $(document).ready(function(){
     
     require('./coordinate_search');
 
+    require('./apartments_filter');
+
     require('./maps_tomtom');
 
     /* --↓script per cambiare focus degli input con il tasto Enter-- */

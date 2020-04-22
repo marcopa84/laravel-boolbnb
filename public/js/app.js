@@ -42410,6 +42410,41 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/apartments_filter.js":
+/*!*******************************************!*\
+  !*** ./resources/js/apartments_filter.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('#apartments_filter').on('change', function () {
+  $('.card').each(function () {
+    $(this).removeClass('d-none');
+  }); // console.log($('.card').first().attr('data-features').);
+
+  $('.card').each(function () {
+    // console.log($(this));
+    if ($(this).attr('data-beds') < $('#beds_number').val()) {
+      $(this).addClass('d-none');
+    }
+
+    if ($(this).attr('data-rooms') < $('#rooms_number').val()) {
+      $(this).addClass('d-none');
+    }
+  });
+});
+$('li input[type="checkbox"]').each(function () {
+  $(this).on('click', function () {
+    if ($(this).find('input[type="checkbox"]').attr('checked') == undefined) {
+      console.log($(this).children().attr('checked') == undefined);
+      $(this).find('span').text();
+      console.log($(this).find('span').text());
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -42424,6 +42459,8 @@ $(document).ready(function () {
   __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
   __webpack_require__(/*! ./coordinate_search */ "./resources/js/coordinate_search.js");
+
+  __webpack_require__(/*! ./apartments_filter */ "./resources/js/apartments_filter.js");
 
   __webpack_require__(/*! ./maps_tomtom */ "./resources/js/maps_tomtom.js");
   /* --↓script per cambiare focus degli input con il tasto Enter-- */
