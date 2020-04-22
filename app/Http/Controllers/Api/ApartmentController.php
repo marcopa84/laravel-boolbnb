@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Apartment;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
@@ -12,7 +13,9 @@ class ApartmentController extends Controller
       $lat1 = doubleval($lat);
       $lon1 = doubleval($lon);
       $rad = intval($rad);
-      $apartments = Apartment::orderBy('longitude', 'desc')->where('longitude', '<' , $lon1+$rad*0.1)->where('longitude', '>' , $lon1-$rad*0.1)->get();
+
+      $apartments = Apartment::where('longitude', '<' , $lon1+$rad*0.1)->where('longitude', '>' , $lon1-$rad*0.1)->where('latitude', '<', $lat1 + $rad * 0.1)->where('latitude', '>', $lat1 - $rad * 0.1)->get();
+      
       $filteredApartments = [];
       foreach($apartments as $apartment) {
         $lat2 = $apartment['latitude'];
@@ -23,10 +26,13 @@ class ApartmentController extends Controller
         (1 - cos(($lon2 - $lon1) * $p))/2;
         $result = 12742 * asin(sqrt($a));
         if ($result <= $rad) {
+          $result = round($result, 2);
           $apartment->distance = $result;
           $filteredApartments[] = $apartment;
         }
+        $filteredApartments = array_values(Arr::sort($filteredApartments, function ($value) {
+        return $value['distance'];}));
       }
-      return view('api.apartments.index', compact('filteredApartments'));
+      return view('apartments.index', compact('filteredApartments'));
     }
 }

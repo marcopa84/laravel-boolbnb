@@ -29,7 +29,8 @@ class ApartmentSeeder extends Seeder
         $apartment->visible = true;
         $apartment->save();
 
-        for ($i = 0; $i < 10; $i++) {
+        // coordinate colosseo 41.890251, 12.492373
+        for ($i = 0; $i < 1000; $i++) {
             $apartment = new Apartment;
             $apartment->user_id = 1;
             $apartment->title = $faker->sentence();
@@ -38,9 +39,9 @@ class ApartmentSeeder extends Seeder
             $apartment->beds_number = rand(1, 5);
             $apartment->bathrooms_number = rand(1, 5);
             $apartment->size = rand(30, 150);
-            $apartment->address = $faker->address();
-            $apartment->latitude = $faker->latitude();
-            $apartment->longitude = $faker->longitude();
+            $apartment->address = 'Roma';
+            $apartment->latitude = $faker->latitude(41.986316, 41.794889);
+            $apartment->longitude = $faker->longitude(12.381556, 12.614890);
             $apartment->featured_image = 'default_images/default_apartment.jpg';
             $apartment->price = rand(50, 100);
             $apartment->visible = true;

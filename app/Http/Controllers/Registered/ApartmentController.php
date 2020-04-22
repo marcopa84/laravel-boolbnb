@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ApartmentController extends Controller
 {
@@ -170,13 +171,20 @@ class ApartmentController extends Controller
         $data = $request->all();
         $request->validate($validateRules);
 
+        if (!empty($data['featured_image'])) {
+            if (!($apartment->featured_image == 'default_images/default_apartment.jpg')) {
+                File::delete($apartment->featured_image);
+            }
+        }
+
         $apartment->fill($data);
         $apartment->user_id = Auth::id();
-
+        
         if (!empty($data['featured_image'])) {
             $path = Storage::disk('public')->put('images', $data['featured_image']);
             $apartment->featured_image = 'storage/' . $path;
         }
+
 
         $saved = $apartment->update();
 
@@ -207,7 +215,9 @@ class ApartmentController extends Controller
         if (empty($apartment)) {
             abort(404);
         }
-        \File::delete($apartment->featured_image);
+        if( !($apartment->featured_image == 'default_images/default_apartment.jpg') ){
+            File::delete($apartment->featured_image);
+        }
         $apartment->features()->detach();
         $apartment->delete();
         //no error only for color
