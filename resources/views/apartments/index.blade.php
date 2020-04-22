@@ -3,12 +3,68 @@
 @section('main')
 <div class="container my-5">
    <div class="row">
+               <div class="{{-- search-container row --}}">
+            <form action="{{route('api.apartments.index')}}" method="get">
+               @method('GET')
+               @csrf
+               <input type="hidden" name="latitude" value="{{$latitude}}">
+               <input type="hidden" name="longitude" value="{{$longitude}}">
+               <div class="form-group">
+                  <label for="rooms_number">N° di stanze</label>
+                  <input id="rooms_number" class="form-control" type="number" min="1" name="rooms_number" value="{{ old('rooms_number') }}" placeholder="N° stanze disponibili">
+                  {{-- @if($errors->has('rooms_number'))
+                     <div class="error alert alert-danger">{{ $errors->first('rooms_number') }}</div>
+                  @endif --}}
+               </div>
+               <div class="form-group">
+                  <label for="beds_number">N° di letti</label>
+                  <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ old('beds_number') }}" min="1" placeholder="N° letti disponibili">
+                  {{-- @if($errors->has('beds_number'))
+                     <div class="error alert alert-danger">{{ $errors->first('beds_number') }}</div>
+                  @endif --}}
+               </div>
+               <div class="form-group">
+                  <select name="radius" id="">
+                     <option value="20" selected>20 Km</option>
+                     <option value="40">40 Km</option>
+                     <option value="60">60 Km</option>
+                  </select>
+               </div>
+               <div class="form-group">
+                  <label for="size">Servizi aggiuntivi</label>
+                     <ul id="features" class="list-inline">
+                        @foreach ($features as $feature)
+                        <li class="list-inline-item btn btn-outline-dark">
+                           <input type="checkbox" name="features[]" value="{{$feature->id}}"
+                           @if(!empty(old('features')))
+                              @for($i = 0; $i < count(old('features')); $i++ )
+                                 @if(old('features')[$i] == $feature->id) {{'checked'}}
+                                 @endif
+                              @endfor
+                              @endif >
+                           <span>{{$feature->description}}</span>
+                        </li>
+                        @endforeach
+                     </ul>
+                  {{-- @if($errors->has('features'))
+                     <div class="error alert alert-danger">{{ $errors->first('features') }}</div>
+                  @endif --}}
+               </div>
+               <div class="row">
+                  <div class="col">
+                     <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+                     <i class="fas fa-search"></i><span>Cerca</span>
+                     </button>
+                  </div>
+               </div>
+            </form>
+         </div>  
       <div class="col-12">
          @if (empty($filteredApartments))
             <div class="alert alert-info" role="alert">
                <p>Non ci sono appartamenti disponibili</p>
             </div>
-         @else
+         @else 
             @foreach ($filteredApartments as $apartment)
             <div class="card dash">
                <div class="card-image">

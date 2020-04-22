@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Apartment;
+use App\Feature;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class ApartmentController extends Controller
       $lon1 = doubleval($lon);
       $rad = intval($rad);
 
-      $apartments = Apartment::where('longitude', '<' , $lon1+$rad*0.1)->where('longitude', '>' , $lon1-$rad*0.1)->where('latitude', '<', $lat1 + $rad * 0.1)->where('latitude', '>', $lat1 - $rad * 0.1)->get();
+      $apartments = Apartment::where('longitude', '<' , $lon1+$rad*0.01)->where('longitude', '>' , $lon1-$rad*0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad * 0.01)->get();
       
       $filteredApartments = [];
       foreach($apartments as $apartment) {
@@ -39,6 +40,12 @@ class ApartmentController extends Controller
         $filteredApartments = array_values(Arr::sort($filteredApartments, function ($value) {
         return $value['distance'];}));
       }
-      return view('apartments.index', compact('filteredApartments'));
+      $data = [
+        'filteredApartments'=>$filteredApartments,
+        'latitude' => $lat,
+        'longitude' => $lon,
+        'features' => Feature::all(),
+      ];
+      return view('apartments.index', $data);
     }
 }

@@ -27,12 +27,9 @@
          </div>
          <div class="row">
             <div class="col">
-            <a href="">
-                  <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
-                  <i class="fas fa-search"></i><span>Cerca</span>
-                  </button>
-               </a>
-               
+               <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+               <i class="fas fa-search"></i><span>Cerca</span>
+               </button>
             </div>
          </div>
       </form>
