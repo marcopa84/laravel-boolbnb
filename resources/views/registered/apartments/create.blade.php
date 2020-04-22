@@ -161,18 +161,6 @@
    });
    </script>
 
-  {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
-  <script type="text/jscript" charset="utf-8">
-    $('form input').on('keydown', function(event) {
-      if (event.which == 13) {
-        var inputs = $(this).parents("form").find(":input");
-        if (inputs[inputs.index(this) + 1] != null) {
-            inputs[inputs.index(this) + 1].focus();
-        }
-        event.preventDefault();
-      }
-    });
-  </script>
 
   {{-- ↓ script per checkare elementi anche cliccando sul nome --}}
   <script type="text/javascript" charser="utf-8">

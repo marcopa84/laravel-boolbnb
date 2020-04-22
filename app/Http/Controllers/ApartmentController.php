@@ -14,6 +14,7 @@ class ApartmentController extends Controller
      */
     public function index()
     {
+        // qui manderemo solo gli sponsorizzati per la homepage
         $data = [
             'apartments' => Apartment::all(),
         ];
@@ -49,7 +50,7 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
-        //
+        return view('apartments.show', compact('apartment'));
     }
 
     /**

@@ -21,7 +21,7 @@
                      <p class="card-distance">{{$apartment->distance}}km</p>
                   </div>
                   <div class="card-dash-buttons">
-                     <a href="{{route('registered.apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
+                     <a href="{{route('apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
                      </form>
                   </div>
                </div>

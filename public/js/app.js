@@ -42414,126 +42414,40 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tomtom-international/web-sdk-maps */ "./node_modules/@tomtom-international/web-sdk-maps/dist/maps.min.js");
-/* harmony import */ var _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0__);
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // importiamo TomTom
-
-
- // richiediamo Jquery
-
-var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js"); //richiamiamo HandleBars
-
-
-var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js");
+// richiediamo Jquery
+var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 $(document).ready(function () {
-  // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
-  if ($('#map').length > 0) {
-    var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')];
-    var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
-      container: 'map',
-      key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-      style: 'tomtom://vector/1/basic-main',
-      center: coordinates,
-      zoom: 15,
-      pitch: 45
-    });
-    map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl()); // Puntature
+  __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-    var element = document.createElement('div');
-    element.id = 'marker';
-    var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.Marker({
-      element: element
-    });
-    marker.setLngLat(coordinates).addTo(map);
-  }
+  __webpack_require__(/*! ./coordinate_search */ "./resources/js/coordinate_search.js");
 
-  ; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
-  //RICERCA COORDINATE IN HOME
+  __webpack_require__(/*! ./maps_tomtom */ "./resources/js/maps_tomtom.js");
+  /* --↓script per cambiare focus degli input con il tasto Enter-- */
 
-  $('#search-address-home').on('click', function () {
-    var address_value = $('#address').val();
-    getGeocode(address_value);
-  });
-  $(document).on('click', '#address-suggestions-item', function () {
-    $('#address').val($(this).find('#address-suggestions-item-content').text());
-    $('#latitude').val($(this).attr('data-latitude'));
-    $('#longitude').val($(this).attr('data-longitude'));
-    $('#address-suggestions').text('');
-    console.log($(this).find('#address-suggestions-item-content').text());
-  }); //RICERCA COORDINATE IN HOME
-  // RICERCA COORDINATE CREATE
 
-  $('#search-address').on('click', function () {
-    var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#zip').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
-    getGeocode(address_value);
-  });
-  $('#address-form-group').find('input').on('focusin', function () {
-    $(this).keydown(function (e) {
-      if (event.which == 13) {
-        event.preventDefault();
-        var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
-        getGeocode(address_value);
+  $('form input').on('keydown', function (event) {
+    if (event.which == 13) {
+      var inputs = $(this).parents("form").find(":input");
+
+      if (inputs[inputs.index(this) + 1] != null) {
+        inputs[inputs.index(this) + 1].focus();
       }
-    });
-  });
-  $(document).on('click', '#address-suggestions-item', function () {
-    $('#address').val($(this).find('#address-suggestions-item-content').text());
-    $('#latitude').val($(this).attr('data-latitude'));
-    $('#longitude').val($(this).attr('data-longitude'));
-    $('#address-suggestions').text('');
-    console.log($(this).find('#address-suggestions-item-content').text());
-  }); // RICERCA COORDINATE CREATE
-  //////////////////////////////////////////////////
-  // F U N C T I O N S
-  //////////////////////////////////////////////////
-  // FX getGeocode: geolocalizzazione di un address che forniamo all'api TomTom tramite chiamata ajax
 
-  function getGeocode(address_value) {
-    var source = document.getElementById("address-template").innerHTML;
-    var template = Handlebars.compile(source);
-    $('#address-suggestions').text('');
-    $.ajax({
-      url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
-      data: {
-        'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-        'limit': '5'
-      },
-      method: 'GET',
-      success: function success(data) {
-        var results = data.results;
-        console.log(results);
-
-        for (var index = 0; index < results.length; index++) {
-          var context = {
-            address: results[index].address.freeformAddress,
-            latitude: results[index].position.lat,
-            longitude: results[index].position.lon
-          };
-          var html = template(context);
-          $('#address-suggestions').append(html);
-        }
-      },
-      error: function error(richiesta, stato, _error) {
-        alert('è avvenuto un errore di collegamento');
-      }
-    });
-  }
-
-  ; // FX: funzione per calcolare la distanza in km tra due coordinate (utile per selezionare appartamenti in funzione di un dato raggio)
-
-  function getDistanceBetweenTwoCoordinatePoints(lat1, lon1, lat2, lon2) {
-    var p = 0.017453292519943295; // Math.PI / 180
-
-    var c = Math.cos;
-    var a = 0.5 - c((lat2 - lat1) * p) / 2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
-    return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
-  }
+      event.preventDefault();
+    }
+  }); //     // FX: funzione per calcolare la distanza in km tra due coordinate (utile per selezionare appartamenti in funzione di un dato raggio)
+  //     function getDistanceBetweenTwoCoordinatePoints(lat1, lon1, lat2, lon2) {
+  //     var p = 0.017453292519943295;    // Math.PI / 180
+  //     var c = Math.cos;
+  //     var a = 0.5 - c((lat2 - lat1) * p)/2 +
+  //             c(lat1 * p) * c(lat2 * p) *
+  //             (1 - c((lon2 - lon1) * p))/2;
+  //     return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+  //   }
 });
 
 /***/ }),
@@ -42580,6 +42494,128 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/coordinate_search.js":
+/*!*******************************************!*\
+  !*** ./resources/js/coordinate_search.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+//richiamiamo HandleBars
+var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js"); //RICERCA COORDINATE IN HOME
+
+
+$('#search-address-home').on('click', function () {
+  var address_value = $('#address').val();
+  getGeocode(address_value);
+});
+$(document).on('click', '#address-suggestions-item', function () {
+  $('#address').val($(this).find('#address-suggestions-item-content').text());
+  $('#latitude').val($(this).attr('data-latitude'));
+  $('#longitude').val($(this).attr('data-longitude'));
+  $('#address-suggestions').text('');
+  console.log($(this).find('#address-suggestions-item-content').text());
+}); //RICERCA COORDINATE IN HOME
+// RICERCA COORDINATE CREATE
+
+$('#search-address').on('click', function () {
+  var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#zip').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
+  getGeocode(address_value);
+});
+$('#address-form-group').find('input').on('focusin', function () {
+  $(this).keydown(function (e) {
+    if (event.which == 13) {
+      event.preventDefault();
+      var address_value = $('#street').val() + ' ' + $('#number').val() + ' ' + $('#zip').val() + ' ' + $('#city').val() + ' ' + $('#province').val();
+      getGeocode(address_value);
+    }
+  });
+});
+$(document).on('click', '#address-suggestions-item', function () {
+  $('#address').val($(this).find('#address-suggestions-item-content').text());
+  $('#latitude').val($(this).attr('data-latitude'));
+  $('#longitude').val($(this).attr('data-longitude'));
+  $('#address-suggestions').text('');
+  console.log($(this).find('#address-suggestions-item-content').text());
+}); // RICERCA COORDINATE CREATE
+//////////////////////////////////////////////////
+// F U N C T I O N S
+//////////////////////////////////////////////////
+// FX getGeocode: geolocalizzazione di un address che forniamo all'api TomTom tramite chiamata ajax
+
+function getGeocode(address_value) {
+  var source = document.getElementById("address-template").innerHTML;
+  var template = Handlebars.compile(source);
+  $('#address-suggestions').text('');
+  $.ajax({
+    url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
+    data: {
+      'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
+      'limit': '5'
+    },
+    method: 'GET',
+    success: function success(data) {
+      var results = data.results;
+      console.log(results);
+
+      for (var index = 0; index < results.length; index++) {
+        var context = {
+          address: results[index].address.freeformAddress,
+          latitude: results[index].position.lat,
+          longitude: results[index].position.lon
+        };
+        var html = template(context);
+        $('#address-suggestions').append(html);
+      }
+    },
+    error: function error(richiesta, stato, _error) {
+      alert('è avvenuto un errore di collegamento');
+    }
+  });
+}
+
+;
+
+/***/ }),
+
+/***/ "./resources/js/maps_tomtom.js":
+/*!*************************************!*\
+  !*** ./resources/js/maps_tomtom.js ***!
+  \*************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tomtom-international/web-sdk-maps */ "./node_modules/@tomtom-international/web-sdk-maps/dist/maps.min.js");
+/* harmony import */ var _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0__);
+// importiamo TomTom
+ // ↓ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
+
+if ($('#map').length > 0) {
+  var coordinates = [$('#map').attr('data-long'), $('#map').attr('data-lat')];
+  var map = _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.map({
+    container: 'map',
+    key: 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
+    style: 'tomtom://vector/1/basic-main',
+    center: coordinates,
+    zoom: 15,
+    pitch: 45
+  });
+  map.addControl(new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.NavigationControl()); // Puntature
+
+  var element = document.createElement('div');
+  element.id = 'marker';
+  var marker = new _tomtom_international_web_sdk_maps__WEBPACK_IMPORTED_MODULE_0___default.a.Marker({
+    element: element
+  });
+  marker.setLngLat(coordinates).addTo(map);
+}
+
+; // ↑ creiamo mappa utilizzando TomTom, se esiste un elemento con id="map"
 
 /***/ }),
 

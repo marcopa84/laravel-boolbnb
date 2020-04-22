@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Guests Routes
 Route::get('/', 'ApartmentController@index')->name('home');
+Route::get('/apartments/{apartment}', 'ApartmentController@show')->name('apartments.show');
 
 // Auth routes
 Auth::routes();

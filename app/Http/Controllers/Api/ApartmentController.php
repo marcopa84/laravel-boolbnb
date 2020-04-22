@@ -9,7 +9,13 @@ use Illuminate\Http\Request;
 
 class ApartmentController extends Controller
 {
-    public function index($lat, $lon, $rad) {
+    public function index(Request $request) {
+      $data = $request->all();
+
+      $lat = $data['latitude'];
+      $lon = $data['longitude'];
+      $rad = $data['radius'];
+      
       $lat1 = doubleval($lat);
       $lon1 = doubleval($lon);
       $rad = intval($rad);

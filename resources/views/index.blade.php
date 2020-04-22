@@ -3,40 +3,39 @@
 @section('main')
 <div class="main-search">
    <div class="container">
-     <div class="stocazzo">
-
-     </div>
       <h1>Cerca il tuo appartamento</h1>
-   <form class="dark">
-      <div class="row">
-         <div class="col-md-4">
-            <input type="text" id="address" name="address" class="form-control" placeholder="Dove?">
-            <input type="hidden" name="latitude" id="latitude" value="">
-            <input type="hidden" name="longitude" id="longitude" value="">
-            <input type="hidden" name="radius" id="radius" value="20">
-            <input id="search-address-home" class="btn btn-dark mt-3" type="button" value="Cerca indirizzo">
-            <ol id="address-suggestions" class="list-group">
-
-            </ol>
+      <form class="dark" action="{{route('api.apartments.index')}}" method="get">
+         @csrf
+         @method('GET')
+         <div class="search-container row">
+            <div class="col-md-4">
+               <input type="text" id="address" class="form-control" placeholder="Dove?">
+               <input type="hidden" name="latitude" id="latitude" value="">
+               <input type="hidden" name="longitude" id="longitude" value="">
+               <input type="hidden" name="radius" id="radius" value="20">
+               <ol id="address-suggestions" class="list-group">
+                  
+               </ol>
+               <input id="search-address-home" class="btn btn-dark mt-3" type="button" value="Cerca indirizzo">
+            </div>
+            <div class="col-md-4">
+               <input type="text" class="form-control" title="Inserisci la data di tuo interesse" placeholder="Data" value="">
+            </div>
+            <div class="col-md-4">
+               <input type="text" class="form-control" title="Quanti siete?" placeholder="Ospiti">
+            </div>
          </div>
-         <div class="col-md-4">
-            <input type="text" class="form-control" title="Inserisci la data di tuo interesse" name="datefilter" placeholder="Data" value="">
+         <div class="row">
+            <div class="col">
+            <a href="">
+                  <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+                  <i class="fas fa-search"></i><span>Cerca</span>
+                  </button>
+               </a>
+               
+            </div>
          </div>
-         <div class="col-md-4">
-            <input type="text" class="form-control" title="Quanti siete?" placeholder="Ospiti">
-         </div>
-      </div>
-      <div class="row">
-         <div class="col">
-         <a href="{{}}">
-               <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
-               <i class="fas fa-search"></i><span>Cerca</span>
-               </button>
-            </a>
-            
-         </div>
-      </div>
-   </form>
+      </form>
    </div>
 </div>
 
@@ -137,12 +136,12 @@
      </li>
   </script>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js" async></script>
+{{-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js" async></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" async></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" async></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" async></script> --}}
 
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
    $(function() {
 
       $('input[name="datefilter"]').daterangepicker({
@@ -161,6 +160,6 @@
       });
 
    });
-</script>
+</script> --}}
 
 @endsection

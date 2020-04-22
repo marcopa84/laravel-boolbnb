@@ -11000,7 +11000,7 @@ html {
   flex-wrap: wrap;
 }
 
-.main-search form .row:first-child {
+.main-search form .search-container {
   border: 1px solid #343a40;
   border-radius: 30px;
   padding: 24px 0;
