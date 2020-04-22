@@ -3,6 +3,9 @@
 @section('main')
 <div class="main-search">
    <div class="container">
+     <div class="stocazzo">
+
+     </div>
       <h1>Cerca il tuo appartamento</h1>
    <form class="dark">
       <div class="row">
@@ -26,7 +29,19 @@
    </form>
    </div>
 </div>
-
+<script type="text/javascript">
+  // var arrayPonte = [];
+  // var array=[1,2,3,4,5,6,7,8,9,8,7,6,5,4,3,2,1];
+  // for(var i=0; i<9; i++) {
+  //   $('.stocazzo').prepend('<p>'+array.join(' ')+'</p>');
+  //   for(var k=0; k<array.length; k++) {
+  //     array[k]--;
+  //     if(array[k] < 1) {
+  //       array[k] = ' ';
+  //     }
+  //   }
+  // }
+</script>
 <div class="ads mt-5">
    <div class="container">
    {{-- PROVA APPARTAMENTI --}}

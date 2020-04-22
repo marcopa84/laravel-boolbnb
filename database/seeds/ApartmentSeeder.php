@@ -29,7 +29,7 @@ class ApartmentSeeder extends Seeder
         $apartment->visible = true;
         $apartment->save();
 
-        for ($i = 0; $i < 9; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $apartment = new Apartment;
             $apartment->user_id = 1;
             $apartment->title = $faker->sentence();
@@ -39,8 +39,8 @@ class ApartmentSeeder extends Seeder
             $apartment->bathrooms_number = rand(1, 5);
             $apartment->size = rand(30, 150);
             $apartment->address = $faker->address();
-            $apartment->latitude = $faker->latitude($min = -90, $max = 90);
-            $apartment->longitude = $faker->longitude($min = -180, $max = 180);
+            $apartment->latitude = $faker->latitude();
+            $apartment->longitude = $faker->longitude();
             $apartment->featured_image = 'default_images/default_apartment.jpg';
             $apartment->price = rand(50, 100);
             $apartment->visible = true;
