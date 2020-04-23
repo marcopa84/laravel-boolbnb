@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('main')
+{{-- @dd($messages); --}}
 <div class="dashboard">
     @if (session('status'))
     <div class="alert alert-success" role="alert">

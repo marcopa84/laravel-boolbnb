@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class RegisteredController extends Controller
 {
@@ -23,6 +25,12 @@ class RegisteredController extends Controller
      */
     public function index()
     {
-        return view('registered.index');
+        $messages = User::where('users.id', Auth::id())
+            ->join('apartments', 'users.id', '=', 'apartments.user_id')
+            ->join('messages', 'apartments.id', '=', 'messages.apartment_id')
+            ->select('messages.*')
+            ->get();
+        dd($messages);
+        return view('registered.index', compact('messages'));
     }
 }
