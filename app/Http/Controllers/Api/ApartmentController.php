@@ -16,13 +16,13 @@ class ApartmentController extends Controller
       $lat = $data['latitude'];
       $lon = $data['longitude'];
       $rad = $data['radius'];
-      
+
       $lat1 = doubleval($lat);
       $lon1 = doubleval($lon);
       $rad = intval($rad);
 
-      $apartments = Apartment::where('longitude', '<' , $lon1+$rad*0.01)->where('longitude', '>' , $lon1-$rad*0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad * 0.01)->get();
-      
+      $apartments = Apartment::where('longitude', '<' , $lon1+$rad*0.01)->where('longitude', '>' , $lon1-$rad*0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad*0.01)->get();
+
       $filteredApartments = [];
       foreach($apartments as $apartment) {
         $lat2 = $apartment['latitude'];

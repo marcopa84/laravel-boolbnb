@@ -4,26 +4,14 @@ const $ = require('jquery');
 
 
 $(document).ready(function(){
-    
+
     require('./bootstrap');
-    
+
     require('./coordinate_search');
 
     require('./apartments_filter');
 
     require('./maps_tomtom');
-
-    /* --↓script per cambiare focus degli input con il tasto Enter-- */
-    $('form input').on('keydown', function (event) {
-        if (event.which == 13) {
-            var inputs = $(this).parents("form").find(":input");
-            if (inputs[inputs.index(this) + 1] != null) {
-                inputs[inputs.index(this) + 1].focus();
-            }
-            event.preventDefault();
-        }
-    });
-
     
     //     // FX: funzione per calcolare la distanza in km tra due coordinate (utile per selezionare appartamenti in funzione di un dato raggio)
     //     function getDistanceBetweenTwoCoordinatePoints(lat1, lon1, lat2, lon2) {

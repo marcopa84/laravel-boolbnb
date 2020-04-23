@@ -23,7 +23,7 @@
    </div>
    <div class="form-group">
       <label for="rooms_number">N° di stanze</label>
-      <input id="rooms_number" class="form-control" type="number" min="1" name="rooms_number" v-model="rooms_number" value="{{ old('rooms_number') }}" placeholder="N° stanze disponibili">
+      <input id="rooms_number" class="form-control" type="number" name="rooms_number" v-model="rooms_number" value="{{ old('rooms_number') }}"  min="1" placeholder="N° stanze disponibili">
       @if($errors->has('rooms_number'))
          <div class="error alert alert-danger">{{ $errors->first('rooms_number') }}</div>
       @endif
@@ -128,7 +128,7 @@
 @endsection
 
 @section('scripts')
-   
+
   {{-- ↓ template per riempire l'input #address che è readonly   --}}
   <script id="address-template" type="text/x-handlebars-template">
      <li id="address-suggestions-item" data-latitude="@{{latitude}}" data-longitude="@{{longitude}}" class="list-group-item">
@@ -160,7 +160,19 @@
       })
    });
    </script>
-
+   
+   {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
+   <script type="text/javascript">
+   $('form input').on('keydown', function (event) {
+       if (event.which == 13) {
+           var inputs = $(this).parents("form").find(":input");
+           if (inputs[inputs.index(this) + 1] != null) {
+               inputs[inputs.index(this) + 1].focus();
+           }
+           event.preventDefault();
+       }
+   });
+   </script>
 
   {{-- ↓ script per checkare elementi anche cliccando sul nome --}}
   <script type="text/javascript" charser="utf-8">

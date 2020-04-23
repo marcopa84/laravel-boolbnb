@@ -17,11 +17,11 @@
          <h4 class="apartment-details-title my-4">Caratteristiche</h4>
          <div class="apartment-details-list" role="list">
             <span>Numero stanze:<i class="fas fa-expand"></i> {{$apartment->rooms_number}}</span>
-            <span>Numero minimo posti letto:<i class="fas fa-bed"></i> {{$apartment->beds_number}}</span>
+            <span>Numero posti letto:<i class="fas fa-bed"></i> {{$apartment->beds_number}}</span>
             <span>Numero bagni:<i class="fas fa-bath"></i> {{$apartment->bathrooms_number}}</span>
-            <span>Prezzo:<i class="fas fa-money-bill-alt"></i> {{$apartment->price}}</span>
+            <span>Prezzo:<i class="fas fa-money-bill-alt"></i> {{$apartment->price}}€</span>
          </div>
-         
+
       </div>
 
       <div class="apartment-features">
@@ -62,6 +62,4 @@
 
    </aside> <!-- / sidebar -->
 </div>
-
-
 @endsection

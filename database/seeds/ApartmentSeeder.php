@@ -30,7 +30,7 @@ class ApartmentSeeder extends Seeder
         $apartment->save();
 
         // coordinate colosseo 41.890251, 12.492373
-        for ($i = 0; $i < 1000; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             $apartment = new Apartment;
             $apartment->user_id = 1;
             $apartment->title = $faker->sentence();

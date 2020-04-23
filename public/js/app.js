@@ -42417,31 +42417,50 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#apartments_filter').on('change', function () {
+$(document).on('keyup', 'input[name*="number"]', function () {
+  $('.card').removeClass('d-none');
+  apartmentsFilter();
+});
+$(document).on('click', 'li.list-inline-item', function () {
+  if ($(this).find('input[type="checkbox"]').attr('checked') == undefined) {
+    $(this).find('input[name="features[]"]').attr('checked', 'checked');
+    $(this).removeClass('btn-outline-dark');
+    $(this).addClass('btn-info');
+    apartmentsFilter();
+  } else {
+    $(this).find('input[name="features[]"]').removeAttr('checked');
+    $(this).removeClass('btn-info');
+    $(this).addClass('btn-outline-dark');
+    apartmentsFilter();
+  }
+});
+
+function apartmentsFilter() {
   $('.card').each(function () {
     $(this).removeClass('d-none');
-  }); // console.log($('.card').first().attr('data-features').);
 
+    if (parseInt($(this).attr('data-beds')) < $('#beds_number').val()) {
+      $(this).addClass('d-none');
+    }
+
+    if (parseInt($(this).attr('data-rooms')) < $('#rooms_number').val()) {
+      $(this).addClass('d-none');
+    }
+  });
+  var features = [];
+  $('[type="checkbox"]').each(function () {
+    if ($(this).is(':checked')) {
+      features.push($(this).siblings('span').text());
+    }
+  });
   $('.card').each(function () {
-    // console.log($(this));
-    if ($(this).attr('data-beds') < $('#beds_number').val()) {
-      $(this).addClass('d-none');
-    }
-
-    if ($(this).attr('data-rooms') < $('#rooms_number').val()) {
-      $(this).addClass('d-none');
+    for (var i = 0; i < features.length; i++) {
+      if (!$(this).attr('data-features').includes(features[i])) {
+        $(this).addClass('d-none');
+      }
     }
   });
-});
-$('li input[type="checkbox"]').each(function () {
-  $(this).on('click', function () {
-    if ($(this).find('input[type="checkbox"]').attr('checked') == undefined) {
-      console.log($(this).children().attr('checked') == undefined);
-      $(this).find('span').text();
-      console.log($(this).find('span').text());
-    }
-  });
-});
+}
 
 /***/ }),
 
@@ -42462,21 +42481,7 @@ $(document).ready(function () {
 
   __webpack_require__(/*! ./apartments_filter */ "./resources/js/apartments_filter.js");
 
-  __webpack_require__(/*! ./maps_tomtom */ "./resources/js/maps_tomtom.js");
-  /* --↓script per cambiare focus degli input con il tasto Enter-- */
-
-
-  $('form input').on('keydown', function (event) {
-    if (event.which == 13) {
-      var inputs = $(this).parents("form").find(":input");
-
-      if (inputs[inputs.index(this) + 1] != null) {
-        inputs[inputs.index(this) + 1].focus();
-      }
-
-      event.preventDefault();
-    }
-  }); //     // FX: funzione per calcolare la distanza in km tra due coordinate (utile per selezionare appartamenti in funzione di un dato raggio)
+  __webpack_require__(/*! ./maps_tomtom */ "./resources/js/maps_tomtom.js"); //     // FX: funzione per calcolare la distanza in km tra due coordinate (utile per selezionare appartamenti in funzione di un dato raggio)
   //     function getDistanceBetweenTwoCoordinatePoints(lat1, lon1, lat2, lon2) {
   //     var p = 0.017453292519943295;    // Math.PI / 180
   //     var c = Math.cos;
@@ -42485,6 +42490,7 @@ $(document).ready(function () {
   //             (1 - c((lon2 - lon1) * p))/2;
   //     return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
   //   }
+
 });
 
 /***/ }),
@@ -42674,8 +42680,8 @@ if ($('#map').length > 0) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\marco\desktop\boolean\php\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
