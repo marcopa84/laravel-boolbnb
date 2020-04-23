@@ -32,6 +32,7 @@ Auth::routes();
 
 // Registered routes
 Route::get('/registered', 'RegisteredController@index')->name('registered.index');
+Route::get('/registered/messages', 'RegisteredController@messages')->name('registered.messages');
 Route::name('registered.')
     ->prefix('registered')
     ->namespace('Registered')

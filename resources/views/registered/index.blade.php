@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('main')
-{{-- @dd($messages); --}}
 <div class="dashboard">
     @if (session('status'))
     <div class="alert alert-success" role="alert">
@@ -40,7 +39,7 @@
             </div>
             <div class="col-6 col-sm-6 col-md-3">
                 <div class="dashboard-content">
-                    <a class="area-link" href="#">
+                    <a class="area-link" href="{{route('registered.messages')}}">
                         <div class="area">
                             <i class="icon-title fas fa-envelope fa-3x"></i>
                             <h6 class="title">Messaggi</h6>
