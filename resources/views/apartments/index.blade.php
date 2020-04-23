@@ -37,6 +37,7 @@
                @csrf
                <input type="hidden" name="latitude" value="{{$latitude}}">
                <input type="hidden" name="longitude" value="{{$longitude}}">
+               <input type="hidden" name="beds_number" value="">
                <div class="form-group">
                   <label for="radius">Massima distanza dal punto di interesse</label>
                   <select class="d-block" name="radius">
