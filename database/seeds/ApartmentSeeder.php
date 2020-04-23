@@ -33,7 +33,7 @@ class ApartmentSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             $apartment = new Apartment;
             $apartment->user_id = 1;
-            $apartment->title = $faker->sentence();
+            $apartment->title = ($i+1) . $faker->sentence();
             $apartment->description = $faker->paragraph();
             $apartment->rooms_number = rand(1, 5);
             $apartment->beds_number = rand(1, 5);

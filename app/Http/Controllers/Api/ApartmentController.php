@@ -16,6 +16,7 @@ class ApartmentController extends Controller
       $lat = $data['latitude'];
       $lon = $data['longitude'];
       $rad = $data['radius'];
+      $beds_number=$data['beds_number'];
 
       $lat1 = doubleval($lat);
       $lon1 = doubleval($lon);
@@ -44,6 +45,7 @@ class ApartmentController extends Controller
         'filteredApartments'=>$filteredApartments,
         'latitude' => $lat,
         'longitude' => $lon,
+        'beds_number' => $beds_number,
         'features' => Feature::all(),
       ];
       return view('apartments.index', $data);

@@ -111,11 +111,11 @@
    </div>
    <div class="form-group">
       <div class="form-group-radio">
-         <label for="nopublished">Annuncio Pubblico</label>
+         <label for="nopublished">Annuncio Privato</label>
          <input id="nopublished" type="radio" name="visible" value="0" {{ (old('visible') == '0') ? 'checked' : '' }}>
       </div>
       <div class="form-group-radio">
-         <label for="published">Annuncio Privato</label>
+         <label for="published">Annuncio Pubblico</label>
          <input id="published" type="radio" name="visible" value="1" {{ (old('visible') == '1') ? 'checked' : '' }}>
       </div>
       @if($errors->has('visible'))

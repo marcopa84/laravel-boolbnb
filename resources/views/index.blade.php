@@ -9,7 +9,7 @@
          @method('GET')
          <div class="search-container row">
             <div class="col-md-4">
-               <input type="text" id="address" class="form-control" placeholder="Dove?">
+               <input type="text" id="address" class="form-control" placeholder="Dove?" autocomplete="off">
                <input type="hidden" name="latitude" id="latitude" value="">
                <input type="hidden" name="longitude" id="longitude" value="">
                <input type="hidden" name="radius" id="radius" value="20">
@@ -22,7 +22,7 @@
                <input type="text" class="form-control" title="Inserisci la data di tuo interesse" placeholder="Data" value="">
             </div>
             <div class="col-md-4">
-               <input type="text" class="form-control" title="Quanti siete?" placeholder="Ospiti">
+               <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti">
             </div>
          </div>
          <div class="row">

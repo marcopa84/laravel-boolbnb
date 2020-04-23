@@ -1,4 +1,4 @@
-
+apartmentsFilter();
 $(document).on('keyup','input[name*="number"]', function(){
   $('.card').removeClass('d-none');
   apartmentsFilter();
@@ -15,7 +15,7 @@ $(document).on('click', 'li.list-inline-item',function(){
   $(this).find('input[name="features[]"]').removeAttr('checked');
   $(this).removeClass('btn-info');
   $(this).addClass('btn-outline-dark');
-  apartmentsFilter()
+  apartmentsFilter();
   }
 });
 

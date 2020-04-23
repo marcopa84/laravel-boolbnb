@@ -6,7 +6,7 @@
             <div id="apartments_filter">
               <div class="form-group">
                 <label for="beds_number">Numero minimo Posti Letto</label>
-                <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ old('beds_number') }}" min="1" placeholder="N° posti letto minimi">
+                <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{$beds_number}}{{ old('beds_number') }}" min="1" placeholder="N° posti letto minimi">
               </div>
                <div class="form-group">
                   <label for="rooms_number">Numero minimo Stanze</label>
