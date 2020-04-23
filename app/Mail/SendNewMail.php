@@ -10,7 +10,10 @@ use Illuminate\Queue\SerializesModels;
 class SendNewMail extends Mailable
 {
     use Queueable, SerializesModels;
+   
     public $message_email;
+
+    
     /**
      * Create a new message instance.
      *
