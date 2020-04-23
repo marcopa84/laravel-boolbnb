@@ -22,6 +22,7 @@ class ApartmentFeatureSeeder extends Seeder
           while( in_array($j, $features) );
           $features[] = $j;
       }
+      sort($features);
       $apartment->features()->attach($features);
     }
   }
