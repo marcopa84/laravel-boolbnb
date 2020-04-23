@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Apartment;
 use App\Message;
+use App\Mail\SendNewMail;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
@@ -26,6 +28,8 @@ class MessageController extends Controller
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'invio del messaggio');
         }
+
+        Mail::to($apartment->user->email)->send(new SendNewMail());
 
         return redirect()->back()->with('message', 'Il messaggio è stato inviato correttamente');
     }
