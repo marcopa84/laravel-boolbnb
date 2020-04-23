@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    ciao
+    {{-- @dd($message_email); --}}
+    {{$message_email->content}}
 </body>
 </html>

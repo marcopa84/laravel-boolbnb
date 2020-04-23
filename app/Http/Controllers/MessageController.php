@@ -25,11 +25,12 @@ class MessageController extends Controller
         
         $saved = $message->save();
 
+        $message_email = $message;
+
         if (!$saved) {
             return redirect()->back()->with('error', 'Errore durante l\'invio del messaggio');
         }
-
-        Mail::to($apartment->user->email)->send(new SendNewMail());
+        Mail::to($apartment->user->email)->send(new SendNewMail($message_email));
 
         return redirect()->back()->with('message', 'Il messaggio è stato inviato correttamente');
     }
