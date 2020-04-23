@@ -58,7 +58,19 @@
       </div>
    </div> <!-- / main-content -->
    <aside class="sidebar">
-
+      <div class="row">
+         <h3>Contatta il proprietario</h3>
+         <form action="{{route('message.store', $apartment)}}" method="POST">
+            @csrf 
+            @method('POST')
+            {{-- <input type="hidden" name="apartment_id" value="{{$apartment->id}}"> --}}
+            <label for="email">Email</label>
+            <input type="email" name="email" value="@auth{{Auth::user()->email}}@endauth">
+            <label for="content">Messaggio</label>
+            <textarea name="content" cols="30" rows="10">Salve, vorrei maggiori informazioni su questo appartamento.</textarea>
+            <button type="submit">Invia</button>
+         </form>
+      </div>
    </aside> <!-- / sidebar -->
 </div>
 
