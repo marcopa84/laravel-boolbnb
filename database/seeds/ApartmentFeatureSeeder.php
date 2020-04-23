@@ -16,7 +16,11 @@ class ApartmentFeatureSeeder extends Seeder
       foreach($apartments as $apartment) {
         $features = [];
         for($i = 1; $i <= rand(1,6); $i++) {
-        $features[] = $i;
+          do {
+            $j = rand(1,6);
+          }
+          while( in_array($j, $features) );
+          $features[] = $j;
       }
       $apartment->features()->attach($features);
     }
