@@ -1,3 +1,6 @@
+@php
+    use Carbon\Carbon;
+@endphp
 @extends('layouts.layout')
 @section('main')
 <div class="container my-5">
@@ -20,14 +23,15 @@
                   </div>
                   
                   <div class="card-body-text">
-                     @if ($apartment->bought_ads->contains($apartment->id))
+                     @if (count($apartment->bought_ads) != 0)
                         <select>
                         @foreach ($apartment->bought_ads as $ad)
-                           <option>Inizio sponsorizzazione: {{$ad->start_date}} fine sponsorizzazione: {{$ad->end_date}}</option>
+                           @if ($ad->end_date > now())
+                              <option>Inizio sponsorizzazione: {{Carbon::createFromDate($ad->start_date)->format('d-m-Y')}} fine sponsorizzazione: {{Carbon::createFromDate($ad->end_date)->format('d-m-Y')}}</option>
+                           @endif
                         @endforeach
                         </select>
                      @endif
-                     
                   </div>
                   <div class="card-dash-buttons">
                      <a href="{{route('registered.ads.create', $apartment)}}"><button class="btn btn-dark">Inserisci sponsorizzazione</button></a>

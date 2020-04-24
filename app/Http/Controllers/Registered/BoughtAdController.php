@@ -51,22 +51,22 @@ class BoughtAdController extends Controller
             'apartment_id' => 'required|integer|exists:App\Apartment,id',
             'start_date' => 'required|date|after:yesterday'
         ];
-
         $data = $request->all();
         $request->validate($validateRules);
 
         $bought_ad = new Bought_ad;
-        //manca il calcolo della data di fine start date +  Hours dell'ad_
         $hours = Ad::where('id', $data['ad_id'])->first()->hours;
-
-        
         $end_date = Carbon::createFromDate($data['start_date'])-> add($hours, 'hour');
-
-        dd($end_date);
-
-
+        $data['end_date'] = $end_date;
         $bought_ad->fill($data);
-        dd($data);
+        $saved = $bought_ad->save();
+
+        if (!$saved) {
+            return redirect()->back()->with('error', 'Errore durante l\'inserimento della sponsorizzazione.');
+        }
+
+        return redirect()->route('registered.ads.index')->with('message', 'Sponsorizzazione inserita correttamente.');
+        
     }
 
     /**
