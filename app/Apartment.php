@@ -31,9 +31,9 @@ class Apartment extends Model
     public function images() {
         return $this->hasMany('App\Image');
     }
-    public function bought_ad()
+    public function bought_ads()
     {
-        return $this->belongsTo('App\Bought_ad');
+        return $this->hasMany('App\Bought_ad');
     }
     public function views()
     {

@@ -39,8 +39,10 @@ Route::name('registered.')
     ->middleware('auth')
     ->group(function () {
         Route::resource('apartments', 'ApartmentController');
-        Route::resource('ads', 'AdController');
-        Route::resource('boughtAds', 'BoughtAdController');
+        // Route::resource('ads', 'AdController');
+        // Route::resource('boughtAds', 'BoughtAdController');
+        Route::get('/boughtads', 'BoughtAdController@index')->name('boughtads.index');
+        Route::get('/boughtads/{apartment}', 'BoughtAdController@create')->name('boughtads.create');
         Route::resource('features', 'FeatureController');
         Route::resource('images', 'ImageController');
         Route::resource('roles', 'RoleController');

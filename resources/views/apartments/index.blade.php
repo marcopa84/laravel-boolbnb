@@ -152,6 +152,8 @@
     }
     100% {
       transform: perspective(4000px);
-  }
+    }
+   }
+
 </style>
 @endsection

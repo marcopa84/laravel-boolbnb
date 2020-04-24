@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FeatureSeeder::class);
         $this->call(ApartmentSeeder::class);
         $this->call(ApartmentFeatureSeeder::class);
+        $this->call(AdSeeder::class);
     }
 }

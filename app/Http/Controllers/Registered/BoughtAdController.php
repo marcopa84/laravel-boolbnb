@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Registered;
 
+use App\Ad;
+use App\Apartment;
+use Illuminate\Support\Facades\Auth;
+
 use App\Bought_ad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +19,8 @@ class BoughtAdController extends Controller
      */
     public function index()
     {
-        //
+        $apartments = Apartment::where('user_id', Auth::id())->get();
+        return view('registered.boughtads.index', compact('apartments'));
     }
 
     /**
@@ -23,9 +28,9 @@ class BoughtAdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Apartment $apartment)
     {
-        //
+        return view('registered.boughtads.create', compact('apartment'));
     }
 
     /**

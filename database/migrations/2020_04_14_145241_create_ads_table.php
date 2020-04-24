@@ -15,7 +15,6 @@ class CreateAdsTable extends Migration
     {
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
-            $table->string('description')->required();
             $table->string('hours')->required();
             $table->float('price', 5, 2)->required();
             $table->timestamps();

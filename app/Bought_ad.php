@@ -13,9 +13,13 @@ class Bought_ad extends Model
         'end_date'
     ];
 
-    public function apartments()
+    // public function apartments()
+    // {
+    //     return $this->hasMany('App\Apartment');
+    // }
+    public function apartment()
     {
-        return $this->hasMany('App\Apartment');
+        return $this->belongsTo('App\Apartment');
     }
     public function ad()
     {
