@@ -38,14 +38,14 @@ Route::name('registered.')
     ->namespace('Registered')
     ->middleware('auth')
     ->group(function () {
-        Route::resource('apartments', 'ApartmentController');
+        Route::get('/apartments/ads', 'BoughtAdController@index')->name('ads.index');
+        Route::get('/apartments/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
+        Route::post('/apartments/ads', 'BoughtAdController@store')->name('ads.store');
+        Route::resource('views', 'ViewController');
         // Route::resource('ads', 'AdController');
         // Route::resource('boughtAds', 'BoughtAdController');
-        Route::get('/ads', 'BoughtAdController@index')->name('ads.index');
-        Route::get('/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
-        Route::post('/ads', 'BoughtAdController@store')->name('ads.store');
         // Route::resource('features', 'FeatureController');
         // Route::resource('images', 'ImageController');
         // Route::resource('roles', 'RoleController');
-        Route::resource('views', 'ViewController');
+        Route::resource('apartments', 'ApartmentController');
     });
