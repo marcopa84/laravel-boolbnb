@@ -49,7 +49,7 @@
             </div>
             <div class="col-6 col-sm-6 col-md-3">
                 <div class="dashboard-content">
-                    <a class="area-link" href="{{route('registered.boughtads.index')}}">
+                    <a class="area-link" href="{{route('registered.ads.index')}}">
                         <div class="area">
                             <i class="icon-title fas fa-bullhorn fa-3x"></i>
                             <h6 class="title">Sponsorizzazioni</h6>

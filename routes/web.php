@@ -41,11 +41,11 @@ Route::name('registered.')
         Route::resource('apartments', 'ApartmentController');
         // Route::resource('ads', 'AdController');
         // Route::resource('boughtAds', 'BoughtAdController');
-        Route::get('/boughtads', 'BoughtAdController@index')->name('boughtads.index');
-        Route::get('/boughtads/{apartment}', 'BoughtAdController@create')->name('boughtads.create');
-        Route::post('/boughtads', 'BoughtAdController@store')->name('boughtads.store');
-        Route::resource('features', 'FeatureController');
-        Route::resource('images', 'ImageController');
-        Route::resource('roles', 'RoleController');
+        Route::get('/ads', 'BoughtAdController@index')->name('ads.index');
+        Route::get('/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
+        Route::post('/ads', 'BoughtAdController@store')->name('ads.store');
+        // Route::resource('features', 'FeatureController');
+        // Route::resource('images', 'ImageController');
+        // Route::resource('roles', 'RoleController');
         Route::resource('views', 'ViewController');
     });

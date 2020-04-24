@@ -21,7 +21,7 @@ class BoughtAdController extends Controller
     public function index()
     {
         $apartments = Apartment::where('user_id', Auth::id())->get();
-        return view('registered.boughtads.index', compact('apartments'));
+        return view('registered.ads.index', compact('apartments'));
     }
 
     /**
@@ -35,7 +35,7 @@ class BoughtAdController extends Controller
             'apartment' => $apartment,
             'ads' => Ad::all(),
         ];
-        return view('registered.boughtads.create', $data);
+        return view('registered.ads.create', $data);
     }
 
     /**
@@ -49,11 +49,11 @@ class BoughtAdController extends Controller
         $validateRules = [
             'ad_id' => 'required|integer|exists:App\Ad,id',
             'apartment_id' => 'required|integer|exists:App\Apartment,id',
-            'start_date' => 'required|date'
+            'start_date' => 'required|date|after:yesterday'
         ];
 
         $data = $request->all();
-        // $request->validate($validateRules);
+        $request->validate($validateRules);
 
         $bought_ad = new Bought_ad;
         //manca il calcolo della data di fine start date +  Hours dell'ad_
