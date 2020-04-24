@@ -42420,7 +42420,6 @@ module.exports = function(module) {
 if ($('#apartments_filter').length > 0) {
   apartmentsFilter();
   $(document).on('keyup', 'input[name*="number"]', function () {
-    $('.card').removeClass('d-none');
     apartmentsFilter();
   });
   $(document).on('click', 'li.list-inline-item', function () {
@@ -42440,31 +42439,41 @@ if ($('#apartments_filter').length > 0) {
 
 function apartmentsFilter() {
   $('form input[name="beds_number"]').val($('#beds_number').val());
-  console.log($('form input[name="beds_number"]').val());
+  var ready = false;
   $('.card').each(function () {
-    $(this).removeClass('d-none');
+    $(this).removeClass('cards-animation');
+  });
+  ready = true;
 
-    if (parseInt($(this).attr('data-beds')) < $('#beds_number').val()) {
-      $(this).addClass('d-none');
-    }
+  if (ready) {
+    setTimeout(function () {
+      $('.card').each(function () {
+        $(this).addClass('cards-animation');
+        $(this).removeClass('d-none');
 
-    if (parseInt($(this).attr('data-rooms')) < $('#rooms_number').val()) {
-      $(this).addClass('d-none');
-    }
-  });
-  var features = [];
-  $('[type="checkbox"]').each(function () {
-    if ($(this).is(':checked')) {
-      features.push($(this).siblings('span').text());
-    }
-  });
-  $('.card').each(function () {
-    for (var i = 0; i < features.length; i++) {
-      if (!$(this).attr('data-features').includes(features[i])) {
-        $(this).addClass('d-none');
-      }
-    }
-  });
+        if (parseInt($(this).attr('data-beds')) < $('#beds_number').val()) {
+          $(this).addClass('d-none');
+        }
+
+        if (parseInt($(this).attr('data-rooms')) < $('#rooms_number').val()) {
+          $(this).addClass('d-none');
+        }
+      });
+      var features = [];
+      $('[type="checkbox"]').each(function () {
+        if ($(this).is(':checked')) {
+          features.push($(this).siblings('span').text());
+        }
+      });
+      $('.card').each(function () {
+        for (var i = 0; i < features.length; i++) {
+          if (!$(this).attr('data-features').includes(features[i])) {
+            $(this).addClass('d-none');
+          }
+        }
+      });
+    }, 50);
+  }
 }
 
 /***/ }),
@@ -42685,8 +42694,8 @@ if ($('#map').length > 0) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/danilo/Desktop/mamp_public/laravel-boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/danilo/Desktop/mamp_public/laravel-boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

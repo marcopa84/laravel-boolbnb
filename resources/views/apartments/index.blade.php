@@ -126,5 +126,32 @@
   .apartment-features-list span{
     margin-right:0.5rem;
   }
+  .card{
+    position: relative;
+  }
+  .cards-animation{
+    animation-name: cards;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-in-out;
+    backface-visibility: visible;
+  }
+  @keyframes cards{
+    0% {
+      opacity: 0;
+      transform: perspective(4000px) rotate3d(0,1,0,5deg);
+    }
+    40% {
+      transform: perspective(4000px) rotate3d(0,1,0,-20deg);
+    }
+    60% {
+      opacity: 1;
+      transform: perspective(4000px) rotate3d(0,1,0,10deg);
+    }
+    80% {
+      transform: perspective(4000px) rotate3d(0,1,0,-5deg);
+    }
+    100% {
+      transform: perspective(4000px);
+  }
 </style>
 @endsection
