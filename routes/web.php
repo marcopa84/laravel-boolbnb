@@ -43,6 +43,7 @@ Route::name('registered.')
         // Route::resource('boughtAds', 'BoughtAdController');
         Route::get('/boughtads', 'BoughtAdController@index')->name('boughtads.index');
         Route::get('/boughtads/{apartment}', 'BoughtAdController@create')->name('boughtads.create');
+        Route::post('/boughtads', 'BoughtAdController@store')->name('boughtads.store');
         Route::resource('features', 'FeatureController');
         Route::resource('images', 'ImageController');
         Route::resource('roles', 'RoleController');

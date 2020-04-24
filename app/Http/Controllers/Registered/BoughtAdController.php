@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Bought_ad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class BoughtAdController extends Controller
 {
@@ -29,8 +30,12 @@ class BoughtAdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Apartment $apartment)
-    {
-        return view('registered.boughtads.create', compact('apartment'));
+    {   
+        $data = [
+            'apartment' => $apartment,
+            'ads' => Ad::all(),
+        ];
+        return view('registered.boughtads.create', $data);
     }
 
     /**
@@ -41,7 +46,27 @@ class BoughtAdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateRules = [
+            'ad_id' => 'required|integer|exists:App\Ad,id',
+            'apartment_id' => 'required|integer|exists:App\Apartment,id',
+            'start_date' => 'required|date'
+        ];
+
+        $data = $request->all();
+        // $request->validate($validateRules);
+
+        $bought_ad = new Bought_ad;
+        //manca il calcolo della data di fine start date +  Hours dell'ad_
+        $hours = Ad::where('id', $data['ad_id'])->first()->hours;
+
+        
+        $end_date = Carbon::createFromDate($data['start_date'])-> add($hours, 'hour');
+
+        dd($end_date);
+
+
+        $bought_ad->fill($data);
+        dd($data);
     }
 
     /**
