@@ -29,6 +29,10 @@ Route::post('/apartments/{apartment}', 'MessageController@store')->name('message
 // Auth routes
 Auth::routes();
 
+// Payment routes
+Route::get('/payment/form', 'PaymentController@form')->name('payment.form');
+Route::post('/payment/checkout/', 'PaymentController@checkout')->name('payment.checkout');
+
 
 // Registered routes
 Route::get('/registered', 'RegisteredController@index')->name('registered.index');
@@ -40,7 +44,8 @@ Route::name('registered.')
     ->group(function () {
         Route::get('/apartments/ads', 'BoughtAdController@index')->name('ads.index');
         Route::get('/apartments/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
-        Route::post('/apartments/ads', 'BoughtAdController@store')->name('ads.store');
+        Route::post('/apartments/ads', 'BoughtAdController@validationForm')->name('ads.validationform');
+        // Route::post('/apartments/ads', 'BoughtAdController@store')->name('ads.store');
         Route::resource('views', 'ViewController');
         // Route::resource('ads', 'AdController');
         // Route::resource('boughtAds', 'BoughtAdController');

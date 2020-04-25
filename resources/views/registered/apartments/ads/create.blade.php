@@ -4,7 +4,7 @@
 @extends('layouts.layout')
 @section('main')
 <div class="container my-5">
-    <form action="{{route('registered.ads.store')}}" method="post">
+    <form action="{{route('registered.ads.validationform')}}" method="post">
         @csrf
         @method('POST')
         <h3>Stai sponsorizzando l'annuncio riguardante {{$apartment->title}}</h3>
