@@ -10,7 +10,7 @@ use Illuminate\Queue\SerializesModels;
 class SendNewMail extends Mailable
 {
     use Queueable, SerializesModels;
-   
+    
     public $message_email;
 
     
@@ -31,7 +31,7 @@ class SendNewMail extends Mailable
      */
     public function build()
     {
-        
-        return $this->view('mails.message', compact('this->message_email'));
+        $message_email = $this->message_email;
+        return $this->view('mails.message', compact('message_email'));
     }
 }

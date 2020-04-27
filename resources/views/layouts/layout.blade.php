@@ -10,7 +10,7 @@
    @endif
    {{-- sessione messaggi --}}
 
-   <main class="my-4">
+   <main>
       @yield('main')
    </main>
 

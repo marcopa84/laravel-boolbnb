@@ -1,5 +1,5 @@
-   <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm primary fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" title="BoolBnb">
                     BOOLBNB
@@ -11,12 +11,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav-left navbar-nav ml-auto">
-                       <li class="nav-item active">
-                           <a class="nav-link" href="{{asset('/')}}">Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{asset('/')}}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         @auth
                         <li class="nav-item">
-                           <a class="nav-link" href="{{ url('/registered') }}">Dashboard <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ url('/registered') }}">Dashboard <span class="sr-only">(current)</span></a>
                         </li>
                         @endauth
                     </ul>
@@ -56,8 +56,8 @@
                                         {{ __('Aggiungi nuovo appartamento') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                        onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -72,5 +72,5 @@
             </div>
         </nav>
 
-      @yield('header')
-   </header>
+    @yield('header')
+</header>
