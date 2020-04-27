@@ -35,6 +35,7 @@
         </div>
       </section>
       <input name="order_code" type="hidden" value="{{$order->order_code}}">
+      <input id="nonce" name="payment_method_nonce" type="hidden" value="">
       <button class="button" type="submit">Paga Sponsorizzazione</button>
   </form>
 
