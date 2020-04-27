@@ -11286,6 +11286,11 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   flex: 3;
 }
 
+.layout-apartment .main-content .apartment-header .apartment-title .edit-icon {
+  font-size: 12px;
+  position: absolute;
+}
+
 .layout-apartment .main-content .apartment-header .apartment-price {
   flex: 1;
 }
@@ -11295,6 +11300,12 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   border-left: 3px solid #146d70;
   padding-left: 4px;
   margin-bottom: 16px;
+}
+
+.layout-apartment .main-content .apartment-header .apartment-price .apartment-price-label span.badge {
+  background: #146d70;
+  font-size: 20px;
+  color: white;
 }
 
 .layout-apartment .main-content .apartment-desc-text {
@@ -11307,14 +11318,38 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   margin-bottom: 60px;
 }
 
-.layout-apartment .main-content .apartment-details-list span {
-  margin-right: 16px;
-  display: inline-block;
+.layout-apartment .main-content .apartment-details-list {
+  display: flex;
+  justify-content: space-between;
 }
 
-.layout-apartment .main-content .apartment-details-list span i {
-  margin-right: 4px;
-  margin-left: 8px;
+.layout-apartment .main-content .apartment-details-list .details-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #edfbfc;
+}
+
+.layout-apartment .main-content .apartment-details-list .details-item:nth-child(2) {
+  margin: 0 8px;
+}
+
+.layout-apartment .main-content .apartment-details-list .details-item .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 24px;
+  border-radius: 50%;
+  margin-right: 8px;
+  background: #146d70;
+  color: white;
+}
+
+.layout-apartment .main-content .apartment-details-list .details-item p {
+  margin-bottom: 0;
 }
 
 .layout-apartment .main-content .apartment-features .apartment-features-list span {
@@ -11323,6 +11358,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
 .layout-apartment .main-content .apartment-features .apartment-features-list span i {
   margin-right: 4px;
+  color: #146d70;
 }
 
 .layout-apartment .main-content .apartment-features .apartment-features-list span i.fas.fa-parking {
@@ -11421,6 +11457,16 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
   .layout-apartment .sidebar .sidebar-content::before {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .apartment-details-list {
+    flex-flow: column wrap;
+  }
+
+  .apartment-details-list .details-item:nth-child(2) {
+    margin: 8px 0 !important;
   }
 }
 

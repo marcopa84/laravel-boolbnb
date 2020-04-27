@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Apartment;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ApartmentController extends Controller
 {
@@ -15,12 +16,20 @@ class ApartmentController extends Controller
     public function index()
     {
         // qui manderemo solo gli sponsorizzati per la homepage
+        $now = Carbon::now();
+        $apartment_ads = DB::table('apartments')
+        ->join('bought_ads', 'apartments.id', '=', 'bought_ads.apartment_id')
+        ->select('*')
+        ->where([
+            ['start_date', '<=', $now],
+            ['end_date', '>=', $now],
+        ])
+        ->get();
         $data = [
-            'apartments' => Apartment::all(),
+            'apartments_ads' => $apartment_ads,
         ];
         return view('index', $data);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +39,6 @@ class ApartmentController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -41,7 +49,6 @@ class ApartmentController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      *
@@ -52,7 +59,6 @@ class ApartmentController extends Controller
     {
         return view('apartments.show', compact('apartment'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,7 +69,6 @@ class ApartmentController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -75,7 +80,6 @@ class ApartmentController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

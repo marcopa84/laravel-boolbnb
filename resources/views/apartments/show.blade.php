@@ -10,8 +10,7 @@
          </div>
             
          <div class="apartment-price">
-            <h5 class="apartment-price-label">Prezzo per notte: €{{$apartment->price}}</h5>
-            <!-- <p class="lead">€{{$apartment->price}}</p> -->
+            <h5 class="apartment-price-label">Prezzo per notte: <span class="badge">€{{$apartment->price}}</span> </h5>
          </div>
       </div>
       
@@ -26,9 +25,18 @@
       <section class="apartment-details">
          <h5 class="apartment-details-title my-4">Caratteristiche</h5>
          <div class="apartment-details-list" role="list">
-            <span>Numero stanze:<i class="fas fa-expand"></i> {{$apartment->rooms_number}}</span>
-            <span>Numero posti letto:<i class="fas fa-bed"></i> {{$apartment->beds_number}}</span>
-            <span>Numero bagni:<i class="fas fa-bath"></i> {{$apartment->bathrooms_number}}</span>
+            <div class="details-item">
+               <i class="fas fa-expand icon"></i>
+               <p class="lead"><span>{{$apartment->rooms_number}}</span> stanze</p>
+            </div>
+            <div class="details-item">
+               <i class="fas fa-bed icon"></i>
+               <p class="lead"><span>{{$apartment->rooms_number}}</span> posti letto</p>
+            </div>
+            <div class="details-item">
+               <i class="fas fa-bath icon"></i>
+               <p class="lead"><span>{{$apartment->rooms_number}}</span> bagni</p>
+            </div>
          </div>
 
       </section>
