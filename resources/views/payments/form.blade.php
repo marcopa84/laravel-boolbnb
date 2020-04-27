@@ -1,12 +1,12 @@
 @php
     use Carbon\Carbon;
-    $gateway = new Braintree\Gateway([
-        'environment' => config('services.braintree.environment'),
-        'merchantId' => config('services.braintree.merchantId'),
-        'publicKey' => config('services.braintree.publicKey'),
-        'privateKey' => config('services.braintree.privateKey')
-        ]);
-    $token = $gateway->ClientToken()->generate();
+    // $gateway = new Braintree\Gateway([
+    //     'environment' => config('services.braintree.environment'),
+    //     'merchantId' => config('services.braintree.merchantId'),
+    //     'publicKey' => config('services.braintree.publicKey'),
+    //     'privateKey' => config('services.braintree.privateKey')
+    //     ]);
+    // $token = $gateway->ClientToken()->generate();
 @endphp
 @extends('layouts.layout')
 @section('main')

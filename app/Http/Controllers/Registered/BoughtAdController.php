@@ -7,7 +7,7 @@ use App\Apartment;
 use App\Bought_ad;
 use App\Order;
 use App\Http\Controllers\Controller;
-// use Braintree;
+use Braintree;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
 use Illuminate\Http\Request;
@@ -69,18 +69,18 @@ class BoughtAdController extends Controller
         } while( in_array($newOrderCode, $orderCodes) );
         $order->order_code = $newOrderCode;
         $order->save();
-        // $gateway = new Braintree\Gateway([
-        //     'environment' => config('services.braintree.environment'),
-        //     'merchantId' => config('services.braintree.merchantId'),
-        //     'publicKey' => config('services.braintree.publicKey'),
-        //     'privateKey' => config('services.braintree.privateKey')
-        //     ]);
-        // $token = $gateway->ClientToken()->generate();
+        $gateway = new Braintree\Gateway([
+            'environment' => config('services.braintree.environment'),
+            'merchantId' => config('services.braintree.merchantId'),
+            'publicKey' => config('services.braintree.publicKey'),
+            'privateKey' => config('services.braintree.privateKey')
+            ]);
+        $token = $gateway->ClientToken()->generate();
         $data = [
             'order' => Order::where('order_code', $newOrderCode)->first(),
             'amount' => Ad::where('id', $request['ad_id'])->first()->price,
-            // 'gateway' => $gateway,
-            // 'token' => $token,
+            'gateway' => $gateway,
+            'token' => $token,
         ];
         return view('payments.form', $data);
     }

@@ -15,7 +15,7 @@
             <label for="ad_id">Scegli la durata della sponsorizzazione</label>
             <select name="ad_id" class="form-control">
                 @foreach ($ads as $ad)
-                    <option value="{{$ad->id}}"> Tipo Sponsorizzazione: {{$ad->hours}}ore - € {{$ad->price}} </option>
+                    <option value="{{$ad->id}}"> Tipo Sponsorizzazione: {{$ad->hours}} ore - € {{$ad->price}} </option>
                 @endforeach
             </select>
             @if($errors->has('ad_id'))
