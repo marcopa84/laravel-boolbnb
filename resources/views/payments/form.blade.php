@@ -1,49 +1,44 @@
 @php
     use Carbon\Carbon;
-
     $gateway = new Braintree\Gateway([
         'environment' => config('services.braintree.environment'),
         'merchantId' => config('services.braintree.merchantId'),
         'publicKey' => config('services.braintree.publicKey'),
         'privateKey' => config('services.braintree.privateKey')
         ]);
-
     $token = $gateway->ClientToken()->generate();
-    // $datacheckout = [
-    //     'bought_ad' => $bought_ad,
-    //     'amount' => $amount
-    // ];
-
 @endphp
 @extends('layouts.layout')
 @section('main')
-    {{-- @dd($amount); --}}
   <div class="page-wrapper container my-5">
     <form id="payment-form" method="post" action="{{route('payment.checkout')}}">
       @csrf
       @method('POST')
       <section class="payment-form ">
-        <h2 class="payment-form-text">Pagamento della sponsorizzazione</h3>
+        <h2 class="payment-form-text">Riepilogo della sponsorizzazione</h3>
         <div class="payment-form-info">
           <p class="payment-form-info-paragraph">
-            La sponsorizzazione inizier&agrave; {{Carbon::createFromDate($bought_ad->start_date)->format('d-m-Y \\a\\l\\l\\e  H:i')}} ad un costo di € {{$amount}}
+            Inizio: {{Carbon::createFromDate($order->start_date)->format('d/m/Y \\a\\l\\l\\e \\o\\r\\e  H:i')}}
           </p>
           <p class="payment-form-info-paragraph">
-            La sponsorizzazione permetter&agrave; al tuo appartamento di avere la massima visibilit&agrave; e nelle ricerche verr&agrave; posizionato tra le prime proposte 
+            Fine: {{Carbon::createFromDate($order->end_date)->format('d/m/Y \\a\\l\\l\\e \\o\\r\\e  H:i')}}
+          </p>
+          <p class="payment-form-info-paragraph">
+            Costo: € {{$amount}}
+          </p>
+          <p class="payment-form-info-paragraph">
+            La sponsorizzazione permetter&agrave; al tuo appartamento di avere la massima visibilit&agrave; e nelle ricerche verr&agrave; posizionato tra le prime proposte
           </p>
         </div>
         <div class="bt-drop-in-wrapper">
-          <div id="bt-dropin"></div>
+        <div id="bt-dropin"></div>
         </div>
       </section>
-      {{-- <input name="ad_id" type="hidden" value="{{$info['ad_id']}}">
-      <input name="apartment_id" type="hidden" value="{{$info['apartment_id']}}">
-      <input name="start_data" type="hidden" value="{{Carbon::createFromDate($info['start_date'])}}"> --}}
-      <input id="nonce" name="payment_method_nonce" type="hidden">
+      <input name="order_code" type="hidden" value="{{$order->order_code}}">
       <button class="button" type="submit">Paga Sponsorizzazione</button>
   </form>
 
-  
+
   @section('scripts')
   <script src="https://js.braintreegateway.com/web/dropin/1.13.0/js/dropin.min.js"></script>
   <script type="text/javascript" charset="utf-8">

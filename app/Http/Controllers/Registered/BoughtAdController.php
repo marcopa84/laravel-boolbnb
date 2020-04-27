@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Registered;
 
 use App\Ad;
 use App\Apartment;
-use Illuminate\Support\Facades\Auth;
-
 use App\Bought_ad;
-use Illuminate\Http\Request;
+use App\Order;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Faker\Generator as Faker;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BoughtAdController extends Controller
 {
@@ -30,7 +31,7 @@ class BoughtAdController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Apartment $apartment)
-    {   
+    {
         $data = [
             'apartment' => $apartment,
             'ads' => Ad::all(),
@@ -39,29 +40,38 @@ class BoughtAdController extends Controller
     }
 
 
-    public function validationForm(Request $request)
+    public function storeOrder(Request $request, Apartment $apartment, Faker $faker)
     {
         $validateRules = [
             'ad_id' => 'required|integer|exists:App\Ad,id',
-            'apartment_id' => 'required|integer|exists:App\Apartment,id',
-            'start_date' => 'required|date|after:yesterday'
+            'start_date' => 'required|date|after:now'
         ];
         $request->validate($validateRules);
-        $dataRequest = $request->all();
-    
 
-        $bought_ad = new Bought_ad;
-        $hours = Ad::where('id', $dataRequest['ad_id'])->first()->hours;
-        $end_date = Carbon::createFromDate($dataRequest['start_date'])->add($hours, 'hour');
-        $dataRequest['end_date'] = $end_date;
-        $bought_ad->fill($dataRequest);
-
+        $hours = Ad::where('id', $request['ad_id'])->first()->hours;
+        $start_date = Carbon::createFromDate($request['start_date'])->format('Y-m-d H:i:s');
+        $end_date = Carbon::createFromDate($request['start_date'])->add($hours, 'hour')->format('Y-m-d H:i:s');
+        $order = new Order;
+        $order->start_date = $start_date;
+        $order->end_date = $end_date;
+        $order->ad_id = $request['ad_id'];
+        $order->apartment_id = $apartment->id;
+        $queryOrderCodes = Order::select('order_code')->get();
+        $orderCodes = [];
+        $newOrderCode = '';
+        for($i = 0; $i < count($queryOrderCodes); $i++) {
+          $orderCodes[] = $queryOrderCodes[$i];
+        }
+        do {
+          $newOrderCode = $faker->sha256();
+        } while( in_array($newOrderCode, $orderCodes) );
+        $order->order_code = $newOrderCode;
+        $order->save();
         $data = [
-            'bought_ad' => $bought_ad,
-            'amount' => Ad::where('id', $dataRequest['ad_id'])->first()->price,
+            'order' => Order::where('order_code', $newOrderCode)->first(),
+            'amount' => Ad::where('id', $request['ad_id'])->first()->price,
         ];
-
-        return redirect()->action('PaymentController@form')->with('checkoutData', $data);
+        return view('payments.form', $data);
     }
     /**
      * Store a newly created resource in storage.
@@ -92,7 +102,7 @@ class BoughtAdController extends Controller
         }
 
         return redirect()->route('registered.apartments.ads.index')->with('message', 'Sponsorizzazione inserita correttamente.');
-        
+
     }
 
     /**

@@ -1,5 +1,8 @@
 <?php
 
+use App\Bought_ad;
+use App\Order;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,26 +16,58 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+// Auth routes
+Auth::routes();
 
 // Guests Routes
 Route::get('/', 'ApartmentController@index')->name('home');
 Route::get('/apartments/{apartment}', 'ApartmentController@show')->name('apartments.show');
 Route::post('/apartments/{apartment}', 'MessageController@store')->name('message.store');
 
-// Auth routes
-Auth::routes();
-
 // Payment routes
 Route::get('/payment/form', 'PaymentController@form')->name('payment.form');
-Route::post('/payment/checkout/', 'PaymentController@checkout')->name('payment.checkout');
-
+Route::post('/payment/checkout/', function(Request $request){
+          $order = Order::where('order_code', $request['order_code'])->first();
+          if(!empty($order)) {
+            $gateway = new Braintree\Gateway([
+                'environment' => config('services.braintree.environment'),
+                'merchantId' => config('services.braintree.merchantId'),
+                'publicKey' => config('services.braintree.publicKey'),
+                'privateKey' => config('services.braintree.privateKey')
+            ]);
+            $result = $gateway->transaction()->sale([
+              'amount' => $order->ad->price,
+              'paymentMethodNonce' => $request->payment_method_nonce,
+              'customer' => [
+                'email' => Auth::user()->email,
+              ],
+              'options' => [
+                'submitForSettlement' => true
+              ]
+            ]);
+            if ($result->success) {
+              $transaction = $result->transaction;
+              Bought_ad::create([
+                'start_date' => $order->start_date,
+                'end_date' => $order->end_date,
+                'ad_id' => $order->ad_id,
+                'apartment_id' => $order->apartment_id,
+                'transaction' => $transaction->id,
+              ]);
+              Order::where('order_code', $request['order_code'])->delete();
+              return redirect()->route('registered.ads.index')->with('message', 'Transaction successful. The ID is: '. $transaction->id);
+            }
+            else {
+              $errorString = "";
+              foreach ($result->errors->deepAll() as $error) {
+              $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+              }
+            return back()->withErrors('An error occurred with the message: '.$result->message);
+            }
+          }
+          else return back()->withMessage('A chi t\'è muort e stra muort');
+})->name('payment.checkout');
 
 // Registered routes
 Route::get('/registered', 'RegisteredController@index')->name('registered.index');
@@ -44,7 +79,7 @@ Route::name('registered.')
     ->group(function () {
         Route::get('/apartments/ads', 'BoughtAdController@index')->name('ads.index');
         Route::get('/apartments/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
-        Route::post('/apartments/ads', 'BoughtAdController@validationForm')->name('ads.validationform');
+        Route::post('/apartments/ads/{apartment}', 'BoughtAdController@storeOrder')->name('ads.store_order');
         // Route::post('/apartments/ads', 'BoughtAdController@store')->name('ads.store');
         Route::resource('views', 'ViewController');
         // Route::resource('ads', 'AdController');

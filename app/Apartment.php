@@ -35,6 +35,10 @@ class Apartment extends Model
     {
         return $this->hasMany('App\Bought_ad');
     }
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
     public function views()
     {
         return $this->hasMany('App\View');
