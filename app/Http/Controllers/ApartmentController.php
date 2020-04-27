@@ -17,16 +17,17 @@ class ApartmentController extends Controller
     {
         // qui manderemo solo gli sponsorizzati per la homepage
         $now = Carbon::now();
-        $apartment_ads = DB::table('apartments')
+        $apartments_ads = DB::table('apartments')
         ->join('bought_ads', 'apartments.id', '=', 'bought_ads.apartment_id')
         ->select('*')
         ->where([
             ['start_date', '<=', $now],
             ['end_date', '>=', $now],
         ])
+        ->limit(6)
         ->get();
         $data = [
-            'apartments_ads' => $apartment_ads,
+            'apartments_ads' => $apartments_ads,
         ];
         return view('index', $data);
     }

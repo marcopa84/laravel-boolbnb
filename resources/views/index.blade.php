@@ -41,83 +41,40 @@
 
       <h3 class="small-caps text-center mb-5">Appartamenti in evidenza</h3>
       <div class="row">
+      @if(empty($apartments_ads))
+         Nessuna sposorizzazione attiva
+         @else
+         @foreach($apartments_ads as $apartment_ads)
+         
          <div class="col-md-6 col-lg-4">
             <div class="card">
-               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
+               <img class="card-img-top" src="{{asset($apartment_ads->featured_image)}}" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
                <div class="card-body">
-                  <h5 class="card-title">Titolo Appartamento</h5>
-                  <p class="card-text">Indirizzo appartamento</p>
+                  <h5 class="card-title">{{$apartment_ads->title}}</h5>
+                  <p class="card-text">{{$apartment_ads->address}}</p>
                </div>
                <div class="card-footer">
                   <small class="text-muted">
                      <div class="n-users" title="Numero massimo ospiti">
-                        <i class="fas fa-users"></i> 3
+                        <i class="fas fa-expans"></i> {{$apartment_ads->rooms_number}}
                      </div>
                      <div class="n-rooms" title="Numero di bagni">
-                        <i class="fas fa-expand"></i> 2
+                        <i class="fas fa-bed"></i> {{$apartment_ads->beds_number}}
                      </div>
                      <div class="n-beds" title="Numero di letti">
-                        <i class="fas fa-bed"></i> 2
+                        <i class="fas fa-baths"></i> {{$apartment_ads->bathrooms_number}}
                      </div>
                   </small>
                   <div class="price" title="Prezzo a notte">
-                     €300.00
+                     {{$apartment_ads->price}}
                   </div>
                </div>
             </div>
          </div>
 
-         <div class="col-md-6 col-lg-4">
-            <div class="card">
-               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
-               <div class="card-body">
-                  <h5 class="card-title">Titolo Appartamento</h5>
-                  <p class="card-text">Indirizzo appartamento</p>
-               </div>
-               <div class="card-footer">
-                  <small class="text-muted">
-                     <div class="n-users" title="Numero massimo ospiti">
-                        <i class="fas fa-users"></i> 3
-                     </div>
-                     <div class="n-rooms" title="Numero di bagni">
-                        <i class="fas fa-expand"></i> 2
-                     </div>
-                     <div class="n-beds" title="Numero di letti">
-                        <i class="fas fa-bed"></i> 2
-                     </div>
-                  </small>
-                  <div class="price" title="Prezzo a notte">
-                     €300.00
-                  </div>
-               </div>
-            </div>
-         </div>
+         @endforeach
+      @endif
 
-         <div class="col-md-6 col-lg-4">
-            <div class="card">
-               <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/living-room-9-1537479929.jpg" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
-               <div class="card-body">
-                  <h5 class="card-title">Titolo Appartamento</h5>
-                  <p class="card-text">Indirizzo appartamento</p>
-               </div>
-               <div class="card-footer">
-                  <small class="text-muted">
-                     <div class="n-users" title="Numero massimo ospiti">
-                        <i class="fas fa-users"></i> 3
-                     </div>
-                     <div class="n-rooms" title="Numero di bagni">
-                        <i class="fas fa-expand"></i> 2
-                     </div>
-                     <div class="n-beds" title="Numero di letti">
-                        <i class="fas fa-bed"></i> 2
-                     </div>
-                  </small>
-                  <div class="price" title="Prezzo a notte">
-                     €300.00
-                  </div>
-               </div>
-            </div>
-         </div>
       </div>
    </div>
 </div>

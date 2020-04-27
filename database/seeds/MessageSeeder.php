@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Apartment;
+use App\Message;
+use Faker\Generator as Faker;
 
 class MessageSeeder extends Seeder
 {
@@ -9,8 +12,14 @@ class MessageSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        for ($i = 0; $i < 100; $i++){
+            $message = new Message;
+            $message->apartment_id = Apartment::all()->random()->id;
+            $message->email = $faker->email;
+            $message->content = $faker->paragraph();
+            $message->save();
+        }
     }
 }

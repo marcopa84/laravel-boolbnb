@@ -150,14 +150,11 @@ header{
             align-items: center;
             margin-bottom: 8px;
             flex: 3;
-            .edit-icon{
-               font-size: 12px;
-               position: absolute;
-            }
          }
 
          .apartment-price{
             flex: 1;
+            position: relative;
             .apartment-price-label{
                display: inline-block;
                border-left: 3px solid $primary;
@@ -166,9 +163,14 @@ header{
 
                span.badge{
                   background: $primary;
-                  font-size: 20px;
+                  font-size: 18px;
                   @include text-contrast($primary);
                }
+            }
+            a.edit-icon{
+               font-size: 12px;
+               position: absolute;
+               right: 0;
             }
          }
       }
@@ -191,8 +193,7 @@ header{
             flex: 1;
             display: flex;
             align-items: center;
-            padding: 16px 20px;
-            background-color: $primaryLight;
+            padding: 0 20px;
 
             &:nth-child(2){
                margin: 0 8px;
@@ -204,9 +205,10 @@ header{
                align-items: center;
                width: 16px;
                height: 16px;
-               padding: 24px;
+               padding: 20px;
                border-radius: 50%;
                margin-right: 8px;
+               font-size: 16px;
                background: $primary;
                @include text-contrast($primary);
             }
@@ -337,6 +339,18 @@ header{
          }
       }
       
+   }
+
+}
+
+@media screen and(max-width: 425px){
+
+   // .layout-apartment .main-content .apartment-header .apartment-price a.edit-icon{
+   .apartment-price a.edit-icon{
+      position: relative!important;
+      display: block;
+      margin-bottom: 16px;
+
    }
 
 }

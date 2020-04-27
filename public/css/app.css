@@ -10940,7 +10940,7 @@ h6 {
   padding-left: 4px;
   color: #212529;
   border-bottom: 2px solid #146d70;
-  margin: 16px 0;
+  margin: 16px 0 32px;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding-bottom: 6px;
@@ -11286,13 +11286,9 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   flex: 3;
 }
 
-.layout-apartment .main-content .apartment-header .apartment-title .edit-icon {
-  font-size: 12px;
-  position: absolute;
-}
-
 .layout-apartment .main-content .apartment-header .apartment-price {
   flex: 1;
+  position: relative;
 }
 
 .layout-apartment .main-content .apartment-header .apartment-price .apartment-price-label {
@@ -11304,8 +11300,14 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
 .layout-apartment .main-content .apartment-header .apartment-price .apartment-price-label span.badge {
   background: #146d70;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
+}
+
+.layout-apartment .main-content .apartment-header .apartment-price a.edit-icon {
+  font-size: 12px;
+  position: absolute;
+  right: 0;
 }
 
 .layout-apartment .main-content .apartment-desc-text {
@@ -11327,8 +11329,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   flex: 1;
   display: flex;
   align-items: center;
-  padding: 16px 20px;
-  background-color: #edfbfc;
+  padding: 0 20px;
 }
 
 .layout-apartment .main-content .apartment-details-list .details-item:nth-child(2) {
@@ -11341,9 +11342,10 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   align-items: center;
   width: 16px;
   height: 16px;
-  padding: 24px;
+  padding: 20px;
   border-radius: 50%;
   margin-right: 8px;
+  font-size: 16px;
   background: #146d70;
   color: white;
 }
@@ -11467,6 +11469,14 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
   .apartment-details-list .details-item:nth-child(2) {
     margin: 8px 0 !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .apartment-price a.edit-icon {
+    position: relative !important;
+    display: block;
+    margin-bottom: 16px;
   }
 }
 

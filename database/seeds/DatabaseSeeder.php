@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(FeatureSeeder::class);
         $this->call(ApartmentSeeder::class);
+        $this->call(MessageSeeder::class);
         $this->call(ApartmentFeatureSeeder::class);
         $this->call(AdSeeder::class);
     }
