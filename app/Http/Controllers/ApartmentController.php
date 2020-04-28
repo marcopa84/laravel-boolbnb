@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Apartment;
+use App\View;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -58,6 +59,10 @@ class ApartmentController extends Controller
      */
     public function show(Apartment $apartment)
     {
+        View::create([
+            'apartment_id' => $apartment->id,
+            'date' => Carbon::now(),
+        ]);
         return view('apartments.show', compact('apartment'));
     }
     /**

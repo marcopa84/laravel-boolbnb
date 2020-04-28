@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Registered;
 
 use App\View;
+use App\Apartment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,9 +47,21 @@ class ViewController extends Controller
      * @param  \App\View  $view
      * @return \Illuminate\Http\Response
      */
-    public function show(View $view)
+    public function show(Apartment $apartment)
     {
-        //
+/*         $views = View::where('apartment_id', $apartment->id)
+            ->groupBy('date')    
+            // ->orderBy('date')
+            ->select('count(*)')
+            ->get() ; */
+            $views= DB::table('views')
+            ->where('apartment_id', $apartment->id)
+            ->groupBy('date')
+            ->select(DB::raw('count(*) as views, date'))
+            ->get();
+
+
+        return view('registered.apartments.views.show', compact('views'));
     }
 
     /**

@@ -38,7 +38,8 @@ Route::name('registered.')
         Route::get('/apartments/ads', 'BoughtAdController@index')->name('ads.index');
         Route::get('/apartments/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
         Route::post('/apartments/ads/{apartment}', 'BoughtAdController@storeOrder')->name('ads.store_order');
-        Route::resource('views', 'ViewController');
+        Route::get('/apartment/views/{apartment}', 'ViewController@show')->name('views.show');
+        // Route::resource('views', 'ViewController');
         // Route::resource('ads', 'AdController');
         // Route::resource('boughtAds', 'BoughtAdController');
         // Route::resource('features', 'FeatureController');
