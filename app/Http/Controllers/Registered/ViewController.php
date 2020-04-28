@@ -9,7 +9,7 @@ use App\Charts\ViewChart;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Carbon\Carbon;
 
 class ViewController extends Controller
 {
@@ -60,16 +60,24 @@ class ViewController extends Controller
         ->select(DB::raw('count(*) as views, date'))
         ->get();
 
-        for ($i=0; $i < count($views); $i++) { 
-            $labels[] = $views[$i]->date;
-            $dataset[] = $views[$i]->views;
-        };
+        if(count($views) > 0){
+            for ($i=0; $i < count($views); $i++) { 
+                $labels[] = Carbon::createFromDate($views[$i]->date)->format('d-M-Y') ;
+                $dataset[] = $views[$i]->views;
+            };
+            
+            $chart = new ViewChart;
+            $chart->title('Visualizzazioni degli ultimi due mesi dell\'appartamento: '.$apartment->title, 20, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
+            $chart->labels($labels);
+            $chart->dataset('Visualizzazioni giornaliere', 'line', $dataset)->options([
+                'backgroundColor' => 'rgba(20,109,112, .4)',
+                
+            ]);
+            return view('registered.apartments.views.show', compact('chart'));
+        }
+        
+        return view('registered.apartments.views.show');
 
-        $chart = new ViewChart;
-        $chart->labels($labels);
-        $chart->dataset('Visualizzazioni', 'line', $dataset);
-
-        return view('registered.apartments.views.show', compact('chart'));
     }
 
     /**
