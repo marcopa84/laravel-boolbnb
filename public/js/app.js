@@ -42417,11 +42417,27 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// ↓ pezzo di codice che si attiverà se e solo se, è presente almeno un elemento con id #apartments_filter
 if ($('#apartments_filter').length > 0) {
-  apartmentsFilter();
+  // ↓ snippet per salvare il valore del raggio selezionato dall'utente nella sezione dei filtri
+  $('select option').each(function () {
+    if ($(this).val() == $('[name="old_selected_rad"]').val()) {
+      $(this).attr('selected', 'selected');
+    }
+  }); // ↓ snippet che colora il background delle features, al caricamento della pagina
+
+  $('li.list-inline-item').each(function () {
+    if ($(this).find('input[type="checkbox"]').is(':checked')) {
+      $(this).removeClass('btn-outline-dark');
+      $(this).addClass('btn-info');
+    }
+  });
+  apartmentsFilter(); // ↓ snippet che fa partire il filtro sugli appartamenti, al keyup dei cambi input con nome contentente la stringa 'number'
+
   $(document).on('keyup', 'input[name*="number"]', function () {
     apartmentsFilter();
-  });
+  }); // ↓ snippet per colorare il background delle features, al click
+
   $(document).on('click', 'li.list-inline-item', function () {
     if ($(this).find('input[type="checkbox"]').attr('checked') == undefined) {
       $(this).find('input[name="features[]"]').attr('checked', 'checked');
@@ -42435,10 +42451,20 @@ if ($('#apartments_filter').length > 0) {
       apartmentsFilter();
     }
   });
-}
+} // ↓ snippet per colorare il background delle features selezionate al refresh della pagina
+
+
+if (performance.navigation.type == 1) {
+  $('li.list-inline-item').each(function () {
+    if ($(this).find('input[type="checkbox"]').is(':checked')) {
+      $(this).removeClass('btn-outline-dark');
+      $(this).addClass('btn-info');
+    }
+  });
+} // ↓ funzione che filtra gli appartamenti visibili sulla pagina a seconda degli input selezionati dall'utente
+
 
 function apartmentsFilter() {
-  $('form input[name="beds_number"]').val($('#beds_number').val());
   var ready = false;
   $('.card').each(function () {
     $(this).removeClass('cards-animation');
@@ -42694,8 +42720,8 @@ if ($('#map').length > 0) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/lorenzofranzone/mamp_public/laravel-boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/lorenzofranzone/mamp_public/laravel-boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

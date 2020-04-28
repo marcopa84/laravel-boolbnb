@@ -1,60 +1,60 @@
 @extends('layouts.layout')
 @section('main')
 <div class="container my-5">
-   <div class="row">
-      <div class="col-12 mb-5">
-            <div id="apartments_filter">
-              <div class="form-group">
-                <label for="beds_number">Numero minimo Posti Letto</label>
-                <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{$beds_number}}{{ old('beds_number') }}" min="1" placeholder="N° posti letto minimi">
-              </div>
-               <div class="form-group">
-                  <label for="rooms_number">Numero minimo Stanze</label>
-                  <input id="rooms_number" class="form-control" type="number" min="1" name="rooms_number" value="{{ old('rooms_number') }}" placeholder="N° stanze minime">
-               </div>
-               <div class="form-group">
-                  <label for="size">Servizi aggiuntivi</label>
-                     <ul id="features" class="list-inline">
-                        @foreach ($features as $feature)
-                        <li class="list-inline-item btn btn-outline-dark">
-                           <input type="checkbox" name="features[]" value="{{$feature->id}}"
-                           @if(!empty(old('features')))
-                              @for($i = 0; $i < count(old('features')); $i++ )
-                                 @if(old('features')[$i] == $feature->id) {{'checked'}}
-                                 @endif
-                              @endfor
-                              @endif >
-                           <span class="featured_description">{{$feature->description}}</span>
-                        </li>
-                        @endforeach
-                     </ul>
-               </div>
-            </div>
-
-
-            <form action="{{route('api.apartments.index')}}" method="get">
-               @method('GET')
-               @csrf
-               <input type="hidden" name="latitude" value="{{$latitude}}">
-               <input type="hidden" name="longitude" value="{{$longitude}}">
-               <input type="hidden" name="beds_number" value="">
-               <div class="form-group">
-                  <label for="radius">Massima distanza dal punto di interesse</label>
-                  <select class="d-block" name="radius">
-                     <option value="20" selected>20 Km</option>
-                     <option value="40">40 Km</option>
-                     <option value="60">60 Km</option>
-                  </select>
-               </div>
-               <div class="row">
-                  <div class="col">
-                     <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
-                     <i class="fas fa-search"></i><span> Cerca</span>
-                     </button>
-                  </div>
-               </div>
-            </form>
-      </div>
+  <div class="row">
+    <div class="col-12 mb-5">
+      <form id="apartments_filter" action="{{route('api.apartments.index')}}">
+        @csrf
+        <div class="form-group">
+          <label for="beds_number">Numero minimo Posti Letto</label>
+          <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ $beds_number }}{{ old('rooms_number') }}" min="1" placeholder="N° posti letto minimi">
+        </div>
+         <div class="form-group">
+            <label for="rooms_number">Numero minimo Stanze</label>
+            <input id="rooms_number" class="form-control" type="number" name="rooms_number" value="{{ $rooms_number }}{{ old('rooms_number') }}" min="1" placeholder="N° stanze minime">
+         </div>
+         <div class="form-group">
+            <label for="size">Servizi aggiuntivi</label>
+               <ul id="features" class="list-inline">
+                  @foreach ($features as $feature)
+                  <li class="list-inline-item btn btn-outline-dark">
+                    <input type="checkbox" name="features[]" value="{{$feature->id}}"
+                      @if(isset($selected_features))
+                        @for( $i = 0; $i < count($selected_features); $i++ )
+                           @if($selected_features[$i] == $feature->id) {{'checked'}}
+                           @endif
+                        @endfor
+                      {{-- @elseif(!empty(old('features')))
+                        @for( $i = 0; $i < count(old('features')); $i++ )
+                           @if( old('features')[$i] == $feature->id ) {{'checked'}}
+                           @endif
+                        @endfor --}}
+                      @endif >
+                    <span class="featured_description">{{$feature->description}}</span>
+                  </li>
+                  @endforeach
+               </ul>
+         </div>
+         <div class="form-group">
+           <label for="radius">Massima distanza dal punto di interesse</label>
+           <select class="d-block" name="radius">
+             <option value="20">20 Km</option>
+            <option value="40">40 Km</option>
+            <option value="60">60 Km</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="col">
+            <input type="hidden" name="old_selected_rad" value="{{$radius}}">
+            <input type="hidden" name="latitude" value="{{$latitude}}">
+            <input type="hidden" name="longitude" value="{{$longitude}}">
+            <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+              <i class="fas fa-search"></i><span> Cerca</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
 
       <div class="col-12">
          @if (empty($filteredApartments))
