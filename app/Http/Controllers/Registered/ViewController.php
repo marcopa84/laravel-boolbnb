@@ -55,14 +55,19 @@ class ViewController extends Controller
 
         $views= DB::table('views')
         ->where('apartment_id', $apartment->id)
+        ->whereDate('date', '>', today()->subMonth(2))
         ->groupBy('date')
         ->select(DB::raw('count(*) as views, date'))
         ->get();
 
-        $chart = new ViewChart;
+        for ($i=0; $i < count($views); $i++) { 
+            $labels[] = $views[$i]->date;
+            $dataset[] = $views[$i]->views;
+        };
 
-        $chart->labels(['One', 'Two', 'Three', 'Four']);
-        $chart->dataset('My dataset', 'line', [1, 2, 3, 4]);
+        $chart = new ViewChart;
+        $chart->labels($labels);
+        $chart->dataset('Visualizzazioni', 'line', $dataset);
 
         return view('registered.apartments.views.show', compact('chart'));
     }

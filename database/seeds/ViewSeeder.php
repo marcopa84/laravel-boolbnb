@@ -15,7 +15,7 @@ class ViewSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 1000; $i++) { 
+        for ($i=0; $i < 5000; $i++) { 
             $view = new View;
             $view->apartment_id = 1;
             $view->date = Carbon::create('2020', rand(1,4), rand(1,29));
