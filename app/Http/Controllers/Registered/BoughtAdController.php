@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Registered;
 use App\Ad;
 use App\Apartment;
 use App\Bought_ad;
-use App\Order;
 use App\Http\Controllers\Controller;
+use App\Order;
 use Braintree;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
@@ -106,13 +106,13 @@ class BoughtAdController extends Controller
         // $end_date = Carbon::createFromDate($data['start_date'])-> add($hours, 'hour');
         // $data['end_date'] = $end_date;
         // $bought_ad->fill($data);
-        $saved = $bought_ad->save();
-
-        if (!$saved) {
-            return redirect()->back()->with('error', 'Errore durante l\'inserimento della sponsorizzazione.');
-        }
-
-        return redirect()->route('registered.apartments.ads.index')->with('message', 'Sponsorizzazione inserita correttamente.');
+        // $saved = $bought_ad->save();
+        //
+        // if (!$saved) {
+        //     return redirect()->back()->with('error', 'Errore durante l\'inserimento della sponsorizzazione.');
+        // }
+        //
+        // return redirect()->route('registered.apartments.ads.index')->with('message', 'Sponsorizzazione inserita correttamente.');
 
     }
 
