@@ -22,7 +22,7 @@
                     <a class="area-link" href="#">
                         <div class="area">
                             <i class="icon-title fas fa-user fa-3x"></i>
-                            <h6 class="title">Profilo</h6>
+                            <p class="title">Profilo</p>
                         </div>
                     </a>
                 </div>
@@ -32,7 +32,7 @@
                     <a class="area-link" href="{{route('registered.apartments.index')}}">
                         <div class="area">
                             <i class="icon-title fas fa-home fa-3x"></i>
-                            <h6 class="title">Appartamenti</h6>
+                            <p class="title">Appartamenti</p>
                         </div>
                     </a>
                 </div>
@@ -42,7 +42,7 @@
                     <a class="area-link" href="{{route('registered.messages')}}">
                         <div class="area">
                             <i class="icon-title fas fa-envelope fa-3x"></i>
-                            <h6 class="title">Messaggi</h6>
+                            <p class="title">Messaggi</p>
                         </div>
                     </a>
                 </div>
@@ -52,7 +52,7 @@
                     <a class="area-link" href="{{route('registered.ads.index')}}">
                         <div class="area">
                             <i class="icon-title fas fa-bullhorn fa-3x"></i>
-                            <h6 class="title">Sponsorizzazioni</h6>
+                            <p class="title">Sponsorizzazioni</p>
                         </div>
                     </a>
                 </div>

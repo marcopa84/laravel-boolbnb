@@ -160,7 +160,7 @@
       })
    });
    </script>
-   
+
    {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
    <script type="text/javascript">
    $('form input').on('keydown', function (event) {
@@ -214,4 +214,12 @@
       }
     });
   </script>
+@endsection
+
+@section('styles')
+<style>
+  input[type="checkbox" i]{
+    display: none;
+  }
+</style>
 @endsection

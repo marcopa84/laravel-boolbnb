@@ -149,54 +149,53 @@
 
 {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
 <script type="text/jscript" charset="utf-8">
-   $('form input').on('keydown', function(event) {
-   if (event.which == 13) {
+  $('form input').on('keydown', function(event) {
+    if (event.which == 13) {
       var inputs = $(this).parents("form").find(":input");
       if (inputs[inputs.index(this) + 1] != null) {
-         inputs[inputs.index(this) + 1].focus();
+        inputs[inputs.index(this) + 1].focus();
       }
-      event.preventDefault();
-   }
-   });
+    event.preventDefault();
+    }
+  });
 </script>
 
 {{-- ↓ script per checkare elementi anche cliccando sul nome --}}
 <script type="text/javascript" charser="utf-8">
-   $('form li.list-inline-item').on('click', function() {
-      // ho inserito due condizioni perché per alcuni browser, attr è undefined, per altri è false, così facendo la condizione funzionerà sempre
-      if( $(this).find('input[type="checkbox"]').attr('checked') == undefined || $(this).find('input[type="checkbox"]').attr('checked') == false) {
+  $('form li.list-inline-item').on('click', function() {
+    if( ! $(this).find('input[type="checkbox"]').is('checked') ) {
       $(this).find('input[name="features[]"]').attr('checked','checked');
       $(this).removeClass('btn-outline-dark');
       $(this).addClass('btn-info');
-      }
-      else {
+    }
+    else {
       $(this).find('input[name="features[]"]').removeAttr('checked');
       $(this).removeClass('btn-info');
       $(this).addClass('btn-outline-dark');
-      }
-   });
+    }
+  });
 </script>
 
 {{-- ↓ script toggle class on checked feature input --}}
 <script type="text/javascript" charser="utf-8">
-$(document).ready(function(){
-   $('li.list-inline-item').find('input[type="checkbox"]').filter("[checked]").each(function(){
+  $(document).ready(function(){
+    $('li.list-inline-item').find('input[type="checkbox"]').filter("[checked]").each(function(){
       $(this).parent().removeClass('btn-outline-dark');
       $(this).parent().addClass('btn-info');
-   })
-});
+    })
+  });
 </script>
 
 {{-- ↓ script per prevenire l'immissione di input non numerici negli input type="number" --}}
 <script type="text/javascript" charset="utf-8">
-   $(document).on('focus', 'input[type="number"]', function() {
+  $(document).on('focus', 'input[type="number"]', function() {
    var thisInput = $(this);
-      $(this).on('keypress', function(e) {
-         if(! (e.which < 58 && e.which > 47)) {
-         e.preventDefault();
-         }
-      });
-   });
+    $(this).on('keypress', function(e) {
+      if(! (e.which < 58 && e.which > 47)) {
+        e.preventDefault();
+      }
+    });
+  });
 </script>
 
 {{-- ↓ script per vedere l'anteprima dell'immagine caricata --}}
@@ -209,4 +208,12 @@ $(document).ready(function(){
    }
    });
 </script>
+@endsection
+
+@section('styles')
+<style>
+  input[type="checkbox" i]{
+    display: none;
+  }
+</style>
 @endsection

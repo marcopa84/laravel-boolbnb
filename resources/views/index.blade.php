@@ -4,7 +4,7 @@
 <div class="main-search">
    <div class="container">
       <h1>Cerca il tuo appartamento</h1>
-      <form class="dark" action="{{route('api.apartments.index')}}" method="get">
+      <form class="dark" action="{{route('apartments.search_apartments')}}" method="get">
          @csrf
          @method('GET')
          <div class="search-container row">
@@ -14,7 +14,7 @@
                <input type="hidden" name="longitude" id="longitude" value="">
                <input type="hidden" name="radius" id="radius" value="20">
                <ol id="address-suggestions" class="list-group">
-                  
+
                </ol>
                <input id="search-address-home" class="btn btn-dark mt-3" type="button" value="Cerca indirizzo">
             </div>
@@ -45,7 +45,7 @@
          Nessuna sposorizzazione attiva
       @else
          @foreach($apartments_ads as $apartment_ads)
-         
+
          <div class="col-md-6 col-lg-4">
             <div class="card">
                <a href="{{route('apartments.show', $apartment_ads->id)}}">
@@ -70,9 +70,9 @@
                         <i class="fas fa-euro-sign"></i> <span class="">{{$apartment_ads->price}}</span>
                      </div>
                </div>
-               
+
                </a>
-               
+
             </div>
          </div>
 
