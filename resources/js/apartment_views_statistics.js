@@ -1,4 +1,4 @@
-var chart = require('chart.js');
+/* var chart = require('chart.js');
 
 
 
@@ -20,4 +20,4 @@ chart = new Chart(ctx, {
 
     // Configuration options go here
     options: {}
-});
+}); */

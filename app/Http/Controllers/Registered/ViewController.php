@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Registered;
 use App\View;
 use App\Apartment;
 use Illuminate\Support\Facades\DB;
+use App\Charts\ViewChart;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class ViewController extends Controller
 {
@@ -49,19 +52,19 @@ class ViewController extends Controller
      */
     public function show(Apartment $apartment)
     {
-/*         $views = View::where('apartment_id', $apartment->id)
-            ->groupBy('date')    
-            // ->orderBy('date')
-            ->select('count(*)')
-            ->get() ; */
-            $views= DB::table('views')
-            ->where('apartment_id', $apartment->id)
-            ->groupBy('date')
-            ->select(DB::raw('count(*) as views, date'))
-            ->get();
 
+        $views= DB::table('views')
+        ->where('apartment_id', $apartment->id)
+        ->groupBy('date')
+        ->select(DB::raw('count(*) as views, date'))
+        ->get();
 
-        return view('registered.apartments.views.show', compact('views'));
+        $chart = new ViewChart;
+
+        $chart->labels(['One', 'Two', 'Three', 'Four']);
+        $chart->dataset('My dataset', 'line', [1, 2, 3, 4]);
+
+        return view('registered.apartments.views.show', compact('chart'));
     }
 
     /**
