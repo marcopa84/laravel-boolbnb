@@ -17,7 +17,7 @@ class CreateViewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('apartment_id')->required();
             $table->foreign('apartment_id')->references('id')->on('apartments');
-            $table->date('date');
+            $table->dateTime('date');
             $table->timestamps();
         });
     }

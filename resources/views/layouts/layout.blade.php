@@ -1,6 +1,8 @@
 @include('layouts.partials._head')
 @include('layouts.partials._header')
 
+
+<main>
    {{-- sessione messaggi --}}
    @if (session('message'))
    <div class="alert alert-success">{{ session('message') }}</div>
@@ -10,8 +12,8 @@
    @endif
    {{-- sessione messaggi --}}
 
-   <main>
-      @yield('main')
-   </main>
+
+   @yield('main')
+</main>
 
 @include('layouts.partials._footer')

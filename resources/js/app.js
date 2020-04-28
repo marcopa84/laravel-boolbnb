@@ -12,6 +12,8 @@ $(document).ready(function(){
     require('./apartments_filter');
 
     require('./maps_tomtom');
+
+    require('./apartment_views_statistics');
     
     //     // FX: funzione per calcolare la distanza in km tra due coordinate (utile per selezionare appartamenti in funzione di un dato raggio)
     //     function getDistanceBetweenTwoCoordinatePoints(lat1, lon1, lat2, lon2) {

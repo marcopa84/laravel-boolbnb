@@ -41,9 +41,9 @@
 
       <h3 class="small-caps text-center mb-5">Appartamenti in evidenza</h3>
       <div class="row">
-      @if(empty($apartments_ads))
+      @if(count($apartments_ads) == 0)
          Nessuna sposorizzazione attiva
-         @else
+      @else
          @foreach($apartments_ads as $apartment_ads)
          
          <div class="col-md-6 col-lg-4">
@@ -55,19 +55,19 @@
                </div>
                <div class="card-footer">
                   <small class="text-muted">
-                     <div class="n-users" title="Numero massimo ospiti">
-                        <i class="fas fa-expans"></i> {{$apartment_ads->rooms_number}}
-                     </div>
-                     <div class="n-rooms" title="Numero di bagni">
-                        <i class="fas fa-bed"></i> {{$apartment_ads->beds_number}}
+                     <div class="n-rooms" title="Numero stanze">
+                        <i class="fas fa-expand"></i> {{$apartment_ads->rooms_number}}
                      </div>
                      <div class="n-beds" title="Numero di letti">
-                        <i class="fas fa-baths"></i> {{$apartment_ads->bathrooms_number}}
+                        <i class="fas fa-bed"></i> {{$apartment_ads->beds_number}}
+                     </div>
+                     <div class="n-baths" title="Numero di bagni">
+                        <i class="fas fa-bath"></i> {{$apartment_ads->bathrooms_number}}
                      </div>
                   </small>
-                  <div class="price" title="Prezzo a notte">
-                     {{$apartment_ads->price}}
-                  </div>
+                     <div class="price" title="Prezzo a notte">
+                        <i class="fas fa-euro-sign"></i> <span class="">{{$apartment_ads->price}}</span>
+                     </div>
                </div>
             </div>
          </div>

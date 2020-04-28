@@ -11152,6 +11152,10 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  padding-top: 56.42px;
+}
+
 .small-caps {
   font-variant: small-caps;
   letter-spacing: 4px;
@@ -11266,7 +11270,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 }
 
 .layout-apartment .main-content {
-  padding: calc(40px + 56.42px) 0 48px;
+  padding: 40px 0 48px;
   flex: 2;
   margin-right: 32px;
 }
@@ -11391,7 +11395,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
 .layout-apartment .sidebar .sidebar-content {
   background-color: #edfbfc;
-  padding: 112px 24px 16px;
+  padding: calc(112px - 56.42px) 24px 16px;
   border-bottom: 2px solid #146d70;
   position: fixed;
 }
@@ -11404,7 +11408,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   background: #146d70;
   position: absolute;
   left: 40%;
-  top: 10px;
+  top: calc(10px - 56.42px);
   transform: rotate(45deg);
 }
 
