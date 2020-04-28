@@ -15,9 +15,9 @@
                             <a class="nav-link" href="{{asset('/')}}">Home <span class="sr-only">(current)</span></a>
                         </li>
                         @auth
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('/registered') }}">Dashboard <span class="sr-only">(current)</span></a>
-                        </li>
+                        </li> --}}
                         @endauth
                     </ul>
 
@@ -54,6 +54,9 @@
                                     </a>
                                     <a class="dropdown-item" href="{{ route('registered.apartments.create') }}">
                                         {{ __('Aggiungi nuovo appartamento') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('registered.ads.index') }}">
+                                        {{ __('Sponsorizza appartamento') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();

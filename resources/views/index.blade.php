@@ -48,7 +48,8 @@
          
          <div class="col-md-6 col-lg-4">
             <div class="card">
-               <img class="card-img-top" src="{{asset($apartment_ads->featured_image)}}" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
+               <a href="{{route('apartments.show', $apartment_ads->id)}}">
+                  <img class="card-img-top" src="{{asset($apartment_ads->featured_image)}}" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
                <div class="card-body">
                   <h5 class="card-title">{{$apartment_ads->title}}</h5>
                   <p class="card-text">{{$apartment_ads->address}}</p>
@@ -69,6 +70,9 @@
                         <i class="fas fa-euro-sign"></i> <span class="">{{$apartment_ads->price}}</span>
                      </div>
                </div>
+               
+               </a>
+               
             </div>
          </div>
 

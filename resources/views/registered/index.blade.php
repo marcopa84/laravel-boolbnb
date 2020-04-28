@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('main')
-<div class="dashboard">
+<div class="dashboard mt-5">
     @if (session('status'))
     <div class="alert alert-success" role="alert">
         {{ session('status') }}
