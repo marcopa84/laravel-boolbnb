@@ -35,6 +35,7 @@ class RegisteredController extends Controller
             ->join('apartments', 'users.id', '=', 'apartments.user_id')
             ->join('messages', 'apartments.id', '=', 'messages.apartment_id')
             ->select('messages.*')
+            ->orderBy('created_at', 'desc')
             ->get();
         return view('registered.messages', compact('messages'));
     }
