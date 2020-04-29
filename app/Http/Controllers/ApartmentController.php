@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use App\Apartment;
 use App\Feature;
 use App\View;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
@@ -112,28 +112,24 @@ class ApartmentController extends Controller
       $rad = intval($rad);
       // ↓ $apartments conterrà tutti gli appartamenti filtrati dal database in base a $rad, $lat e $lon forniti. ↓
       $apartments = Apartment::where('visible', 1)->where('longitude', '<' , $lon1+$rad*0.01)->where('longitude', '>' , $lon1-$rad*0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad*0.01)->get();
-      // ↑ questa prima scrematura fornisce una distanza dalle coordinate selezionate con limiti leggermente maggiori del richiesto. ↑
+    // ↑ questa prima scrematura fornisce una distanza dalle coordinate selezionate con limiti leggermente maggiori del richiesto. ↑
+      $now = Carbon::now();
+      $apartments_sponsorized = Apartment::where('visible', 1)->where('longitude', '<', $lon1 + $rad * 0.01)->where('longitude', '>', $lon1 - $rad * 0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad * 0.01)
+      ->orderBy('start_date', 'desc')
+      ->join('bought_ads', 'apartments.id', '=', 'bought_ads.apartment_id')
+      ->select('*')
+      ->where([
+        ['start_date', '<=', $now],
+        ['end_date', '>=', $now],
+      ])
+      ->get();
+        
       // ↓ $filteredApartments conterrà tutti gli appartamenti entro la distanza voluta, con precisione ottimale e ordinati discendentemente rispetto alla distanza dalla posizione fornita dall'utente ↓
-      $filteredApartments = [];
-      foreach($apartments as $apartment) {
-        $lat2 = $apartment['latitude'];
-        $lon2 = $apartment['longitude'];
-        $p = 0.017453292519943295;
-        $a = 0.5 - cos(($lat2 - $lat1) * $p)/2 +
-        cos($lat1 * $p) * cos($lat2 * $p) *
-        (1 - cos(($lon2 - $lon1) * $p))/2;
-        $result = 12742 * asin(sqrt($a));
-        if ($result <= $rad) {
-          $result = round($result, 2);
-          $apartment->distance = $result;
-          $filteredApartments[] = $apartment;
-        }
-        $filteredApartments = array_values(Arr::sort($filteredApartments, function ($value) {
-        return $value['distance'];
-        }));
-      }
+      // $filteredApartments = [];
+      
       $data = [
-        'filteredApartments'=>$filteredApartments,
+        'filtered_apartments'=> $this->filterApartments($apartments, $lat1, $lon1, $rad),
+        'apartments_sponsorized'=> $this->filterApartments($apartments_sponsorized, $lat1, $lon1, $rad),
         'latitude' => $lat,
         'longitude' => $lon,
         'radius' => $rad,
@@ -143,5 +139,28 @@ class ApartmentController extends Controller
         'selected_features' =>$request['features'],
       ];
       return view('apartments.index', $data);
+    }
+
+    // funzione
+    public function filterApartments($array, $lat1, $lon1, $rad) {
+      $filteredApartments = [];
+      foreach ($array as $apartment) {
+        $lat2 = $apartment['latitude'];
+        $lon2 = $apartment['longitude'];
+        $p = 0.017453292519943295;
+        $a = 0.5 - cos(($lat2 - $lat1) * $p) / 2 +
+        cos($lat1 * $p) * cos($lat2 * $p) *
+        (1 - cos(($lon2 - $lon1) * $p)) / 2;
+        $result = 12742 * asin(sqrt($a));
+        if ($result <= $rad) {
+          $result = round($result, 2);
+          $apartment->distance = $result;
+          $filteredApartments[] = $apartment;
+        }
+        $filteredApartments = array_values(Arr::sort($filteredApartments, function ($value) {
+          return $value['distance'];
+        }));
+      }
+      return $filteredApartments;
     }
 }

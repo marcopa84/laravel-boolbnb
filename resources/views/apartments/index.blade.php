@@ -55,13 +55,59 @@
         </div>
       </form>
     </div>
+{{-- sponsorizzati --}}
     <div class="col-12">
-      @if (empty($filteredApartments))
+      
+        @foreach ($apartments_sponsorized as $apartment)
+        SPONSORIZZATO
+        <div class="card dash" data-beds="{{$apartment->beds_number}}" data-rooms="{{$apartment->rooms_number}}" data-features="{{$apartment->features}}">
+          <div class="card-image">
+            <img class="card-img-top" src="{{asset($apartment->featured_image)}}" alt="Immagine di anteprima dell'appartamento">
+          </div>
+          <div class="card-body">
+            <div class="card-body-text">
+              <h3 class="card-title">{{$apartment->title}}</h3>
+              <p class="card-text lead">{{$apartment->address}}</p>
+              <p class="card-distance"><span>{{$apartment->distance}}km </span><span><i class="fas fa-bed"></i> {{$apartment->beds_number}} </span><span><i class="fas fa-expand"></i> {{$apartment->rooms_number}}</span></p>
+              <div class="apartment-features-list">
+                @foreach ($apartment->features as $feature)
+                @if ($feature->id == 1)
+                <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                @endif
+                @if ($feature->id == 2)
+                  <span><i class="fas fa-parking fa-1.5x"></i> Posto auto</span>
+                @endif
+                @if ($feature->id == 3)
+                  <span><i class="fas fa-swimmer"></i> Piscina</span>
+                @endif
+                @if ($feature->id == 4)
+                  <span><i class="fas fa-concierge-bell"></i> Portineria</span>
+                @endif
+                @if ($feature->id == 5)
+                  <span><i class="fas fa-hot-tub"></i> Sauna</span>
+                @endif
+                @if ($feature->id == 6)
+                  <span><i class="fas fa-water"></i> Vista mare</span>
+                @endif
+                @endforeach
+              </div>
+            </div>
+            <div class="card-dash-buttons">
+              <a href="{{route('apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
+            </div>
+          </div>
+        </div>
+        @endforeach
+
+    </div>
+{{-- /sponsorizzati --}}
+    <div class="col-12">
+      @if (empty($filtered_apartments))
         <div class="alert alert-info" role="alert">
           <p>Non ci sono appartamenti disponibili</p>
         </div>
       @else
-        @foreach ($filteredApartments as $apartment)
+        @foreach ($filtered_apartments as $apartment)
         <div class="card dash" data-beds="{{$apartment->beds_number}}" data-rooms="{{$apartment->rooms_number}}" data-features="{{$apartment->features}}">
           <div class="card-image">
             <img class="card-img-top" src="{{asset($apartment->featured_image)}}" alt="Immagine di anteprima dell'appartamento">
