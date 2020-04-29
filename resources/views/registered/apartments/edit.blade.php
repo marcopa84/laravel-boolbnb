@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('main')
-<div class="container my-5">
+<div class="container my-5" id="apartment-edit">
    <form action="{{route('registered.apartments.update', $apartment)}}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PATCH')
@@ -148,7 +148,7 @@
 </script> --}}
 
 {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
-<script type="text/jscript" charset="utf-8">
+{{-- <script type="text/jscript" charset="utf-8">
   $('form input').on('keydown', function(event) {
     if (event.which == 13) {
       var inputs = $(this).parents("form").find(":input");
@@ -158,10 +158,10 @@
     event.preventDefault();
     }
   });
-</script>
+</script> --}}
 
 {{-- ↓ script per checkare elementi anche cliccando sul nome --}}
-<script type="text/javascript" charser="utf-8">
+{{-- <script type="text/javascript" charser="utf-8">
   $('form li.list-inline-item').on('click', function() {
     if( ! $(this).find('input[type="checkbox"]').is('checked') ) {
       $(this).find('input[name="features[]"]').attr('checked','checked');
@@ -174,20 +174,20 @@
       $(this).addClass('btn-outline-dark');
     }
   });
-</script>
+</script> --}}
 
 {{-- ↓ script toggle class on checked feature input --}}
-<script type="text/javascript" charser="utf-8">
+{{-- <script type="text/javascript" charser="utf-8">
   $(document).ready(function(){
     $('li.list-inline-item').find('input[type="checkbox"]').filter("[checked]").each(function(){
       $(this).parent().removeClass('btn-outline-dark');
       $(this).parent().addClass('btn-info');
     })
   });
-</script>
+</script> --}}
 
 {{-- ↓ script per prevenire l'immissione di input non numerici negli input type="number" --}}
-<script type="text/javascript" charset="utf-8">
+{{-- <script type="text/javascript" charset="utf-8">
   $(document).on('focus', 'input[type="number"]', function() {
    var thisInput = $(this);
     $(this).on('keypress', function(e) {
@@ -196,10 +196,10 @@
       }
     });
   });
-</script>
+</script> --}}
 
 {{-- ↓ script per vedere l'anteprima dell'immagine caricata --}}
-<script type="text/javascript" charset="utf-8">
+{{-- <script type="text/javascript" charset="utf-8">
    $('input[type="file"]').on('change', function(event){
    var output = document.getElementById('featured_image_preview');
    output.src = URL.createObjectURL(event.target.files[0]);
@@ -207,7 +207,7 @@
       URL.revokeObjectURL(output.src);
    }
    });
-</script>
+</script> --}}
 @endsection
 
 @section('styles')

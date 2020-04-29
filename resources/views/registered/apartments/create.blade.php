@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('main')
-<div class="container my-5">
+<div class="container my-5" id="apartment-create">
 <form action="{{route('registered.apartments.store')}}" method="POST" enctype="multipart/form-data">
    @csrf
    @method('POST')
@@ -136,33 +136,20 @@
      </li>
   </script>
 
-  {{-- ↓ script per valorizzare dinamicamente le labels utilizzando Vue.js --}}
-  {{-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script type="text/javascript">
-    var app = new Vue({
-    el: '#app',
-    data: {
-      rooms_number: '',
-      bathrooms_number:'',
-      beds_number:'',
-      size:'',
-      price:'',
-    }
-  });
-  </script> --}}
+
 
    {{-- ↓ script toggle class on checked feature input --}}
-   <script type="text/javascript" charser="utf-8">
+   {{-- <script type="text/javascript" charser="utf-8">
    $(document).ready(function(){
       $('li.list-inline-item').find('input[type="checkbox"]').filter("[checked]").each(function(){
          $(this).parent().removeClass('btn-outline-dark');
          $(this).parent().addClass('btn-info');
       })
    });
-   </script>
+   </script> --}}
 
    {{-- ↓ script per cambiare focus degli input con il tasto Enter --}}
-   <script type="text/javascript">
+   {{-- <script type="text/javascript">
    $('form input').on('keydown', function (event) {
        if (event.which == 13) {
            var inputs = $(this).parents("form").find(":input");
@@ -172,10 +159,10 @@
            event.preventDefault();
        }
    });
-   </script>
+   </script> --}}
 
   {{-- ↓ script per checkare elementi anche cliccando sul nome --}}
-  <script type="text/javascript" charser="utf-8">
+  {{-- <script type="text/javascript" charser="utf-8">
     $('form li.list-inline-item').on('click', function() {
       // ho inserito due condizioni perché per alcuni browser, attr è undefined, per altri è false, così facendo la condizione funzionerà sempre
       if( $(this).find('input[type="checkbox"]').attr('checked') == undefined || $(this).find('input[type="checkbox"]').attr('checked') == false) {
@@ -189,10 +176,10 @@
         $(this).addClass('btn-outline-dark');
       }
     });
-  </script>
+  </script> --}}
 
   {{-- ↓ script per prevenire l'immissione di input non numerici negli input type="number" --}}
-  <script type="text/javascript" charset="utf-8">
+  {{-- <script type="text/javascript" charset="utf-8">
     $(document).on('focus', 'input[type="number"]', function() {
       var thisInput = $(this);
         $(this).on('keypress', function(e) {
@@ -201,10 +188,10 @@
           }
         });
     });
-  </script>
+  </script> --}}
 
   {{-- ↓ script per vedere l'anteprima dell'immagine caricata --}}
-  <script type="text/javascript" charset="utf-8">
+  {{-- <script type="text/javascript" charset="utf-8">
     $('input[type="file"]').on('change', function(event){
       var output = document.getElementById('featured_image_preview');
       output.src = URL.createObjectURL(event.target.files[0]);
@@ -213,7 +200,7 @@
         $('#featured_image_preview').removeClass('d-none');
       }
     });
-  </script>
+  </script> --}}
 @endsection
 
 @section('styles')
