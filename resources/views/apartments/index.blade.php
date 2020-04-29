@@ -101,7 +101,7 @@
 
     </div>
 {{-- /sponsorizzati --}}
-    <div class="col-12">
+    <div class="col-12 mt-3">
       @if (empty($filtered_apartments))
         <div class="alert alert-info" role="alert">
           <p>Non ci sono appartamenti disponibili</p>

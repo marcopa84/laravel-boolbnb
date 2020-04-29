@@ -111,10 +111,19 @@ class ApartmentController extends Controller
       $lon1 = doubleval($lon);
       $rad = intval($rad);
       // ↓ $apartments conterrà tutti gli appartamenti filtrati dal database in base a $rad, $lat e $lon forniti. ↓
-      $apartments = Apartment::where('visible', 1)->where('longitude', '<' , $lon1+$rad*0.01)->where('longitude', '>' , $lon1-$rad*0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad*0.01)->get();
+      $apartments = Apartment::where('visible', 1)
+      ->where('longitude', '<' , $lon1+$rad*0.01)
+      ->where('longitude', '>' , $lon1-$rad*0.01)
+      ->where('latitude', '<', $lat1 + $rad * 0.01)
+      ->where('latitude', '>', $lat1 - $rad*0.01)
+      ->get();
     // ↑ questa prima scrematura fornisce una distanza dalle coordinate selezionate con limiti leggermente maggiori del richiesto. ↑
       $now = Carbon::now();
-      $apartments_sponsorized = Apartment::where('visible', 1)->where('longitude', '<', $lon1 + $rad * 0.01)->where('longitude', '>', $lon1 - $rad * 0.01)->where('latitude', '<', $lat1 + $rad * 0.01)->where('latitude', '>', $lat1 - $rad * 0.01)
+      $apartments_sponsorized = Apartment::where('visible', 1)
+      ->where('longitude', '<', $lon1 + $rad * 0.01)
+      ->where('longitude', '>', $lon1 - $rad * 0.01)
+      ->where('latitude', '<', $lat1 + $rad * 0.01)
+      ->where('latitude', '>', $lat1 - $rad * 0.01)
       ->orderBy('start_date', 'desc')
       ->join('bought_ads', 'apartments.id', '=', 'bought_ads.apartment_id')
       ->select('*')
@@ -123,7 +132,6 @@ class ApartmentController extends Controller
         ['end_date', '>=', $now],
       ])
       ->get();
-        
       // ↓ $filteredApartments conterrà tutti gli appartamenti entro la distanza voluta, con precisione ottimale e ordinati discendentemente rispetto alla distanza dalla posizione fornita dall'utente ↓
       // $filteredApartments = [];
       
@@ -141,7 +149,6 @@ class ApartmentController extends Controller
       return view('apartments.index', $data);
     }
 
-    // funzione
     public function filterApartments($array, $lat1, $lon1, $rad) {
       $filteredApartments = [];
       foreach ($array as $apartment) {
