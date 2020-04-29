@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="start_date">Imposta la data e l'orario di avvio della sponsorizzazione</label>
-            <input type="datetime-local" name="start_date" class="form-control" value="{{Carbon::now()->format('Y-m-d\\TH:i')}}">
+            <input type="datetime-local" name="start_date" class="form-control" value="{{Carbon::now()->addMinute(5)->format('Y-m-d\\TH:i')}}">
             @if($errors->has('start_date'))
                 <div class="error alert alert-danger">{{ $errors->first('start_date') }}</div>
             @endif

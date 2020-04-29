@@ -7,7 +7,7 @@ $(document).ready(function(){
 
     require('./bootstrap');
 
-    require('./apartments_features');
+    require('./apartments_pages');
 
     require('./coordinate_search');
 

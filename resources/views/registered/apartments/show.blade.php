@@ -79,28 +79,28 @@
       </section>
    </div> <!-- / main-content -->
    <aside class="sidebar">
-      <div class="sidebar-content">
+      {{-- <div class="sidebar-content">
          <div class="sidebar-message">
             <h6 class="message-title"><i class="fas fa-envelope icon"></i> Contatta il proprietario</h6>
             <form action="{{route('message.store', $apartment)}}" method="POST">
                @csrf 
-               @method('POST')
+               @method('POST') --}}
                {{-- <!-- <input type="hidden" name="apartment_id" value="{{$apartment->id}}"> --> --}}
                
                <!-- Form-group -->
-               <div class="form-group">
+               {{-- <div class="form-group">
                   <label for="email">Email</label>
                   <input class="form-control" type="email" name="email" value="@auth{{Auth::user()->email}}@endauth">
-               </div>
+               </div> --}}
                <!-- Form-group -->
-               <div class="form-group">
+               {{-- <div class="form-group">
                   <label for="content">Messaggio</label>
                   <textarea class="form-control" name="content" cols="30" rows="10">Salve, vorrei maggiori informazioni su questo appartamento.</textarea>
                </div>
                <button class="btn btn-dark" type="submit">Invia</button>
             </form>
          </div>
-      </div>
+      </div> --}}
 
    </aside> <!-- / sidebar -->
 </div>
