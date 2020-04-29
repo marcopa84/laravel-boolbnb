@@ -48,7 +48,7 @@
 
          <div class="col-md-6 col-lg-4">
             <div class="card">
-               <a href="{{route('apartments.show', $apartment_ads->id)}}">
+               <a href="{{route('apartments.show', $apartment_ads->apartment_id)}}">
                   <img class="card-img-top" src="{{asset($apartment_ads->featured_image)}}" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
                <div class="card-body">
                   <h5 class="card-title">{{$apartment_ads->title}}</h5>
