@@ -1,5 +1,4 @@
 @extends('layouts.layout')
-
 @section('main')
 <div class="container my-5">
     @if (!count($messages))
@@ -7,19 +6,21 @@
         <p>Non hai ricevuto ancora messaggi.</p>
     </div>
     @else
-    <ul>
-    @foreach ($messages as $message)
-    <li>MESSAGGIO:
-        <ul>
-            <li> {{$message->email}} </li>
-            <li> {{$message->content}} </li>
-            <li> {{$message->created_at}} </li>
-        </ul>
-    </li>      
-    @endforeach
-    </ul>
+        <div class="messages-cards">
+            @foreach ($messages as $key => $message)
+            <div class="card mb-3">
+                <div class="card-header"">
+                    <h4 class="mb-0">
+                        Messaggio da: {{$message->email}}
+                    </h4>
+                    <span>Ricevuto alle: </span><time>{{$message->created_at}}</time>
+                </div>
+                <div class="card-body">
+                    {{$message->content}}
+                </div>
+            </div>
+            @endforeach
+        </div>
     @endif
 </div>
-
-
 @endsection
