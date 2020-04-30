@@ -41,6 +41,12 @@ main{
 header{
    .navbar{
       .container{
+        .hamburger{
+          border: none;
+          &:focus{
+            outline: none;
+          }
+        }
          .navbar-collapse{
             .nav-right{
                .nav-item{

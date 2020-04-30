@@ -11171,6 +11171,14 @@ main {
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
 
+header .navbar .container .hamburger {
+  border: none;
+}
+
+header .navbar .container .hamburger:focus {
+  outline: none;
+}
+
 header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img {
   width: 24px;
   height: 24px;
