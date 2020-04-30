@@ -11182,6 +11182,30 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
 /*
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
+* HEADER MEDIAQUERY
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+@media screen and (max-width: 780px) {
+  .dropdown-menu-right {
+    background: #0c4345;
+    border: none;
+  }
+
+  .dropdown-menu-right .dropdown-item {
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+  }
+
+  .dropdown-menu-right .dropdown-item:hover {
+    background-color: #146d70;
+  }
+}
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
 * REGISTERED APARTMENTS INDEX
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */

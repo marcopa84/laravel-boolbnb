@@ -76358,6 +76358,9 @@ $(document).ready(function () {
 
   __webpack_require__(/*! ./maps_tomtom */ "./resources/js/maps_tomtom.js");
 
+  __webpack_require__(/*! ./hamburger-menu */ "./resources/js/hamburger-menu.js"); // require('popper.js/dist/umd/popper');
+
+
   var chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 });
 
@@ -76492,6 +76495,19 @@ function getGeocode(address_value) {
 
 /***/ }),
 
+/***/ "./resources/js/hamburger-menu.js":
+/*!****************************************!*\
+  !*** ./resources/js/hamburger-menu.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('.hamburger').on('click', function () {
+  $(this).siblings('.navbar-collapse').toggle();
+});
+
+/***/ }),
+
 /***/ "./resources/js/maps_tomtom.js":
 /*!*************************************!*\
   !*** ./resources/js/maps_tomtom.js ***!
@@ -76548,8 +76564,8 @@ if ($('#map').length > 0) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/danilo/Desktop/mamp_public/laravel-boolbnb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/danilo/Desktop/mamp_public/laravel-boolbnb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! F:\Alessandro\Boolean.careers\Esercitazioni\mamp_public\laravel-boolbnb\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

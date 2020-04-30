@@ -17,7 +17,7 @@
   <link rel="icon" href="{{ URL::asset('/default_images/favicon.png') }}" type="image/x-icon"/>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <!-- Scripts -->
+  {{-- Custom Scripts --}}
   <script src="{{ asset('js/app.js') }}"></script>
 
 

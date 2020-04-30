@@ -15,6 +15,10 @@ $(document).ready(function(){
 
     require('./maps_tomtom');
 
+    require('./hamburger-menu');
+
+    // require('popper.js/dist/umd/popper');
+
     var chart = require('chart.js');
-    
+
 });

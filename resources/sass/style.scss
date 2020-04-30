@@ -57,8 +57,26 @@ header{
       }
    }
 }
-
-
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* HEADER MEDIAQUERY
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+@media screen and (max-width:780px) {
+  .dropdown-menu-right{
+    background: darken($primary,10);
+    border:none;
+    .dropdown-item{
+      @include text-contrast(darken($primary,10));
+      margin-left: 10px;
+      margin-right: 10px;
+      width: auto;
+      &:hover{
+        background-color:$primary;
+      }
+    }
+  }
+}
 
 /*
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -131,7 +149,7 @@ header{
 .layout-apartment{
    display: flex;
    flex-flow: row wrap;
-   
+
    .main-content{
       padding: 40px 0 48px;
       flex: 2;
@@ -218,7 +236,7 @@ header{
             }
             p{ margin-bottom: 0; }
          }
-         
+
       }
 
       .apartment-features{
@@ -309,7 +327,7 @@ header{
 @media screen and(max-width: 992px){
 
    .layout-apartment{
-      
+
       .main-content{
          flex-basis: 100%;
          padding-right: 0;
@@ -342,7 +360,7 @@ header{
             margin: 8px 0!important;
          }
       }
-      
+
    }
 
 }
