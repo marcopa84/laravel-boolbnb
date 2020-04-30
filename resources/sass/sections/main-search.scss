@@ -1,49 +1,91 @@
 .main-search{
-   padding: calc(16px * 10) 80px;
+   // padding: calc(16px * 10) 80px;
    text-align: center;
+   height: 50vh;
    // background: linear-gradient($primaryLight, $primaryDark);
+   > [class^="container"],
+   > [class^="container"] .carousel-search,
+   > [class^="container"] .carousel-search .carousel-inner,
+   > [class^="container"] .carousel-search .carousel-inner .carousel-item{ height: 100%;}
 
    h1{
       font-size: 24px;
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 24px;
+      @include text-contrast(rgba(0,0,0,.4));
    }
 
-   form{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+   .carousel-search .search-form{
+      position: absolute;
+      top: 50%;
+      // transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60vw;
+      z-index: 1;
 
-      .search-container{
-         border: 1px solid $dark;
-         border-radius: 30px;
-         padding: 24px 0;
-      }
+      form{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         flex-wrap: wrap;
 
-      .row{
-         width: 100%;
-
-         [class^=col-]:nth-child(2){
-            border-right: 1px solid $dark;
-            border-left: 1px solid $dark;
+         input::placeholder{
+            color: $light;
+            font-size: 18px;
          }
 
-         .form-control{
-            text-align: center;
-            background: none;
-            border: none;
-         }
-      }
-      button{
-         margin-top: 24px;
+         .search-container{
+            border: 1px solid $light;
+            border-radius: 30px;
+            display: flex;
+            align-items: stretch;
 
-         i{
-            font-size: 14px;
-            margin-right: 4px;
+            .search-where{
+               flex: 5 1 60%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               padding: 8px;
+            }
+            
+            .search-guests{
+               flex: 1 1 20%;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               padding: 8px;
+            }
+            
+            .search-submit{
+               flex: 0;
+              
+               button{
+                  background: $primary;
+                  @include text-contrast($primary);
+                  border-radius: 0 30px 30px 0;
+                  height: 100%;
+                  padding: 0 24px;
+               }
+
+               i{
+                  font-size: 20px;
+                  padding-right: 4px;
+               }
+            }
+         } // searc-container
+
+         .row{
+            width: 100%;
+
+            .form-control{
+               text-align: center;
+               background: none;
+               border: none;
+            }
          }
-      }
+      } // form
    }
 }
 
@@ -57,7 +99,7 @@
 
    .main-search{
 
-      padding: calc(16px * 2) 80px;
+      // padding: calc(16px * 2) 80px;
 
       form{
 

@@ -1,40 +1,55 @@
 @extends('layouts.layout')
 
 @section('main')
-<div class="main-search">
-   <div class="container">
-      <h1>Cerca il tuo appartamento</h1>
-      <form class="dark" action="{{route('apartments.search_apartments')}}" method="get">
-         @csrf
-         @method('GET')
-         <div class="search-container row">
-            <div class="col-md-4">
-               <input type="text" id="address" class="form-control" placeholder="Dove?" autocomplete="off">
-               <input type="hidden" name="latitude" id="latitude" value="">
-               <input type="hidden" name="longitude" id="longitude" value="">
-               <input type="hidden" name="radius" id="radius" value="20">
-               <ol id="address-suggestions" class="list-group">
 
-               </ol>
-               <input id="search-address-home" class="btn btn-dark mt-3" type="button" value="Cerca indirizzo">
+<div class="main-search">
+   <div class="container-fluid px-0">
+      
+      <!-- CAROUSEL -->
+      <div id="carouselExampleFade" class="carousel slide carousel-fade carousel-search" data-ride="carousel" data-interval="5000" data-pause="false">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <img class="d-block" src="https://c8.alamy.com/comp/M0DRBY/modern-interior-design-open-space-living-room-with-kitchen-M0DRBY.jpg" alt="First slide">
             </div>
-            <div class="col-md-4">
-               <input type="text" class="form-control" title="Inserisci la data di tuo interesse" placeholder="Data" value="">
+            <div class="carousel-item">
+               <img class="d-block" src="{{asset('default_images/default_apartment.jpg')}}" alt="Second slide">
             </div>
-            <div class="col-md-4">
-               <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti">
+            <div class="carousel-item">
+               <img class="d-block" src="https://static2.bigstockphoto.com/0/6/2/large1500/260951287.jpg" alt="Third slide">
             </div>
          </div>
-         <div class="row">
-            <div class="col">
-               <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
-               <i class="fas fa-search"></i><span>Cerca</span>
-               </button>
-            </div>
+
+         <!-- SEARCH -->
+         <div class="search-form">
+            <h1>Cerca il tuo appartamento</h1>
+            <form class="dark" action="{{route('apartments.search_apartments')}}" method="get">
+               @csrf
+               @method('GET')
+               <div class="search-container row">
+                  <div class="search-where">
+                     <input type="text" id="address" class="form-control" placeholder="Dove?" autocomplete="off">
+                     <input type="hidden" name="latitude" id="latitude" value="">
+                     <input type="hidden" name="longitude" id="longitude" value="">
+                     <input type="hidden" name="radius" id="radius" value="20">
+                     <ol id="address-suggestions" class="list-group">
+
+                     </ol>
+                     <input id="search-address-home" class="btn btn-dark" type="button" value="Cerca indirizzo">
+                  </div>
+                  <div class="search-guests">
+                     <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti">
+                  </div>
+                  <div class="search-submit">
+                     <button type="submit" class="btn" title="Cerca appartamenti">
+                        <i class="fas fa-search"></i>
+                     </button>
+                  </div>
+               </div>
+            </form>
          </div>
-      </form>
-   </div>
-</div>
+      </div>  <!-- / .carousel -->
+   </div>  <!-- / .container-fluid -->
+</div>  <!-- / .main-search -->
 
 <div class="ads mt-5">
    <div class="container">
@@ -47,33 +62,31 @@
          @foreach($apartments_ads as $apartment_ads)
 
          <div class="col-md-6 col-lg-4">
-            <div class="card">
-               <a href="{{route('apartments.show', $apartment_ads->apartment_id)}}">
+            <a href="{{route('apartments.show', $apartment_ads->apartment_id)}}">
+               <div class="card">
                   <img class="card-img-top" src="{{asset($apartment_ads->featured_image)}}" alt="Card image cap" title="Immagine di anteprima dell'appartamento">
-               <div class="card-body">
-                  <h5 class="card-title">{{$apartment_ads->title}}</h5>
-                  <p class="card-text">{{$apartment_ads->address}}</p>
+                  <div class="card-body">
+                     <h5 class="card-title">{{$apartment_ads->title}}</h5>
+                     <p class="card-text">{{$apartment_ads->address}}</p>
+                  </div>
+                  <div class="card-footer">
+                     <small class="text-muted">
+                        <div class="n-rooms" title="Numero stanze">
+                           <i class="fas fa-expand"></i> {{$apartment_ads->rooms_number}}
+                        </div>
+                        <div class="n-beds" title="Numero di letti">
+                           <i class="fas fa-bed"></i> {{$apartment_ads->beds_number}}
+                        </div>
+                        <div class="n-baths" title="Numero di bagni">
+                           <i class="fas fa-bath"></i> {{$apartment_ads->bathrooms_number}}
+                        </div>
+                     </small>
+                        <div class="price" title="Prezzo a notte">
+                           <i class="fas fa-euro-sign"></i> <span class="">{{$apartment_ads->price}}</span>
+                        </div>
+                  </div>
                </div>
-               <div class="card-footer">
-                  <small class="text-muted">
-                     <div class="n-rooms" title="Numero stanze">
-                        <i class="fas fa-expand"></i> {{$apartment_ads->rooms_number}}
-                     </div>
-                     <div class="n-beds" title="Numero di letti">
-                        <i class="fas fa-bed"></i> {{$apartment_ads->beds_number}}
-                     </div>
-                     <div class="n-baths" title="Numero di bagni">
-                        <i class="fas fa-bath"></i> {{$apartment_ads->bathrooms_number}}
-                     </div>
-                  </small>
-                     <div class="price" title="Prezzo a notte">
-                        <i class="fas fa-euro-sign"></i> <span class="">{{$apartment_ads->price}}</span>
-                     </div>
-               </div>
-
-               </a>
-
-            </div>
+            </a>
          </div>
 
          @endforeach

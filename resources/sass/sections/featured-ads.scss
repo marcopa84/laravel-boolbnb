@@ -6,8 +6,17 @@
 
 .ads{
    padding: calc(16px * 4) 0;
+
+   a:hover{ color: $primary; }
+   
    .card{
       margin-bottom: 32px;
+      .card-body{
+         min-height: 120px;
+         display: flex;
+         flex-flow: column wrap;
+         justify-content: space-between;
+      }
       .card-footer{
          display: flex;
          justify-content: space-between;
