@@ -9,13 +9,13 @@
       <div id="carouselExampleFade" class="carousel slide carousel-fade carousel-search" data-ride="carousel" data-interval="5000" data-pause="false">
          <div class="carousel-inner">
             <div class="carousel-item active">
-               <img class="d-block" src="https://c8.alamy.com/comp/M0DRBY/modern-interior-design-open-space-living-room-with-kitchen-M0DRBY.jpg" alt="First slide">
+               <!-- <img class="d-block" src="https://c8.alamy.com/comp/M0DRBY/modern-interior-design-open-space-living-room-with-kitchen-M0DRBY.jpg" alt="First slide"> -->
             </div>
             <div class="carousel-item">
-               <img class="d-block" src="{{asset('default_images/default_apartment.jpg')}}" alt="Second slide">
+               <!-- <img class="d-block" src="{{asset('default_images/default_apartment.jpg')}}" alt="Second slide"> -->
             </div>
             <div class="carousel-item">
-               <img class="d-block" src="https://static2.bigstockphoto.com/0/6/2/large1500/260951287.jpg" alt="Third slide">
+               <!-- <img class="d-block" src="https://static2.bigstockphoto.com/0/6/2/large1500/260951287.jpg" alt="Third slide"> -->
             </div>
          </div>
 
@@ -34,7 +34,7 @@
                      <ol id="address-suggestions" class="list-group">
 
                      </ol>
-                     <input id="search-address-home" class="btn btn-dark" type="button" value="Cerca indirizzo">
+                     <!-- <input id="search-address-home" class="btn btn-dark" type="button" value="Cerca indirizzo"> -->
                   </div>
                   <div class="search-guests">
                      <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti">

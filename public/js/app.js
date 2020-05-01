@@ -76422,16 +76422,26 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebars/dist/cjs/handlebars.js"); //RICERCA COORDINATE IN HOME
 
 
-$('#search-address-home').on('click', function () {
-  var address_value = $('#address').val();
-  getGeocode(address_value);
+$('#address').on('keyup', function () {
+  if ($('#address').val().length > 2) {
+    $('#address-suggestions').text('');
+    var address_value = $('#address').val();
+    getGeocode(address_value);
+  }
+});
+$('#address').on('focus', function () {
+  if ($('#address').val().length > 0) {
+    $('#address-suggestions').text('');
+    var address_value = $('#address').val();
+    getGeocode(address_value);
+  }
 });
 $(document).on('click', '#address-suggestions-item', function () {
   $('#address').val($(this).find('#address-suggestions-item-content').text());
   $('#latitude').val($(this).attr('data-latitude'));
   $('#longitude').val($(this).attr('data-longitude'));
   $('#address-suggestions').text('');
-  console.log($(this).find('#address-suggestions-item-content').text());
+  $('.search-container').css('border-radius', '30px');
 }); //RICERCA COORDINATE IN HOME
 // RICERCA COORDINATE CREATE
 
@@ -76453,7 +76463,6 @@ $(document).on('click', '#address-suggestions-item', function () {
   $('#latitude').val($(this).attr('data-latitude'));
   $('#longitude').val($(this).attr('data-longitude'));
   $('#address-suggestions').text('');
-  console.log($(this).find('#address-suggestions-item-content').text());
 }); // RICERCA COORDINATE CREATE
 //////////////////////////////////////////////////
 // F U N C T I O N S
@@ -76462,8 +76471,8 @@ $(document).on('click', '#address-suggestions-item', function () {
 
 function getGeocode(address_value) {
   var source = document.getElementById("address-template").innerHTML;
-  var template = Handlebars.compile(source);
-  $('#address-suggestions').text('');
+  var template = Handlebars.compile(source); // $('#address-suggestions').text('');
+
   $.ajax({
     url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
     data: {
@@ -76471,9 +76480,14 @@ function getGeocode(address_value) {
       'limit': '5'
     },
     method: 'GET',
+    // beforeSend: function(){
+    //     // Handle the beforeSend event
+    // },
     success: function success(data) {
       var results = data.results;
+      $('.search-container').css('border-radius', '30px 30px 30px 0');
       console.log(results);
+      $('#address-suggestions').text('');
 
       for (var index = 0; index < results.length; index++) {
         var context = {

@@ -102,6 +102,9 @@ class ApartmentController extends Controller
 
     // ↓ con il metodo index() verranno selezionati gli appartamenti entro $rad chilometri rispetto alle coordinate $lat e $lon fornite ↓
     public function searchApartments(Request $request) {
+      if (empty($request['latitude']) || empty($request['longitude'])){
+        return redirect()->back()->with('error', 'Non è stato inserito un\'indirizzo valido');
+      };
       $lat = $request['latitude'];
       $lon = $request['longitude'];
       $rad = $request['radius'];

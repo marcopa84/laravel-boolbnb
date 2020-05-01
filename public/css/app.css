@@ -11008,6 +11008,12 @@ h6 {
   flex-wrap: wrap;
 }
 
+.main-search .carousel-search .search-form form .form-control {
+  text-align: center;
+  background: none;
+  border: none;
+}
+
 .main-search .carousel-search .search-form form input::-webkit-input-placeholder {
   color: #FFF;
   font-size: 18px;
@@ -11028,7 +11034,8 @@ h6 {
   font-size: 18px;
 }
 
-.main-search .carousel-search .search-form form input::placeholder {
+.main-search .carousel-search .search-form form input::placeholder,
+.main-search .carousel-search .search-form form input {
   color: #FFF;
   font-size: 18px;
 }
@@ -11038,14 +11045,40 @@ h6 {
   border-radius: 30px;
   display: flex;
   align-items: stretch;
+  width: 80%;
 }
 
 .main-search .carousel-search .search-form form .search-container .search-where {
-  flex: 5 1 60%;
+  flex: 3 1 60%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
+  padding: 8px 0 8px 8px;
+  position: relative;
+}
+
+.main-search .carousel-search .search-form form .search-container .search-where input {
+  border-right: 1px solid #FFF;
+  border-radius: 0;
+}
+
+.main-search .carousel-search .search-form form .search-container .search-where #address-suggestions {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: 100%;
+  cursor: pointer;
+  background: #fff;
+  z-index: -1;
+}
+
+.main-search .carousel-search .search-form form .search-container .search-where #address-suggestions .list-group-item:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.main-search .carousel-search .search-form form .search-container .search-where #address-suggestions p {
+  margin-bottom: 0;
 }
 
 .main-search .carousel-search .search-form form .search-container .search-guests {
@@ -11071,16 +11104,6 @@ h6 {
 .main-search .carousel-search .search-form form .search-container .search-submit i {
   font-size: 20px;
   padding-right: 4px;
-}
-
-.main-search .carousel-search .search-form form .row {
-  width: 100%;
-}
-
-.main-search .carousel-search .search-form form .row .form-control {
-  text-align: center;
-  background: none;
-  border: none;
 }
 
 /*

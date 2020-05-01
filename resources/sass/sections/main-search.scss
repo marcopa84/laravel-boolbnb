@@ -13,7 +13,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-bottom: 24px;
-      @include text-contrast(rgba(0,0,0,.4));
+      @include text-contrast(rgba(0, 0, 0, 0.4));
    }
 
    .carousel-search .search-form{
@@ -31,7 +31,13 @@
          align-items: center;
          flex-wrap: wrap;
 
-         input::placeholder{
+         .form-control{
+            text-align: center;
+            background: none;
+            border: none;
+         }
+
+         input::placeholder, input{
             color: $light;
             font-size: 18px;
          }
@@ -41,13 +47,37 @@
             border-radius: 30px;
             display: flex;
             align-items: stretch;
+            width: 80%;
 
             .search-where{
-               flex: 5 1 60%;
+               flex: 3 1 60%;
                display: flex;
                justify-content: center;
                align-items: center;
-               padding: 8px;
+               padding: 8px 0 8px 8px;
+               position: relative;
+
+               input{ 
+                  border-right: 1px solid $light;
+                  border-radius: 0;
+               }
+
+               #address-suggestions{
+                  position: absolute;
+                  top: 100%;
+                  left: -1px;
+                  width: 100%;
+                  cursor: pointer;
+                  background: #fff;
+                  z-index: -1;
+
+                  .list-group-item:first-child{
+                     border-top-left-radius: 0;
+                     border-top-right-radius: 0;
+                  }
+
+                  p{ margin-bottom: 0;}
+               }
             }
             
             .search-guests{
@@ -60,7 +90,7 @@
             
             .search-submit{
                flex: 0;
-              
+               
                button{
                   background: $primary;
                   @include text-contrast($primary);
@@ -68,23 +98,14 @@
                   height: 100%;
                   padding: 0 24px;
                }
-
+               
                i{
                   font-size: 20px;
                   padding-right: 4px;
                }
             }
          } // searc-container
-
-         .row{
-            width: 100%;
-
-            .form-control{
-               text-align: center;
-               background: none;
-               border: none;
-            }
-         }
+         
       } // form
    }
 }
