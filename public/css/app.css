@@ -10974,7 +10974,7 @@ h6 {
 
 .main-search {
   text-align: center;
-  height: 50vh;
+  height: 65vh;
 }
 
 .main-search > [class^=container],
@@ -11068,8 +11068,16 @@ h6 {
   left: -1px;
   width: 100%;
   cursor: pointer;
-  background: #fff;
-  z-index: -1;
+  z-index: 2;
+}
+
+.main-search .carousel-search .search-form form .search-container .search-where #address-suggestions .list-group-item {
+  background: #ffffffdd;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-search .carousel-search .search-form form .search-container .search-where #address-suggestions .list-group-item:hover {
+  background: #FFF;
 }
 
 .main-search .carousel-search .search-form form .search-container .search-where #address-suggestions .list-group-item:first-child {
@@ -11101,6 +11109,10 @@ h6 {
   padding: 0 24px;
 }
 
+.main-search .carousel-search .search-form form .search-container .search-submit button span {
+  display: none;
+}
+
 .main-search .carousel-search .search-form form .search-container .search-submit i {
   font-size: 20px;
   padding-right: 4px;
@@ -11111,6 +11123,49 @@ h6 {
 * MEDIA QUERY MAIN SEARCH
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
+
+@media screen and (max-width: 992px) {
+  .main-search .carousel-search .search-form form .search-container {
+    flex-flow: column wrap;
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-where {
+    padding: 8px;
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-where #address {
+    border-right: none;
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-guests {
+    padding: 0 8px 8px;
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-guests [name=beds_number] {
+    max-width: 100px;
+    padding-left: 20px;
+    border-top: 1px solid #FFF;
+    border-radius: 0;
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-submit {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-submit button {
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+  }
+
+  .main-search .carousel-search .search-form form .search-container .search-submit button span {
+    display: block;
+    order: 1;
+  }
+}
 
 @media screen and (max-width: 768px) {
   .main-search form .row .form-control {
@@ -11259,7 +11314,7 @@ html {
 }
 
 main {
-  padding-top: 55.42px;
+  padding-top: 54.42px;
 }
 
 .small-caps {
@@ -11273,6 +11328,10 @@ main {
 
 a:hover {
   text-decoration: none;
+}
+
+[class*=alert] {
+  margin-bottom: 0;
 }
 
 /*

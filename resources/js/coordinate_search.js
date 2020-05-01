@@ -75,7 +75,7 @@ function getGeocode(address_value) {
         url: 'https://api.tomtom.com/search/2/geocode/' + address_value + '.json',
         data: {
             'key': 'gFFCW4AFnFwAIM5ZWPG6Sew8JPYhCY0i',
-            'limit': '5',
+            'limit': '3',
         },
         method: 'GET',
         // beforeSend: function(){

@@ -9,13 +9,19 @@
       <div id="carouselExampleFade" class="carousel slide carousel-fade carousel-search" data-ride="carousel" data-interval="5000" data-pause="false">
          <div class="carousel-inner">
             <div class="carousel-item active">
-               <!-- <img class="d-block" src="https://c8.alamy.com/comp/M0DRBY/modern-interior-design-open-space-living-room-with-kitchen-M0DRBY.jpg" alt="First slide"> -->
+               <img class="d-block" src="{{asset('default_images/slide1.jpg')}}" alt="Immagine appartamento">
             </div>
             <div class="carousel-item">
-               <!-- <img class="d-block" src="{{asset('default_images/default_apartment.jpg')}}" alt="Second slide"> -->
+               <img class="d-block" src="{{asset('default_images/slide2.jpg')}}" alt="Immagine appartamento">
             </div>
             <div class="carousel-item">
-               <!-- <img class="d-block" src="https://static2.bigstockphoto.com/0/6/2/large1500/260951287.jpg" alt="Third slide"> -->
+               <img class="d-block" src="{{asset('default_images/slide3.jpg')}}" alt="Immagine appartamento">
+            </div>
+            <div class="carousel-item">
+               <img class="d-block" src="{{asset('default_images/slide4.jpg')}}" alt="Immagine appartamento">
+            </div>
+            <div class="carousel-item">
+               <img class="d-block" src="{{asset('default_images/slide5.jpg')}}" alt="Immagine appartamento">
             </div>
          </div>
 
@@ -37,11 +43,11 @@
                      <!-- <input id="search-address-home" class="btn btn-dark" type="button" value="Cerca indirizzo"> -->
                   </div>
                   <div class="search-guests">
-                     <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti">
+                     <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti" min="1">
                   </div>
                   <div class="search-submit">
                      <button type="submit" class="btn" title="Cerca appartamenti">
-                        <i class="fas fa-search"></i>
+                        <span>Cerca</span> <i class="fas fa-search"></i>
                      </button>
                   </div>
                </div>
