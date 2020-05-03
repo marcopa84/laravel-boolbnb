@@ -1,0 +1,11 @@
+footer{
+   background: $primary;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   @include text-contrast($primary);
+   padding: 24px; 
+
+   p{ margin: 0; }
+
+}

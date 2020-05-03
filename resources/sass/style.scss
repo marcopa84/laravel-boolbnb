@@ -12,15 +12,24 @@
 @import 'sections/carousel-search';
 @import 'sections/main-search';
 @import 'sections/featured-ads';
+@import 'sections/footer';
 
 @import 'sections/dashboard';
 
 html {
    scroll-behavior: smooth;
+   height: 100vh;
+}
+
+body{
+   height: 100%;
+   display: flex;
+   flex-direction: column;
 }
 
 main{
    padding-top: 54.42px;
+   flex-grow: 1; 
 }
 
 .small-caps{
