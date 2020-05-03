@@ -6,7 +6,7 @@ use App\Ad;
 use App\Apartment;
 use App\Bought_ad;
 use App\Http\Controllers\Controller;
-use App\Order;
+use App\Cart;
 use Braintree;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
@@ -41,7 +41,7 @@ class BoughtAdController extends Controller
     }
 
 
-    public function storeOrder(Request $request, Apartment $apartment, Faker $faker)
+    public function storeCart(Request $request, Apartment $apartment, Faker $faker)
     {
 
         $validateRules = [
@@ -53,22 +53,22 @@ class BoughtAdController extends Controller
         $hours = Ad::where('id', $request['ad_id'])->first()->hours;
         $start_date = Carbon::createFromDate($request['start_date'])->format('Y-m-d H:i:s');
         $end_date = Carbon::createFromDate($request['start_date'])->add($hours, 'hour')->format('Y-m-d H:i:s');
-        $order = new Order;
-        $order->start_date = $start_date;
-        $order->end_date = $end_date;
-        $order->ad_id = $request['ad_id'];
-        $order->apartment_id = $apartment->id;
-        $queryOrderCodes = Order::select('order_code')->get();
-        $orderCodes = [];
-        $newOrderCode = '';
-        for($i = 0; $i < count($queryOrderCodes); $i++) {
-          $orderCodes[] = $queryOrderCodes[$i];
+        $cart = new Cart;
+        $cart->start_date = $start_date;
+        $cart->end_date = $end_date;
+        $cart->ad_id = $request['ad_id'];
+        $cart->apartment_id = $apartment->id;
+        $queryCartCodes = Cart::select('cart_code')->get();
+        $cartCodes = [];
+        $newCartCode = '';
+        for($i = 0; $i < count($queryCartCodes); $i++) {
+          $cartCodes[] = $queryCartCodes[$i];
         }
         do {
-          $newOrderCode = $faker->sha256();
-        } while( in_array($newOrderCode, $orderCodes) );
-        $order->order_code = $newOrderCode;
-        $order->save();
+          $newCartCode = $faker->sha256();
+        } while( in_array($newCartCode, $cartCodes) );
+        $cart->cart_code = $newCartCode;
+        $cart->save();
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
@@ -77,87 +77,12 @@ class BoughtAdController extends Controller
             ]);
         $token = $gateway->ClientToken()->generate();
         $data = [
-            'order' => Order::where('order_code', $newOrderCode)->first(),
+            'cart' => Cart::where('cart_code', $newCartCode)->first(),
             'amount' => Ad::where('id', $request['ad_id'])->first()->price,
             'gateway' => $gateway,
             'token' => $token,
         ];
         return view('payments.form', $data);
     }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // $validateRules = [
-        //     'ad_id' => 'required|integer|exists:App\Ad,id',
-        //     'apartment_id' => 'required|integer|exists:App\Apartment,id',
-        //     'start_date' => 'required|date|after:yesterday'
-        // ];
-        // $data = $request->all();
-        // $request->validate($validateRules);
-
-
-        // $bought_ad = new Bought_ad;
-        // $hours = Ad::where('id', $data['ad_id'])->first()->hours;
-        // $end_date = Carbon::createFromDate($data['start_date'])-> add($hours, 'hour');
-        // $data['end_date'] = $end_date;
-        // $bought_ad->fill($data);
-        // $saved = $bought_ad->save();
-        //
-        // if (!$saved) {
-        //     return redirect()->back()->with('error', 'Errore durante l\'inserimento della sponsorizzazione.');
-        // }
-        //
-        // return redirect()->route('registered.apartments.ads.index')->with('message', 'Sponsorizzazione inserita correttamente.');
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Bought_ad  $bought_ad
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Bought_ad $bought_ad)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Bought_ad  $bought_ad
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Bought_ad $bought_ad)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bought_ad  $bought_ad
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Bought_ad $bought_ad)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Bought_ad  $bought_ad
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Bought_ad $bought_ad)
-    {
-        //
-    }
+    
 }

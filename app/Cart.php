@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Cart extends Model
 {
   public $increment = false;
-  protected $table = "orders";
+  protected $table = "carts";
   protected $keyType = 'string';
-  protected $primaryKey = 'order_code';
+  protected $primaryKey = 'cart_code';
   protected $fillable = [
-      'order_code',
+      'cart_code',
       'ad_id',
       'apartment_id',
       'start_date',

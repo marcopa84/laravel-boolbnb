@@ -11245,6 +11245,28 @@ h6 {
   width: 100px;
 }
 
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* FEATURED ADS IN FILTER
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+.filter-ads .card {
+  border: 6px solid #c7b35b;
+}
+
+.filter-ads .card .card-body {
+  position: relative;
+}
+
+.filter-ads .card .card-body .icon-ads {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 36px;
+  color: #c7b35b;
+}
+
 footer {
   background: #146d70;
   display: flex;

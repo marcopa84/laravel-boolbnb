@@ -37,7 +37,7 @@ Route::name('registered.')
   ->group(function () {
     Route::get('/apartments/ads', 'BoughtAdController@index')->name('ads.index');
     Route::get('/apartments/ads/{apartment}', 'BoughtAdController@create')->name('ads.create');
-    Route::post('/apartments/ads/{apartment}', 'BoughtAdController@storeOrder')->name('ads.store_order');
+    Route::post('/apartments/ads/{apartment}', 'BoughtAdController@storeCart')->name('ads.store_cart');
     Route::get('/apartment/views/{apartment}', 'ViewController@show')->name('views.show');
     Route::resource('apartments', 'ApartmentController');
     // Route::resource('views', 'ViewController');

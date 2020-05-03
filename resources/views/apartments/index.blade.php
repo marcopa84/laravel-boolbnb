@@ -1,65 +1,75 @@
 @extends('layouts.layout')
 @section('main')
-<div class="container my-5">
+
+<div class="container-fluid pt-5" style="background: #ccc;">
+  <div class="container">
+  
   <div class="row">
     <div class="col-12 mb-5">
-      <form id="apartments_filter" action="{{ route('apartments.search_apartments') }}">
-        @csrf
-        <div class="form-group">
-          <label for="beds_number">Numero minimo Posti Letto</label>
-          <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ $beds_number }}{{ old('rooms_number') }}" min="1" placeholder="N° posti letto minimi">
-        </div>
-        <div class="form-group">
-          <label for="rooms_number">Numero minimo Stanze</label>
-          <input id="rooms_number" class="form-control" type="number" name="rooms_number" value="{{ $rooms_number }}{{ old('rooms_number') }}" min="1" placeholder="N° stanze minime">
-        </div>
-        <div class="form-group">
-          <label for="size">Servizi aggiuntivi</label>
-          <ul id="features" class="list-inline">
-            @foreach ($features as $feature)
-            <li class="list-inline-item btn btn-outline-dark">
-              <input type="checkbox" name="features[]" value="{{$feature->id}}"
-                @if(isset($selected_features))
-                  @for( $i = 0; $i < count($selected_features); $i++ )
-                    @if($selected_features[$i] == $feature->id) {{'checked'}}
-                    @endif
-                  @endfor
-          {{--  @elseif(!empty(old('features')))
-                  @for( $i = 0; $i < count(old('features')); $i++ )
-                    @if( old('features')[$i] == $feature->id ) {{'checked'}}
-                    @endif
-                  @endfor --}}
-                @endif >
-              <span class="featured_description">{{$feature->description}}</span>
-            </li>
-            @endforeach
-          </ul>
-        </div>
-        <div class="form-group">
-          <label for="radius">Massima distanza dal punto di interesse</label>
-          <select class="d-block" name="radius">
-            <option value="20">20 Km</option>
-            <option value="40">40 Km</option>
-            <option value="60">60 Km</option>
-          </select>
-        </div>
-        <div class="row">
-          <div class="col">
-            <input type="hidden" name="old_selected_rad" value="{{$radius}}">
-            <input type="hidden" name="latitude" value="{{$latitude}}">
-            <input type="hidden" name="longitude" value="{{$longitude}}">
-            <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
-              <i class="fas fa-search"></i><span> Cerca</span>
-            </button>
+        <form id="apartments_filter" action="{{ route('apartments.search_apartments') }}">
+          @csrf
+          <div class="row">
+            <div class="col-2">
+              <label for="beds_number">Posti letto</label>
+              <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ $beds_number }}{{ old('rooms_number') }}" min="1" placeholder="N° posti letto minimi">
+            </div>
+            <div class="col-2">
+              <label for="rooms_number">Stanze</label>
+              <input id="rooms_number" class="form-control" type="number" name="rooms_number" value="{{ $rooms_number }}{{ old('rooms_number') }}" min="1" placeholder="N° stanze minime">
+            </div>
+            <div class="col-8">
+              <label for="size">Servizi aggiuntivi</label>
+              <ul id="features" class="list-inline">
+                @foreach ($features as $feature)
+                <li class="list-inline-item btn btn-outline-dark">
+                  <input type="checkbox" name="features[]" value="{{$feature->id}}"
+                    @if(isset($selected_features))
+                      @for( $i = 0; $i < count($selected_features); $i++ )
+                        @if($selected_features[$i] == $feature->id) {{'checked'}}
+                        @endif
+                      @endfor
+              {{--  @elseif(!empty(old('features')))
+                      @for( $i = 0; $i < count(old('features')); $i++ )
+                        @if( old('features')[$i] == $feature->id ) {{'checked'}}
+                        @endif
+                      @endfor --}}
+                    @endif >
+                  <span class="featured_description">{{$feature->description}}</span>
+                </li>
+                @endforeach
+              </ul>
+            </div>
           </div>
-        </div>
-      </form>
+          <div class="form-group">
+            <label for="radius">Massima distanza dal punto di interesse</label>
+            <select class="d-block" name="radius">
+              <option value="20">20 Km</option>
+              <option value="40">40 Km</option>
+              <option value="60">60 Km</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col">
+              <input type="hidden" name="old_selected_rad" value="{{$radius}}">
+              <input type="hidden" name="latitude" value="{{$latitude}}">
+              <input type="hidden" name="longitude" value="{{$longitude}}">
+              <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+                <i class="fas fa-search"></i><span> Cerca</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
 {{-- sponsorizzati --}}
-    <div class="col-12">
+    <section class="col-12 filter-ads">
       
         @foreach ($apartments_sponsorized as $apartment)
-        SPONSORIZZATO
         <div class="card dash" data-beds="{{$apartment->beds_number}}" data-rooms="{{$apartment->rooms_number}}" data-features="{{$apartment->features}}">
           <div class="card-image">
             <img class="card-img-top" src="{{asset($apartment->featured_image)}}" alt="Immagine di anteprima dell'appartamento">
@@ -93,13 +103,14 @@
               </div>
             </div>
             <div class="card-dash-buttons">
-              <a href="{{route('apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
+              <a href="{{route('apartments.show', $apartment)}}"><button class="btn btn-dark mt-2">Visualizza</button></a>
             </div>
+            <i class="fas fa-star icon-ads" title="In evidenza"></i>
           </div>
         </div>
         @endforeach
 
-    </div>
+    </section>
 {{-- /sponsorizzati --}}
     <div class="col-12 mt-3">
       @if (empty($filtered_apartments))

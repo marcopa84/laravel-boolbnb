@@ -18,10 +18,10 @@
         <h2 class="payment-form-text">Riepilogo della sponsorizzazione</h3>
         <div class="payment-form-info">
           <p class="payment-form-info-paragraph">
-            Inizio: {{Carbon::createFromDate($order->start_date)->format('d/m/Y \\a\\l\\l\\e \\o\\r\\e  H:i')}}
+            Inizio: {{Carbon::createFromDate($cart->start_date)->format('d/m/Y \\a\\l\\l\\e \\o\\r\\e  H:i')}}
           </p>
           <p class="payment-form-info-paragraph">
-            Fine: {{Carbon::createFromDate($order->end_date)->format('d/m/Y \\a\\l\\l\\e \\o\\r\\e  H:i')}}
+            Fine: {{Carbon::createFromDate($cart->end_date)->format('d/m/Y \\a\\l\\l\\e \\o\\r\\e  H:i')}}
           </p>
           <p class="payment-form-info-paragraph">
             Costo: € {{$amount}}
@@ -34,7 +34,7 @@
         <div id="bt-dropin"></div>
         </div>
       </section>
-      <input name="order_code" type="hidden" value="{{$order->order_code}}">
+      <input name="cart_code" type="hidden" value="{{$cart->cart_code}}">
       <input id="nonce" name="payment_method_nonce" type="hidden" value="">
       <button class="button" type="submit">Paga Sponsorizzazione</button>
   </form>

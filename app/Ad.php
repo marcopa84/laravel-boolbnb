@@ -16,8 +16,8 @@ class Ad extends Model
     {
         return $this->hasMany('App\Bought_ad');
     }
-    public function orders()
+    public function carts()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany('App\cart');
     }
 }

@@ -31,3 +31,29 @@
       }
    }
 }
+
+
+/*
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* FEATURED ADS IN FILTER
+* ––––––––––––––––––––––––––––––––––––––––––––––––––
+*/
+
+.filter-ads{
+   .card{
+      border: 6px solid #c7b35b;
+
+      .card-body{
+         // background: linear-gradient(45deg, rgb(250,250,210), rgb(212,175,55));
+         position: relative;
+
+         .icon-ads{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 36px;
+            color: #c7b35b;
+         }
+      }
+   }
+}

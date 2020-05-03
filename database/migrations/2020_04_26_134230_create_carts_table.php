@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrdersTable extends Migration
+class CreateCartsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->string('order_code',255)->primary()->required()->unique();
+        Schema::create('carts', function (Blueprint $table) {
+            $table->string('cart_code',255)->primary()->required()->unique();
             $table->unsignedBigInteger('ad_id')->required();
             $table->foreign('ad_id')->references('id')->on('ads');
             $table->unsignedBigInteger('apartment_id')->required();
@@ -32,6 +32,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('carts');
     }
 }
