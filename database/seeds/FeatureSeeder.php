@@ -12,7 +12,7 @@ class FeatureSeeder extends Seeder
      */
     public function run()
     {
-        $features = [ 'Wi-Fi', 'Posto Macchina', 'Piscina', 'Portineria', 'Sauna', 'Vista Mare' ];
+        $features = [ 'Wi-Fi', 'Posto Auto', 'Piscina', 'Portineria', 'Sauna', 'Vista Mare' ];
 
         for ($i=0; $i < count($features); $i++) {
             Feature::create(['description'=>$features[$i]]);

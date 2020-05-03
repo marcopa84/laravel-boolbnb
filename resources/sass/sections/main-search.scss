@@ -217,17 +217,22 @@
 */
 
 /*
-* ––––––––––––––––––––––––––––––––––––––––––––––––––
-* DATEPICKER (CALENDARIO)
-* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* FILTER RESULTS SEARCH
 */
 
-.daterangepicker td.in-range{
-   background-color: lightgray!important;
+.filter__search{
+   background: desaturate($primary, 90%);
 }
-.daterangepicker td.active{
-   background-color: $dark!important;
-}
-.daterangepicker td.active:hover{
-   background-color: darkest($dark,10)!important;
+
+#features{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+
+   li{
+      flex: 0 1 30%;
+      margin-right: 0;
+      margin-bottom: 4px;
+      // border: 2px solid $primary;
+   }
 }

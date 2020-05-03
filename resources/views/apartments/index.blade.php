@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('main')
 
-<div class="container-fluid pt-5" style="background: #ccc;">
+<div class="container-fluid pt-5 filter__search">
   <div class="container">
   
   <div class="row">
@@ -9,15 +9,15 @@
         <form id="apartments_filter" action="{{ route('apartments.search_apartments') }}">
           @csrf
           <div class="row">
-            <div class="col-2">
+            <div class="col-sm-6 col-md-2">
               <label for="beds_number">Posti letto</label>
               <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ $beds_number }}{{ old('rooms_number') }}" min="1" placeholder="N° posti letto minimi">
             </div>
-            <div class="col-2">
+            <div class="col-sm-6 col-md-2">
               <label for="rooms_number">Stanze</label>
               <input id="rooms_number" class="form-control" type="number" name="rooms_number" value="{{ $rooms_number }}{{ old('rooms_number') }}" min="1" placeholder="N° stanze minime">
             </div>
-            <div class="col-8">
+            <div class="col-sm-12 col-md-6">
               <label for="size">Servizi aggiuntivi</label>
               <ul id="features" class="list-inline">
                 @foreach ($features as $feature)
@@ -39,23 +39,23 @@
                 @endforeach
               </ul>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="radius">Massima distanza dal punto di interesse</label>
-            <select class="d-block" name="radius">
-              <option value="20">20 Km</option>
-              <option value="40">40 Km</option>
-              <option value="60">60 Km</option>
-            </select>
+            <div class="col-md-2">
+              <label for="radius">Raggio ricerca</label>
+              <select class="d-block" name="radius">
+                <option value="20">20 Km</option>
+                <option value="40">40 Km</option>
+                <option value="60">60 Km</option>
+              </select>
+            </div>
           </div>
           <div class="row">
             <div class="col">
               <input type="hidden" name="old_selected_rad" value="{{$radius}}">
               <input type="hidden" name="latitude" value="{{$latitude}}">
               <input type="hidden" name="longitude" value="{{$longitude}}">
-              <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
+              <!-- <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
                 <i class="fas fa-search"></i><span> Cerca</span>
-              </button>
+              </button> -->
             </div>
           </div>
         </form>

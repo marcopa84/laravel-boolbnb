@@ -11189,21 +11189,23 @@ h6 {
 */
 
 /*
-* ––––––––––––––––––––––––––––––––––––––––––––––––––
-* DATEPICKER (CALENDARIO)
-* ––––––––––––––––––––––––––––––––––––––––––––––––––
+* FILTER RESULTS SEARCH
 */
 
-.daterangepicker td.in-range {
-  background-color: lightgray !important;
+.filter__search {
+  background: #424242;
 }
 
-.daterangepicker td.active {
-  background-color: #343a40 !important;
+#features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.daterangepicker td.active:hover {
-  background-color: darkest(#343a40, 10) !important;
+#features li {
+  flex: 0 1 30%;
+  margin-right: 0;
+  margin-bottom: 4px;
 }
 
 /*

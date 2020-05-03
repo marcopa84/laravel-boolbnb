@@ -49,6 +49,11 @@ if (performance.navigation.type == 1) {
   });
 }
 
+// ↓ snippet per inviare il form al cambio del radius
+$('select[name="radius"]').on('change', function(){
+  $('#apartments_filter').submit();  
+});
+
 // ↓ funzione che filtra gli appartamenti visibili sulla pagina a seconda degli input selezionati dall'utente
 function apartmentsFilter() {
   var ready = false;
