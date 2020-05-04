@@ -8,16 +8,20 @@
    padding: calc(16px * 4) 0;
 
    a:hover{ color: $primary; }
-   
+
    .card{
       &:hover{
          transform: scale(1.02);
-         box-shadow: px 2px 3px lightgrey;
+         box-shadow: 0px 0px 5px 2px #e7e5e5;;
+      }
+      &:active{
+        transform: scale(1);
       }
       margin-bottom: 32px;
       transition: 0.2s;
       .card-body{
-         min-height: 120px;
+         width: 100%;
+         min-height: 150px;
          display: flex;
          flex-flow: column wrap;
          justify-content: space-between;
