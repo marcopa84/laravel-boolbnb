@@ -132,7 +132,7 @@ header{
 
       .card-image{
          width: 45%;
-         max-height: 330px;
+         height: 330px;
          img{
             height: 100%;
             border-radius: 0;
@@ -140,6 +140,7 @@ header{
          }
       }
       .card-body{
+         position: relative;
          width: 55%;
          padding: 3.25rem;
          display: flex;
@@ -152,6 +153,22 @@ header{
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+         }
+         .apartment-card-status{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: red;
+            box-shadow: 0px 0px 2px 1px lighten(red, 10);
+
+         }
+         .apartment-card-status.published{
+            background-color: green;
+            box-shadow: 0px 0px 2px 1px lighten(green, 10);
+
          }
       }
       .card-dash-buttons{

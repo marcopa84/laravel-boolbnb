@@ -221,7 +221,10 @@
 */
 
 .filter__search{
-   background: desaturate($primary, 90%);
+   // background: desaturate($primary, 90%);
+   background-color: $primaryLight;
+   border-bottom: 2px solid $primary;
+
 }
 
 #features{

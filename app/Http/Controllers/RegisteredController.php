@@ -34,8 +34,8 @@ class RegisteredController extends Controller
         $messages = User::where('users.id', Auth::id())
             ->join('apartments', 'users.id', '=', 'apartments.user_id')
             ->join('messages', 'apartments.id', '=', 'messages.apartment_id')
-            ->select('messages.*')
-            ->orderBy('created_at', 'desc')
+            ->select('messages.*', 'apartments.*')
+            ->orderBy('messages.created_at', 'desc')
             ->get();
         return view('registered.messages', compact('messages'));
     }

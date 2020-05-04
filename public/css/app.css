@@ -6743,6 +6743,14 @@ a.close.disabled {
 .carousel-fade .active.carousel-item-right {
   z-index: 0;
   opacity: 0;
+  transition: opacity 0s 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-fade .active.carousel-item-left,
+  .carousel-fade .active.carousel-item-right {
+    transition: none;
+  }
 }
 
 .carousel-control-prev,
@@ -11193,7 +11201,8 @@ h6 {
 */
 
 .filter__search {
-  background: #424242;
+  background-color: #edfbfc;
+  border-bottom: 2px solid #146d70;
 }
 
 #features {
@@ -11465,7 +11474,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 
 .dash.card .card-image {
   width: 45%;
-  max-height: 330px;
+  height: 330px;
 }
 
 .dash.card .card-image img {
@@ -11476,6 +11485,7 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
 }
 
 .dash.card .card-body {
+  position: relative;
   width: 55%;
   padding: 3.25rem;
   display: flex;
@@ -11492,6 +11502,22 @@ header .navbar .container .navbar-collapse .nav-right .nav-item .nav-avatar-img 
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.dash.card .card-body .apartment-card-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: red;
+  box-shadow: 0px 0px 2px 1px #ff3333;
+}
+
+.dash.card .card-body .apartment-card-status.published {
+  background-color: green;
+  box-shadow: 0px 0px 2px 1px #00b300;
 }
 
 .dash.card .card-dash-buttons {

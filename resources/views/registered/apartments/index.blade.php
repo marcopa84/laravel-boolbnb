@@ -23,6 +23,11 @@
                   <img class="card-img-top" src="{{asset($apartment->featured_image)}}" alt="Immagine di anteprima dell'appartamento">
                </div>
                <div class="card-body">
+                  @if ($apartment->visible)
+                     <span title="Appartamento pubblicato" class="published apartment-card-status"></span>
+                  @else
+                     <span title="Appartamento non pubblicato" class="notpublished apartment-card-status"></span>
+                  @endif
                   <div class="card-body-text">
                      <h3 class="card-title">{{$apartment->title}}</h3>
                      <p class="card-text lead">{{$apartment->address}}</p>

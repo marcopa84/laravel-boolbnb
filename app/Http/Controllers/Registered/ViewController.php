@@ -56,22 +56,53 @@ class ViewController extends Controller
         ->whereDate('date', '>', today()->subMonth(2))
         ->groupBy('date')
         ->select(DB::raw('count(*) as views, date'))
-        ->get();
+      ->get();
+      
+      $messages= DB::table('messages')
+        ->where('apartment_id', $apartment->id)
+        ->whereDate('created_at', '>', today()->subMonth(2))
+        ->groupBy('created_at')
+        ->select(DB::raw('count(*) as messages, created_at'))
+      ->get();
+      
+      $data = [];
+
       if(count($views) > 0){
+
         for ($i=0; $i < count($views); $i++) {
-          $labels[] = Carbon::createFromDate($views[$i]->date)->format('d-M-Y') ;
-          $dataset[] = $views[$i]->views;
+        $labelsViews[] = Carbon::createFromDate($views[$i]->date)->format('d-M-Y') ;
+        $datasetViews[] = $views[$i]->views;
         };
-        $chart = new ViewChart;
-        $chart->title('Visualizzazioni degli ultimi due mesi dell\'appartamento: '.$apartment->title, 20, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
-        $chart->labels($labels);
-        $chart->dataset('Visualizzazioni giornaliere', 'line', $dataset)->options([
+        $chartViews = new ViewChart;
+        $chartViews->title('Visualizzazioni degli ultimi due mesi dell\'appartamento: '.$apartment->title, 20, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
+        $chartViews->labels($labelsViews);
+        $chartViews->dataset('Visualizzazioni giornaliere', 'line', $datasetViews)->options([
           'backgroundColor' => 'rgba(20,109,112, .4)',
         ]);
-        return view('registered.apartments.views.show', compact('chart'));
+        $data += ['views' => $chartViews];
       }
-      return view('registered.apartments.views.show');
 
+      if (count($messages) > 0) {
+
+        for ($i = 0; $i < count($messages); $i++) {
+        $labelsMessages[] = Carbon::createFromDate($messages[$i]->created_at)->format('d-M-Y');
+        $datasetMessages[] = $messages[$i]->messages;
+        };
+        $chartMessages = new ViewChart;
+        $chartMessages->title('Messaggi ricevuti negli ultimi due mesi per l\'appartamento : ' . $apartment->title, 20, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
+        $chartMessages->labels($labelsMessages);
+        $chartMessages->dataset('Messaggi ricevuti giornalieri', 'bar', $datasetMessages)->options([
+          'backgroundColor' => 'rgba(20,109,112, .4)',
+        ]);
+
+        $data += ['messages' => $chartMessages];
+      }
+      
+     /*  $data = [
+        'views' => $chartViews,
+        'messages' => $chartMessages
+      ]; */
+      return view('registered.apartments.views.show', $data);
     }
 
     /**

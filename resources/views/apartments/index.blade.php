@@ -11,11 +11,11 @@
           <div class="row">
             <div class="col-sm-6 col-md-2">
               <label for="beds_number">Posti letto</label>
-              <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ $beds_number }}{{ old('rooms_number') }}" min="1" placeholder="N° posti letto minimi">
+              <input id="beds_number" class="form-control" type="number" name="beds_number" value="{{ $beds_number }}{{ old('rooms_number') }}" min="1" placeholder="N° posti letto">
             </div>
             <div class="col-sm-6 col-md-2">
               <label for="rooms_number">Stanze</label>
-              <input id="rooms_number" class="form-control" type="number" name="rooms_number" value="{{ $rooms_number }}{{ old('rooms_number') }}" min="1" placeholder="N° stanze minime">
+              <input id="rooms_number" class="form-control" type="number" name="rooms_number" value="{{ $rooms_number }}{{ old('rooms_number') }}" min="1" placeholder="N° stanze">
             </div>
             <div class="col-sm-12 col-md-6">
               <label for="size">Servizi aggiuntivi</label>

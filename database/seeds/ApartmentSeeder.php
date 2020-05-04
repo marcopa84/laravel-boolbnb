@@ -24,7 +24,7 @@ class ApartmentSeeder extends Seeder
         $apartment->address = 'via Roma, 118 - Sanremo (IM)';
         $apartment->latitude = 43.81667;
         $apartment->longitude = 7.77773;
-        $apartment->featured_image = 'default_images/default_apartment.jpg';
+        $apartment->featured_image = 'default_images/slide6.jpg';
         $apartment->price = 50.00;
         $apartment->visible = true;
         $apartment->save();
@@ -42,7 +42,7 @@ class ApartmentSeeder extends Seeder
             $apartment->address = 'Roma';
             $apartment->latitude = $faker->latitude(41.986316, 41.794889);
             $apartment->longitude = $faker->longitude(12.381556, 12.614890);
-            $apartment->featured_image = 'default_images/default_apartment.jpg';
+            $apartment->featured_image = 'default_images/slide'.rand(1,6).'.jpg';
             $apartment->price = rand(50, 100);
             $apartment->visible = true;
             $apartment->save();

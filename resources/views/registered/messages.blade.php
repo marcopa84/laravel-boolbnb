@@ -9,17 +9,26 @@
     @else
         <div class="messages-cards">
             @foreach ($messages as $key => $message)
+            {{-- @dd($message) --}}
             <div class="card mb-3">
                 <div class="card-header"">
                     <h4 class="mb-0">
-                        Messaggio da: {{$message->email}}
+                        Messaggio da: <a href="mailto:{{$message->email}}">{{$message->email}}</a> 
                     </h4>
-                    <span>Ricevuto alle: </span><time>{{
-                        date("d M Y - H:m", strtotime($message->created_at))
-                    }}</time>
+                    <h5>
+                        {{$message->title}}
+                    </h5>
+                    
                 </div>
                 <div class="card-body">
-                    {{$message->content}}
+                    <div class="row">
+                        <div class="col-2">
+                            {{-- <span>Ricevuto alle: </span> --}}<time>{{date("d M Y - H:m", strtotime($message->created_at))}}</time>
+                        </div>
+                        <div class="col-10">
+                            {{$message->content}}
+                        </div>
+                    </div>
                 </div>
             </div>
             @endforeach
