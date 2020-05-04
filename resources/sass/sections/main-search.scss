@@ -1,8 +1,6 @@
 .main-search{
-   // padding: calc(16px * 10) 80px;
    text-align: center;
    height: 65vh;
-   // background: linear-gradient($primaryLight, $primaryDark);
    > [class^="container"],
    > [class^="container"] .carousel-search,
    > [class^="container"] .carousel-search .carousel-inner,
@@ -19,7 +17,6 @@
    .carousel-search .search-form{
       position: absolute;
       top: 50%;
-      // transform: translateY(-50%);
       left: 50%;
       transform: translate(-50%, -50%);
       width: 60vw;
@@ -40,6 +37,10 @@
          input::placeholder, input{
             color: $light;
             font-size: 18px;
+         }
+
+         input:focus {
+            box-shadow: none;
          }
 
          .search-container{
@@ -68,7 +69,6 @@
                   left: -1px;
                   width: 100%;
                   cursor: pointer;
-                  // background: #fff;
                   z-index: 2;
 
                   .list-group-item{

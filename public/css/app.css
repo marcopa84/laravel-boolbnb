@@ -11048,6 +11048,10 @@ h6 {
   font-size: 18px;
 }
 
+.main-search .carousel-search .search-form form input:focus {
+  box-shadow: none;
+}
+
 .main-search .carousel-search .search-form form .search-container {
   border: 1px solid #FFF;
   border-radius: 30px;
@@ -11233,6 +11237,12 @@ h6 {
 
 .ads .card {
   margin-bottom: 32px;
+  transition: 0.2s;
+}
+
+.ads .card:hover {
+  transform: scale(1.02);
+  box-shadow: px 2px 3px lightgrey;
 }
 
 .ads .card .card-body {

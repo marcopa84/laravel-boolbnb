@@ -13,7 +13,7 @@ class BoughtAdSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i <= 10 ; $i++) { 
+        for ($i=1; $i <= 6 ; $i++) { 
             $boughtAd = New Bought_ad;
             $boughtAd->ad_id = 3;
             $boughtAd->apartment_id = $i;
