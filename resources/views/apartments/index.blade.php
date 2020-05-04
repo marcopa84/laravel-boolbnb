@@ -3,7 +3,7 @@
 
 <div class="container-fluid pt-5 filter__search">
   <div class="container">
-  
+
   <div class="row">
     <div class="col-12 mb-5">
         <form id="apartments_filter" action="{{ route('apartments.search_apartments') }}">
@@ -53,9 +53,6 @@
               <input type="hidden" name="old_selected_rad" value="{{$radius}}">
               <input type="hidden" name="latitude" value="{{$latitude}}">
               <input type="hidden" name="longitude" value="{{$longitude}}">
-              <!-- <button type="submit" class="btn btn-dark" title="Cerca appartamenti">
-                <i class="fas fa-search"></i><span> Cerca</span>
-              </button> -->
             </div>
           </div>
         </form>
@@ -68,7 +65,7 @@
   <div class="row">
 {{-- sponsorizzati --}}
     <section class="col-12 filter-ads">
-      
+
         @foreach ($apartments_sponsorized as $apartment)
         <div class="card dash" data-beds="{{$apartment->beds_number}}" data-rooms="{{$apartment->rooms_number}}" data-features="{{$apartment->features}}">
           <div class="card-image">

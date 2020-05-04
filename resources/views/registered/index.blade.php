@@ -17,17 +17,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6 col-sm-6 col-md-3">
-                <div class="dashboard-content">
-                    <a class="area-link" href="#">
-                        <div class="area">
-                            <i class="icon-title fas fa-user fa-3x"></i>
-                            <p class="title">Profilo</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-3">
+            <div class="col-12 col-sm-12 col-md-4">
                 <div class="dashboard-content">
                     <a class="area-link" href="{{route('registered.apartments.index')}}">
                         <div class="area">
@@ -37,7 +27,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-3">
+            <div class="col-12 col-sm-6 col-md-4">
                 <div class="dashboard-content">
                     <a class="area-link" href="{{route('registered.messages')}}">
                         <div class="area">
@@ -47,7 +37,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-3">
+            <div class="col-12 col-sm-6 col-md-4">
                 <div class="dashboard-content">
                     <a class="area-link" href="{{route('registered.ads.index')}}">
                         <div class="area">

@@ -35,7 +35,7 @@
                   <div class="card-dash-buttons">
                      <a href="{{route('registered.apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
                      <a href="{{route('registered.apartments.edit', $apartment)}}"><button class="btn btn-dark">Modifica</button></a>
-                     <a href="{{route('registered.views.show', $apartment)}}"><button class="btn btn-dark">Statistiche</button></a>
+                     <a href="{{route('registered.statistics.show', $apartment)}}"><button class="btn btn-dark">Statistiche</button></a>
                      <form class="d-inline" action="{{route('registered.apartments.destroy', $apartment)}}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -46,7 +46,7 @@
             </div>
             @endforeach
          @endif
-      </div>            
+      </div>
    </div>
 </div>
 

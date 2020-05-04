@@ -12,6 +12,11 @@
             {!! $views->script() !!}
           </div>
         @endif
+        <div class="col text-center mt-3">
+          @foreach($totalViews as $views)
+            <h6 class="counter">Totale visualizzazioni: <span class="badge badge-primary">{{$views}}</span></h6>
+          @endforeach
+        </div>
       </div>
 
       <div class="col-md-6">
@@ -23,9 +28,13 @@
             {!! $messages->script() !!}
           </div>
         @endif
-            
+        <div class="col text-center mt-3">
+          @foreach($totalMessages as $messages)
+            <h6 class="counter">Totale messaggi: <span class="badge badge-primary">{{$messages}}</span></h6>
+          @endforeach
+        </div>
+
       </div>
     </div>
-    
   </div>
 @endsection

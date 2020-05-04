@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Registered;
 
+use Auth;
 use App\Apartment;
 use App\Charts\ViewChart;
 use App\Http\Controllers\Controller;
@@ -10,39 +11,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ViewController extends Controller
+class StatisticController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      *
@@ -51,21 +21,38 @@ class ViewController extends Controller
      */
     public function show(Apartment $apartment)
     {
+      if(Auth::user()->id != $apartment->user->id)
+      {
+        return abort(404);
+      }
+      $data = [];
       $views= DB::table('views')
         ->where('apartment_id', $apartment->id)
         ->whereDate('date', '>', today()->subMonth(2))
         ->groupBy('date')
         ->select(DB::raw('count(*) as views, date'))
       ->get();
-      
+
+      $totalViews = DB::table('views')
+        ->select(DB::raw('count(*) as views'))
+        ->where('apartment_id', $apartment->id)
+        ->first();
+
+        $data += ['totalViews' => $totalViews];
+
       $messages= DB::table('messages')
         ->where('apartment_id', $apartment->id)
         ->whereDate('created_at', '>', today()->subMonth(2))
         ->groupBy('created_at')
         ->select(DB::raw('count(*) as messages, created_at'))
       ->get();
-      
-      $data = [];
+
+      $totalMessages = DB::table('messages')
+        ->select(DB::raw('count(*) as messages'))
+        ->where('apartment_id', $apartment->id)
+        ->first();
+
+        $data += ['totalMessages' => $totalMessages];
 
       if(count($views) > 0){
 
@@ -97,45 +84,6 @@ class ViewController extends Controller
 
         $data += ['messages' => $chartMessages];
       }
-      
-     /*  $data = [
-        'views' => $chartViews,
-        'messages' => $chartMessages
-      ]; */
-      return view('registered.apartments.views.show', $data);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\View  $view
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(View $view)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\View  $view
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, View $view)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\View  $view
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(View $view)
-    {
-        //
+      return view('registered.apartments.statistics.show', $data);
     }
 }

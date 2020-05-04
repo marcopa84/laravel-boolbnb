@@ -8,18 +8,18 @@
          <div class="apartment-title">
             <h1>{{$apartment->title}}</h1>
          </div>
-            
+
          <div class="apartment-price">
             <h5 class="apartment-price-label">Prezzo per notte: <span class="badge">€{{$apartment->price}}</span> </h5>
          </div>
       </div>
-      
-      
-      
+
+
+
       <img src="{{asset($apartment->featured_image)}}" title="Immagine in evidenza">
       <h5 class="apartment-desc-title">Descrizione</h5>
-      <p class="apartment-desc-text">{{$apartment->description}}
-         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum? adipisicing elit. Sint harum unde, quo saepe dicta quisquam illo excepturi molestias non voluptatum id minima aut dolor repellendus nam. Repellendus, reiciendis beatae. Harum?
+      <p class="apartment-desc-text">
+        {{$apartment->description}}
       </p>
 
       <section class="apartment-details">
@@ -82,10 +82,8 @@
          <div class="sidebar-message">
             <h6 class="message-title"><i class="fas fa-envelope icon"></i> Contatta il proprietario</h6>
             <form action="{{route('message.store', $apartment)}}" method="POST">
-               @csrf 
-               @method('POST')
-               {{-- <input type="hidden" name="apartment_id" value="{{$apartment->id}}"> --}}
-               
+               @csrf
+               @method('POST')               
                <!-- Form-group -->
                <div class="form-group">
                   <label for="email">Email</label>
