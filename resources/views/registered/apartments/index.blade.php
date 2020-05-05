@@ -39,7 +39,7 @@
                      <form class="d-inline" action="{{route('registered.apartments.destroy', $apartment)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Cancella</button>
+                        <button type="submit" class="btn btn-primary">Cancella</button>
                      </form>
                   </div>
                </div>

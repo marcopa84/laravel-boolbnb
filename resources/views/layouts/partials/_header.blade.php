@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm primary fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" title="BoolBnb">
-                    BOOLBNB
+                    <i class="fab fa-airbnb icon-logo"></i>OOLBNB
                 </a>
                 <button class="navbar-toggler hamburger" type="button">
                     <span class="navbar-toggler-icon"></span>

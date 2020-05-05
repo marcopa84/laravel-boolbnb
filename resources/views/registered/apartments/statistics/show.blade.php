@@ -14,7 +14,7 @@
         @endif
         <div class="col text-center mt-3">
           @foreach($totalViews as $views)
-            <h6 class="counter">Totale visualizzazioni: <span class="badge badge-primary">{{$views}}</span></h6>
+            <h4 class="counter">Totale visualizzazioni: <span class="badge badge-primary">{{$views}}</span></h4>
           @endforeach
         </div>
       </div>
@@ -30,7 +30,7 @@
         @endif
         <div class="col text-center mt-3">
           @foreach($totalMessages as $messages)
-            <h6 class="counter">Totale messaggi: <span class="badge badge-primary">{{$messages}}</span></h6>
+            <h4 class="counter">Totale messaggi: <span class="badge badge-primary">{{$messages}}</span></h4>
           @endforeach
         </div>
 

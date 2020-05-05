@@ -38,9 +38,7 @@
                      <input type="hidden" name="longitude" id="longitude" value="">
                      <input type="hidden" name="radius" id="radius" value="20">
                      <ol id="address-suggestions" class="list-group">
-
                      </ol>
-                     <!-- <input id="search-address-home" class="btn btn-dark" type="button" value="Cerca indirizzo"> -->
                   </div>
                   <div class="search-guests">
                      <input type="number" class="form-control" name="beds_number" title="Quanti siete?" placeholder="Ospiti" min="1">

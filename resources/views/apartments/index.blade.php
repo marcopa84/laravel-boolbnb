@@ -28,11 +28,6 @@
                         @if($selected_features[$i] == $feature->id) {{'checked'}}
                         @endif
                       @endfor
-              {{--  @elseif(!empty(old('features')))
-                      @for( $i = 0; $i < count(old('features')); $i++ )
-                        @if( old('features')[$i] == $feature->id ) {{'checked'}}
-                        @endif
-                      @endfor --}}
                     @endif >
                   <span class="featured_description">{{$feature->description}}</span>
                 </li>

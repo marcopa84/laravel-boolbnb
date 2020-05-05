@@ -6743,14 +6743,6 @@ a.close.disabled {
 .carousel-fade .active.carousel-item-right {
   z-index: 0;
   opacity: 0;
-  transition: opacity 0s 0.6s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .carousel-fade .active.carousel-item-left,
-  .carousel-fade .active.carousel-item-right {
-    transition: none;
-  }
 }
 
 .carousel-control-prev,
@@ -11343,6 +11335,10 @@ footer p {
   margin: 0;
 }
 
+.dashboard .dashboard-header .title {
+  color: #212529;
+}
+
 .dashboard .dashboard-content {
   width: 100%;
   margin-bottom: 24px;
@@ -11422,6 +11418,14 @@ a:hover {
 * HEADER
 * ––––––––––––––––––––––––––––––––––––––––––––––––––
 */
+
+header .navbar .icon-logo {
+  transform: rotate(-90deg);
+  font-size: 28px;
+  font-weight: 800;
+  vertical-align: text-bottom;
+  margin-right: 2px;
+}
 
 header .navbar .container .hamburger {
   border: none;

@@ -59,6 +59,13 @@ a:hover{
 */
 header{
    .navbar{
+      .icon-logo{
+         transform: rotate(-90deg);
+         font-size: 28px;
+         font-weight: 800;
+         vertical-align: text-bottom;
+         margin-right: 2px;
+      }
       .container{
          .hamburger{
             border: none;
