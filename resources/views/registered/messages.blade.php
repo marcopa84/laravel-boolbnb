@@ -23,7 +23,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-2">
-                            <time>{{date("d M Y - H:i", strtotime($message->created_at))}}</time>
+                            <time>{{date("d M Y", strtotime($message->created_at))}}</time>
                         </div>
                         <div class="col-10">
                             {{$message->content}}
