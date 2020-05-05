@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\File;
 class ApartmentController extends Controller
 {
 
-    public function __construct()
-    {
-
-    }
-
-
     // //////////////////////////////////////////////////
     // I N D E X
     // //////////////////////////////////////////////////
@@ -201,8 +195,6 @@ class ApartmentController extends Controller
     // //////////////////////////////////////////////////
     // D E S T R O Y
     // //////////////////////////////////////////////////
-
-    // DELETE STORE IMG ???
 
     /**
      * Remove the specified resource from storage.

@@ -35,25 +35,7 @@ class ApartmentController extends Controller
         ];
         return view('index', $data);
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    
     /**
      * Display the specified resource.
      *
@@ -68,37 +50,7 @@ class ApartmentController extends Controller
       ]);
       return view('apartments.show', compact('apartment'));
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Apartment  $apartment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Apartment $apartment)
-    {
-        //
-    }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Apartment  $apartment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Apartment $apartment)
-    {
-        //
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Apartment  $apartment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Apartment $apartment)
-    {
-        //
-    }
+    
 
     // ↓ con il metodo index() verranno selezionati gli appartamenti entro $rad chilometri rispetto alle coordinate $lat e $lon fornite ↓
     public function searchApartments(Request $request) {

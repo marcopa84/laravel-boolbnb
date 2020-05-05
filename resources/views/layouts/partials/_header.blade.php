@@ -55,6 +55,9 @@
                                     <a class="dropdown-item" href="{{ route('registered.apartments.create') }}">
                                         {{ __('Aggiungi nuovo appartamento') }}
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('registered.messages') }}">
+                                        {{ __('I tuoi messaggi') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('registered.ads.index') }}">
                                         {{ __('Sponsorizza appartamento') }}
                                     </a>

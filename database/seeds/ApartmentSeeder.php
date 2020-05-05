@@ -45,7 +45,7 @@ class ApartmentSeeder extends Seeder
     $apartment = new Apartment;
     $apartment->user_id = 1;
     $apartment->title = 'Trilocale fantastico';
-    $apartment->description = 'Lorem ipsum dolor sit amet';
+    $apartment->description = $this->descriptions[rand(0, count($this->descriptions)-1)];
     $apartment->rooms_number = 3;
     $apartment->beds_number = 2;
     $apartment->bathrooms_number = 1;
@@ -59,7 +59,7 @@ class ApartmentSeeder extends Seeder
     $apartment->save();
 
     // coordinate colosseo 41.890251, 12.492373
-  for ($i = 0; $i < 100; $i++) {
+  for ($i = 0; $i < 50; $i++) {
     $apartment = new Apartment;
     $apartment->user_id = 1;
     $apartment->title = $this->titles[rand(0,count($this->titles)-1)];

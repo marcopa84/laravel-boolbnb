@@ -31,7 +31,7 @@ class StatisticController extends Controller
         ->whereDate('date', '>', today()->subMonth(2))
         ->groupBy('date')
         ->select(DB::raw('count(*) as views, date'))
-      ->get();
+        ->get();
 
       $totalViews = DB::table('views')
         ->select(DB::raw('count(*) as views'))
@@ -45,7 +45,7 @@ class StatisticController extends Controller
         ->whereDate('created_at', '>', today()->subMonth(2))
         ->groupBy('created_at')
         ->select(DB::raw('count(*) as messages, created_at'))
-      ->get();
+        ->get();
 
       $totalMessages = DB::table('messages')
         ->select(DB::raw('count(*) as messages'))

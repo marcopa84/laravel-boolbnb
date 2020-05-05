@@ -34,7 +34,7 @@
                      @endif
                   </div>
                   <div class="card-dash-buttons">
-                     <a href="{{route('registered.ads.create', $apartment)}}"><button class="btn btn-dark">Inserisci sponsorizzazione</button></a>
+                     <a href="{{route('registered.ads.create', $apartment)}}"><button class="btn btn-dark mt-3">Inserisci sponsorizzazione</button></a>
                   </div>
                </div>
             </div>
