@@ -33,9 +33,9 @@
                      <p class="card-text lead">{{$apartment->address}}</p>
                   </div>
                   <div class="card-dash-buttons">
-                     <a href="{{route('registered.apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
-                     <a href="{{route('registered.apartments.edit', $apartment)}}"><button class="btn btn-dark">Modifica</button></a>
-                     <a href="{{route('registered.statistics.show', $apartment)}}"><button class="btn btn-dark">Statistiche</button></a>
+                     <a class="card-dash-buttons-link" href="{{route('registered.apartments.show', $apartment)}}"><button class="btn btn-dark">Visualizza</button></a>
+                     <a class="card-dash-buttons-link" href="{{route('registered.apartments.edit', $apartment)}}"><button class="btn btn-dark">Modifica</button></a>
+                     <a class="card-dash-buttons-link" href="{{route('registered.statistics.show', $apartment)}}"><button class="btn btn-dark">Statistiche</button></a>
                      <form class="d-inline" action="{{route('registered.apartments.destroy', $apartment)}}" method="POST">
                         @csrf
                         @method('DELETE')

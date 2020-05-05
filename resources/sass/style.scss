@@ -19,6 +19,7 @@
 html {
    scroll-behavior: smooth;
    height: 100vh;
+   font-size: 16px;
 }
 
 body{
@@ -142,16 +143,25 @@ header{
       .card-body{
          position: relative;
          width: 55%;
-         padding: 2.25rem;
+         padding: 2.25em;
          display: flex;
          flex-flow: column wrap;
          justify-content: space-between;
          &-text{
             width: 100%;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
             select{
               width: 100%;
               option{
                 width: 100px;
+              }
+            }
+            .card-distance{
+              span+span{
+                margin-left: 10px;
               }
             }
          }
@@ -180,7 +190,7 @@ header{
       .card-dash-buttons{
          display: flex;
          flex-wrap: wrap;
-         a, form{
+         a.card-dash-buttons-link, form{
             margin: 8px;
          }
 

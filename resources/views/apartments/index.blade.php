@@ -75,7 +75,7 @@
             <div class="card-body-text">
               <h3 class="card-title">{{$apartment->title}}</h3>
               <p class="card-text lead">{{$apartment->address}}</p>
-              <p class="card-distance"><span>{{$apartment->distance}}km </span><span><i class="fas fa-bed"></i> {{$apartment->beds_number}} </span><span><i class="fas fa-expand"></i> {{$apartment->rooms_number}}</span></p>
+              <p class="card-distance"><span>{{$apartment->distance}} km </span><span><i class="fas fa-bed"></i> {{$apartment->beds_number}} </span><span><i class="fas fa-expand"></i> {{$apartment->rooms_number}}</span></p>
               <div class="apartment-features-list">
                 @foreach ($apartment->features as $feature)
                 @if ($feature->id == 1)
